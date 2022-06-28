@@ -6,7 +6,7 @@
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-pencil-square-o"></i> Content</a>
     <ul class="nav-dropdown-items">
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('page') }}'><i class='nav-icon la la-file-o'></i> <span>Pages</span></a></li>
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('menu-item') }}'><i class='nav-icon la la-list'></i> <span>Menu</span></a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('navigation') }}'><i class='nav-icon la la-list'></i> <span>Menu</span></a></li>
     </ul>
 </li>
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use Backpack\MenuCRUD\app\Models\MenuItem;
+use SequelONE\MenuCRUD\app\Models\MenuItem;
 
 class PageController extends Controller
 {

@@ -4,14 +4,28 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": {
+        "menu-crud": {
+            "type": "path",
+            "url": "packages/sequelone/menu-crud",
+            "options": {
+                "symlink": true
+            }
+        },
+        "pages-crud": {
+            "type": "path",
+            "url": "packages/sequelone/pages-crud",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
     "require": {
         "php": "^7.3|^8.0",
         "backpack/backupmanager": "^3.0.9",
         "backpack/crud": "^5.0",
         "backpack/filemanager": "^1.1.7",
         "backpack/logmanager": "^4.0",
-        "backpack/menucrud": "^3.0",
-        "backpack/pagemanager": "^3.0",
         "backpack/permissionmanager": "^6.0",
         "backpack/settings": "^3.0",
         "bacon/bacon-qr-code": "^2.0",
@@ -26,6 +40,8 @@
         "pragmarx/google2fa": "^8.0",
         "pragmarx/google2fa-laravel": "^2.0",
         "pragmarx/recovery": "^0.2.1",
+        "sequelone/menu-crud": "1.0.x-dev",
+        "sequelone/pages-crud": "1.0.x-dev",
         "socialiteproviders/facebook": "^4.1",
         "socialiteproviders/github": "^4.1",
         "socialiteproviders/google": "^4.1",
