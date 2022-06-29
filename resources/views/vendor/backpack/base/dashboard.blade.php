@@ -17,11 +17,11 @@
             'content' => [ // widgets here
                 [
                     'type'          => 'progress_white',
-                    'class'         => 'card mb-2',
+                    'class'         => 'card text-white bg-primary mb-2',
                     'value'         => \App\Models\User::abbr($users),
                     'description'   => 'Registered users.',
                     'progress'      => \App\Models\User::border($users)['percent'], // integer
-                    'progressClass' => 'progress-bar bg-danger',
+                    'progressClass' => 'progress-bar bg-success',
                     'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
                 ],
                 [
@@ -43,13 +43,17 @@
                     'hint'          => '8544 more until next milestone.',
                 ],
                 [
-                    'type'          => 'progress_white',
-                    'class'         => 'card mb-2',
-                    'value'         => '11.456',
-                    'description'   => 'Registered users.',
-                    'progress'      => 57, // integer
-                    'progressClass' => 'progress-bar bg-primary',
-                    'hint'          => '8544 more until next milestone.',
+                    'type'          => 'card',
+                    'wrapper'       => ['class' => 'col-sm-6 col-lg-3'], // optional
+                    'class'         => 'card bg-primary text-white',
+                    'content'    => [
+                        'body'   => '
+                            <strong>PHP</strong>: ' . phpversion() .'<br />
+                            <strong>Laravel</strong>: ' . App::VERSION() . '<br />
+                            <strong>Backpack</strong>: ' . strtok(\PackageVersions\Versions::getVersion('backpack/crud'), '@') . '<br />
+                            <strong>Backpack PRO</strong>: ' . backpack_pro() . '
+                        ',
+                    ]
                 ],
             ],
         ]);
