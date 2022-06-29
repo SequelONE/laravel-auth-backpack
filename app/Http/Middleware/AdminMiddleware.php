@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (! \Auth::user()->hasRole('administrator') || ! \Auth::user()->hasRole('developer') || ! \Auth::user()->hasRole('manager') )
+        if (! \Auth::user()->hasRole(['administrator', 'developer', 'manager']) )
             return response(trans('backpack::base.unauthorized'),401);
         return $next($request);
     }
