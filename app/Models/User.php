@@ -57,4 +57,44 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(LoginSecurity::class);
     }
+
+    public function abbr($input = 0) {
+        $abbreviations = [12 => 'T', 9 => 'B', 6 => 'M', 3 => 'K', 0 => ''];
+        foreach($abbreviations as $exponent => $abbreviation) {
+            if($input >= (10 ** $exponent)) {
+                return round(floatval($input / (10 ** $exponent)),1).$abbreviation;
+            }
+        }
+    }
+
+    public function border($count = 0) {
+        $statuses = [
+            15 => '10000000000000000',
+            14 => '1000000000000000',
+            13 => '100000000000000',
+            12 => '10000000000000',
+            11 => '1000000000000',
+            10 => '100000000000',
+            9 => '10000000000',
+            8 => '1000000000',
+            7 => '100000000',
+            6 => '10000000',
+            5 => '1000000',
+            4 => '100000',
+            3 => '10000',
+            2 => '1000',
+            1 => '100',
+            0 => '10'
+        ];
+        foreach($statuses as $exponent => $step) {
+            if($count >= (10 ** $exponent)) {
+                $border = $step - $count;
+                $percent = round(($count / $step) * 100, 2);
+                return [
+                    'border' => $border,
+                    'percent' => $percent
+                ];
+            }
+        }
+    }
 }
