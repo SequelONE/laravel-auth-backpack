@@ -92,7 +92,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-md-6">
-
+                        <p class="text"><a href="{{ url('privacy') }}">Privacy Policy</a> | <a href="{{ url('user-agreement') }}">User Agreement</a> | <a href="{{ url('deleting-user-data') }}">Deleting user data</a></p>
                     </div>
                     <div class="col-12 col-lg-6 col-md-6">
                         <p class="text-end">© {{ copyright('2015') }} Developed by <a href="https://sequel.one">SEQUEL.ONE</a></p>
