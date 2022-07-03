@@ -69,6 +69,8 @@ class MenuItem extends Model
             default: //page_link
                 if ($this->page) {
                     return url($this->page->slug);
+                } else if (request()->is($this->page->slug)) {
+                    return url($this->page->slug);
                 }
                 break;
         }

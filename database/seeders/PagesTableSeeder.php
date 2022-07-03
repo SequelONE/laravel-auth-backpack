@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\MenuItem;
 use App\Models\Page;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class PagesTableSeeder extends Seeder
 {
@@ -73,7 +71,7 @@ class PagesTableSeeder extends Seeder
                     'title' => $Page['title'],
                     'slug' => $Page['slug'],
                     'content' => $Page['content'],
-                    'extras' => json_encode($Page['extras'], JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES),
+                    'extras' => $Page['extras'],
                 ]);
             }
         }
