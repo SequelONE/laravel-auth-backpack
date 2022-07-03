@@ -47,7 +47,8 @@
         "socialiteproviders/vkontakte": "^4.2",
         "socialiteproviders/yandex": "^4.1",
         "sequelone/menu-crud": "dev-master",
-        "sequelone/pages-crud": "dev-master"
+        "sequelone/pages-crud": "dev-master",
+      "ext-json": "*"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

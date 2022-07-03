@@ -16,10 +16,6 @@ use App\Http\Controllers\Auth\SocialLoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Auth
 Auth::routes();
 Route::get('/email/verify', function () {
@@ -66,7 +62,8 @@ Route::get('auth/provider/{provider}/callback',[SocialLoginController::class,'pr
 Route::get('auth/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
 
 // Pages
+Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 Route::get('/profile', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
 Route::get('/settings', [App\Http\Controllers\Auth\UserController::class, 'settings'])->name('settings')->middleware(['auth', '2fa', 'verified']);
-Route::get('/{link}', [App\Http\Controllers\PageController::class, 'pages'])->name('pages');
+Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index'])->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);

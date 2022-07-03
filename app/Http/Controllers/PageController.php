@@ -7,21 +7,41 @@ use SequelONE\MenuCRUD\app\Models\MenuItem;
 
 class PageController extends Controller
 {
+    public function welcome()
+    {
+        $page = Page::where('slug', '/')->first();
+
+        if (!$page)
+        {
+            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+        }
+
+        $this->data['title'] = $page->title;
+        $this->data['page'] = $page->withFakes();
+        $this->data['extras'] = isset($page->extras) ? json_decode(json_encode($page->extras, JSON_THROW_ON_ERROR), false, 512, JSON_THROW_ON_ERROR) : '';
+
+        return view('pages.'.$page->template, $this->data);
+    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
+     * @throws \JsonException
      */
-    public function pages($link)
+    public function index($slug, $subs = null)
     {
-        $menu = MenuItem::where('link', $link)->first();
-        $page = Page::where('id', $menu->page_id)->first();
+        $page = Page::findBySlug($slug);
 
-        if(isset($menu->link)) {
-            return view('second',compact('menu'),compact('page'));
-        } else {
-            abort(404);
+        if (!$page)
+        {
+            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
         }
+
+        $this->data['title'] = $page->title;
+        $this->data['page'] = $page->withFakes();
+        $this->data['extras'] = isset($page->extras) ? json_decode(json_encode($page->extras, JSON_THROW_ON_ERROR), false, 512, JSON_THROW_ON_ERROR) : '';
+
+        return view('pages.'.$page->template, $this->data);
     }
 }

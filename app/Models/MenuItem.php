@@ -14,17 +14,17 @@ class MenuItem extends Model
 
     public function parent()
     {
-        return $this->belongsTo('Backpack\MenuCRUD\app\Models\MenuItem', 'parent_id');
+        return $this->belongsTo('SequelONE\MenuCRUD\app\Models\MenuItem', 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany('Backpack\MenuCRUD\app\Models\MenuItem', 'parent_id');
+        return $this->hasMany('SequelONE\MenuCRUD\app\Models\MenuItem', 'parent_id');
     }
 
     public function page()
     {
-        return $this->belongsTo('Backpack\PageManager\app\Models\Page', 'page_id');
+        return $this->belongsTo('SequelONE\PageCRUD\app\Models\Page', 'page_id');
     }
 
     /**
@@ -40,12 +40,12 @@ class MenuItem extends Model
                 $menu_item->children = collect([]);
 
                 foreach ($menu as $i => $menu_subitem) {
-                    if ($menu_subitem->parent_id == $menu_item->id) {
+                    if ($menu_subitem->parent_id === $menu_item->id) {
                         $menu_item->children->push($menu_subitem);
 
                         // remove the subitem for the first level
                         $menu = $menu->reject(function ($item) use ($menu_subitem) {
-                            return $item->id == $menu_subitem->id;
+                            return $item->id === $menu_subitem->id;
                         });
                     }
                 }

@@ -65,7 +65,7 @@ class Page extends Model
     public function getOpenButton()
     {
         return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
-            '<i class="la la-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
+            '<i class="la la-eye"></i> '.trans('sequelone::pages-crud.open').'</a>';
     }
 
     /*

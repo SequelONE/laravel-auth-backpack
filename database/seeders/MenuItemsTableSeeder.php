@@ -21,23 +21,23 @@ class MenuItemsTableSeeder extends Seeder
         $MenuItems = [
             [
                 'name' => 'Home',
-                'type' => 'internal_link',
-                'link' => '/',
-                'page_id' => NULL,
+                'type' => 'page_link',
+                'link' => NULL,
+                'page_id' => 1,
                 'status' => 1,
             ],
             [
                 'name' => 'About us',
                 'type' => 'page_link',
-                'link' => 'about',
-                'page_id' => 1,
+                'link' => NULL,
+                'page_id' => 2,
                 'status' => 1,
             ],
             [
                 'name' => 'News',
-                'type' => 'internal_link',
-                'link' => 'news',
-                'page_id' => NULL,
+                'type' => 'page_link',
+                'link' => NULL,
+                'page_id' => 3,
                 'status' => 1,
             ],
         ];
