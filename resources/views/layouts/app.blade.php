@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{ config('app.url', 'https://s01.one/') }}">
+    <link rel="shortcut icon" href="{{ config('settings.favicon') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -14,7 +15,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img width="125" src="{{ asset('/img/logo.png') }}" alt="SEQUEL.ONE" />
+                    <img width="125" src="{{ config('settings.logo') }}" alt="SEQUEL.ONE" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -95,7 +96,7 @@
                         <p class="text"><a href="{{ url('privacy') }}">Privacy Policy</a> | <a href="{{ url('user-agreement') }}">User Agreement</a> | <a href="{{ url('deleting-user-data') }}">Deleting user data</a></p>
                     </div>
                     <div class="col-12 col-lg-6 col-md-6">
-                        <p class="text-end">© {{ copyright('2015') }} Developed by <a href="https://sequel.one">SEQUEL.ONE</a></p>
+                        <p class="text-end">© {{ copyright('2015') }} Powered by <a href="https://github.com/SequelONE/laravel-auth-backpack" rel="nofollow">Laravel Auth Backpack</a>. Developed by <a href="https://sequel.one">SEQUEL.ONE</a></p>
                     </div>
                 </div>
             </div>
