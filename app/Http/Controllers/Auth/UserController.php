@@ -114,7 +114,7 @@ class UserController extends Controller
         if($this->userAuth()) {
             $request->validate([
                 'name' =>'required|min:4|string|max:255',
-                'email'=>'required|email|string|max:255'
+                'email'=>'required|email|string|max:255',
             ]);
             $user = Auth::user();
             $user->name = $request['name'];
@@ -124,6 +124,23 @@ class UserController extends Controller
         } else {
             return redirect('/login');
         }
+    }
+
+    public function uploadCropImage(Request $request)
+    {
+        $folderPath = public_path('uploads/avatars/');
+        $image_parts = explode(";base64,", $request->image);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $imageName = uniqid('', true) . '.png';
+        $imageFullPath = $folderPath.$imageName;
+        file_put_contents($imageFullPath, $image_base64);
+        $saveFile = Auth::user();
+        $saveFile->avatar = 'uploads/avatars/' . $imageName;
+        $saveFile->save();
+
+        return response()->json(['success'=>'Crop Image Uploaded Successfully']);
     }
 
     public function settings()

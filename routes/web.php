@@ -68,5 +68,6 @@ Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 Route::get('/profile', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
 Route::post('/profile/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update')->middleware(['auth', '2fa', 'verified']);
+Route::post('/profile/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update')->middleware(['auth', '2fa', 'verified']);
 Route::get('/settings', [App\Http\Controllers\Auth\UserController::class, 'settings'])->name('settings')->middleware(['auth', '2fa', 'verified']);
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);
