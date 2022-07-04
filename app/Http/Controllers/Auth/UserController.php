@@ -109,6 +109,23 @@ class UserController extends Controller
         }
     }
 
+    public function profileUpdate(Request $request)
+    {
+        if($this->userAuth()) {
+            $request->validate([
+                'name' =>'required|min:4|string|max:255',
+                'email'=>'required|email|string|max:255'
+            ]);
+            $user = Auth::user();
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->save();
+            return back()->with('success','Profile Updated');
+        } else {
+            return redirect('/login');
+        }
+    }
+
     public function settings()
     {
         if($this->userAuth()) {
