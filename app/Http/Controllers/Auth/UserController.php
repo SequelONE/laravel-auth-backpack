@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use \ParagonIE\ConstantTime\Base32;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Creativeorange\Gravatar\Gravatar;
 use App\Models\UserCode;
+use App\Models\User;
 use Session;
 
 class UserController extends Controller
@@ -93,10 +95,15 @@ class UserController extends Controller
         return $user;
     }
 
+    /**
+     * @throws \Creativeorange\Gravatar\Exceptions\InvalidEmailException
+     */
     public function profile()
     {
         if($this->userAuth()) {
-            return view('auth.profile.index');
+            $email = Auth::user()->email;
+            $gravatar = (new \Creativeorange\Gravatar\Gravatar)->get($email, 'default');
+            return view('auth.profile.index', compact('gravatar'));
         } else {
             return redirect('/login');
         }

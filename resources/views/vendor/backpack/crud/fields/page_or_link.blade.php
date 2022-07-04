@@ -12,7 +12,7 @@
     $field['options']['internal_link'] = $field['options']['internal_link'] ?? trans('backpack::crud.internal_link');
     $field['options']['external_link'] = $field['options']['external_link'] ?? trans('backpack::crud.external_link');
 
-    $field['pages'] = $field['pages'] ?? ($field['page_model'] ?? config('backpack.pagemanager.page_model_class'))::all();
+    $field['pages'] = $field['pages'] ?? ($field['page_model'] ?? config('sequelone.pages-crud.page_model_class'))::all();
 ?>
 
 @include('crud::fields.inc.wrapper_start')

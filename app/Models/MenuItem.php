@@ -14,17 +14,17 @@ class MenuItem extends Model
 
     public function parent()
     {
-        return $this->belongsTo('SequelONE\MenuCRUD\app\Models\MenuItem', 'parent_id');
+        return $this->belongsTo('App\Models\MenuItem', 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany('SequelONE\MenuCRUD\app\Models\MenuItem', 'parent_id');
+        return $this->hasMany('App\Models\MenuItem', 'parent_id');
     }
 
     public function page()
     {
-        return $this->belongsTo('SequelONE\PageCRUD\app\Models\Page', 'page_id');
+        return $this->belongsTo('App\Models\Page', 'page_id');
     }
 
     /**
@@ -68,8 +68,6 @@ class MenuItem extends Model
 
             default: //page_link
                 if ($this->page) {
-                    return url($this->page->slug);
-                } else if (request()->is($this->page->slug)) {
                     return url($this->page->slug);
                 }
                 break;

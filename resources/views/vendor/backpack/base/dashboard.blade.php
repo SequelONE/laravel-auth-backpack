@@ -4,40 +4,27 @@
     $users = \App\Models\User::count();
     $memUsage = getServerMemoryUsage(false);
 
-        $widgets['before_content'][] = [
-            'type'        => 'jumbotron',
-            'heading'     => trans('backpack::base.welcome'),
-            'content'     => trans('backpack::base.use_sidebar'),
-            'button_link' => backpack_url('logout'),
-            'button_text' => trans('backpack::base.logout'),
-        ];
-
         Widget::add([
             'type'    => 'div',
             'class'   => 'row',
             'content' => [ // widgets here
                 [
-                    'type'          => 'progress_white',
-                    'class'         => 'card text-white bg-primary mb-2',
-                    'value'         => \App\Models\User::abbr($users),
-                    'description'   => 'Registered users.',
-                    'progress'      => \App\Models\User::border($users)['percent'], // integer
-                    'progressClass' => 'progress-bar bg-success',
-                    'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
-                ],
-                [
-                    'type'          => 'progress_white',
-                    'class'         => 'card mb-2',
-                    'value'         => '11.456',
-                    'description'   => 'Registered users.',
-                    'progress'      => 57, // integer
-                    'progressClass' => 'progress-bar bg-primary',
-                    'hint'          => '8544 more until next milestone.',
+                    'type'          => 'card',
+                    'wrapper'       => ['class' => 'col-sm-6 col-lg-3'], // optional
+                    'class'         => 'card bg-success text-white',
+                    'content'    => [
+                        'body'   => '
+                            <strong>Version</strong>: <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v1.0.0</a><br />
+                            <strong>Website</strong>: <a class="text-white" href="https://sequel.one">sequel.one</a><br />
+                            <strong>Docs</strong>: <a class="text-white" href="https://docs.sequel.one/v1.0/laravel-auth-backpack">docs.sequel.one</a><br />
+                            <strong>Blog</strong>: <a class="text-white" href="https://blog.sequel.one">blog.sequel.one</a>
+                        ',
+                    ]
                 ],
                 [
                     'type'          => 'card',
                     'wrapper'       => ['class' => 'col-sm-6 col-lg-3'], // optional
-                    'class'         => 'card bg-primary text-white',
+                    'class'         => 'card bg-danger text-white',
                     'content'    => [
                         'body'   => '
                             <strong>Memory</strong>: ' . sprintf("%s / %s (%s%%)", getNiceFileSize($memUsage["total"] - $memUsage["free"]), getNiceFileSize($memUsage["total"]), getServerMemoryUsage(true)) . '<br />
@@ -60,10 +47,68 @@
                         ',
                     ]
                 ],
+                [
+                    'type'          => 'card',
+                    'wrapper'       => ['class' => 'col-sm-6 col-lg-3'], // optional
+                    'class'         => 'card bg-white text-black',
+                    'content'    => [
+                        'body'   => '
+                            <p><strong>Cache purge</strong></p>
+                            <p><a class="btn btn-outline-warning btn-block" role="button" href="' . backpack_url('purge') . '"><i class="nav-icon la la-trash"></i> <span>Clear cache</span></a></p>
+                        ',
+                    ]
+                ],
+            ],
+        ]);
+        
+        Widget::add([
+            'type'        => 'jumbotron',
+            'heading'     => 'Welcome!',
+            'content'     => 'Use the sidebar to the left to create, edit or delete content.',
+            'button_link' => route('logout'),
+            'button_text' => 'Logout',
+        ]);
+        
+        Widget::add([
+            'type'    => 'div',
+            'class'   => 'row',
+            'content' => [ // widgets here
+                [
+                    'type'          => 'progress_white',
+                    'class'         => 'card text-black bg-white mb-2',
+                    'value'         => \App\Models\User::abbr($users),
+                    'description'   => 'Registered users.',
+                    'progress'      => \App\Models\User::border($users)['percent'], // integer
+                    'progressClass' => 'progress-bar progress-bar-striped bg-warning',
+                    'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
+                ],
+                [
+                    'type'          => 'progress_white',
+                    'class'         => 'card text-white bg-primary mb-2',
+                    'value'         => \App\Models\User::abbr($users),
+                    'description'   => 'Registered users.',
+                    'progress'      => \App\Models\User::border($users)['percent'], // integer
+                    'progressClass' => 'progress-bar progress-bar-striped bg-success',
+                    'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
+                ],
+                [
+                    'type'          => 'progress_white',
+                    'class'         => 'card text-white bg-danger mb-2',
+                    'value'         => \App\Models\User::abbr($users),
+                    'description'   => 'Registered users.',
+                    'progress'      => \App\Models\User::border($users)['percent'], // integer
+                    'progressClass' => 'progress-bar progress-bar-striped bg-warning',
+                    'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
+                ],
+                [
+                    'type'          => 'progress_white',
+                    'class'         => 'card text-white bg-success mb-2',
+                    'value'         => \App\Models\User::abbr($users),
+                    'description'   => 'Registered users.',
+                    'progress'      => \App\Models\User::border($users)['percent'], // integer
+                    'progressClass' => 'progress-bar progress-bar-striped bg-primary',
+                    'hint'          => \App\Models\User::border($users)['border'] . ' more until next milestone.',
+                ],
             ],
         ]);
 @endphp
-
-@section('content')
-    <p>Your custom HTML can live here</p>
-@endsection

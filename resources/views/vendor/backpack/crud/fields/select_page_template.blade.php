@@ -69,7 +69,7 @@
                 $('#select_template').data('current', $('#select_template').val());
 
                 $("#select_template").change(function(e) {
-                    var select_template_confirmation = confirm("@lang('backpack::pagemanager.change_template_confirmation')");
+                    var select_template_confirmation = confirm("@lang('sequelone::pages-crud.change_template_confirmation')");
                     if (select_template_confirmation == true) {
                         redirect_to_new_page_with_template_parameter();
                     } else {

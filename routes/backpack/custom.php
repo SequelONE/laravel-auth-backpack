@@ -16,4 +16,6 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+    Route::crud('menu-item', 'MenuItemCrudController');
+    Route::get('purge', 'CacheCrudController@cachePurge');
 }); // this should be the absolute last line of this file

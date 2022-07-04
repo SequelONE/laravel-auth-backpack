@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
         if ($user === null) {
             $user = User::create([
                 'avatar'                         => NULL,
-                'name'                           => 'User',
+                'name'                           => 'Banned',
                 'email'                          => 'banned@s01.one',
                 'password'                       => Hash::make('password'),
             ]);

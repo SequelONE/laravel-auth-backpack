@@ -6,7 +6,7 @@
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-pencil-square-o"></i> Content</a>
     <ul class="nav-dropdown-items">
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('page') }}'><i class='nav-icon la la-file-o'></i> <span>Pages</span></a></li>
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('navigation') }}'><i class='nav-icon la la-list'></i> <span>Menu</span></a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('menu-item') }}'><i class='nav-icon la la-list'></i> <span>Menu</span></a></li>
     </ul>
 </li>
 <li class="nav-title">Users</li>
@@ -24,3 +24,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cog'></i> <span>Settings</span></a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('backup') }}'><i class='nav-icon la la-hdd-o'></i> Backups</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('log') }}'><i class='nav-icon la la-terminal'></i> Logs</a></li>
+<li class='nav-item'><a class='btn btn-outline-warning btn-block' role="button" href='{{ backpack_url('purge') }}'><i class="nav-icon la la-trash"></i> <span>Clear cache</span></a></li>

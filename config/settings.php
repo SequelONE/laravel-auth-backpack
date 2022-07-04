@@ -1,11 +1,9 @@
 <?php
 
-use App\Models\Setting;
-
 return [
-    'logo' => Setting::get('logo'),
+    'logo' => '',
 
-    'favicon' => Setting::get('favicon'),
+    'favicon' => '',
 
-    'email' => Setting::get('email'),
+    'email' => '',
 ];
