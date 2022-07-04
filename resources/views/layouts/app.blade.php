@@ -86,6 +86,14 @@
         </nav>
 
         <main class="py-4 flex-shrink-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        @include('alerts.flash')
+                    </div>
+                </div>
+            </div>
+
             @yield('content')
         </main>
 

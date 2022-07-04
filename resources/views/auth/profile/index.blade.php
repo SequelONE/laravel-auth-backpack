@@ -19,7 +19,6 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12 col-lg-2 col-md-3">
-                                <p><strong>Avatar:</strong></p>
                                 <p><img src="{{ Auth::user()->avatar() }}" alt="{{ Auth::user()->name }}" /></p>
                             </div>
                             <div class="col-12 col-lg-10 col-md-9">

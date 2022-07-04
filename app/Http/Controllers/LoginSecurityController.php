@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LoginSecurity;
 use App\Models\RecoveryCode;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class LoginSecurityController extends Controller
         if($user->loginSecurity()->exists()){
             $google2fa = (new \PragmaRX\Google2FAQRCode\Google2FA());
             $google2fa_url = $google2fa->getQRCodeInline(
-                'SEQUEL.ONE',
+                Setting::get('company_name'),
                 $user->email,
                 $user->loginSecurity->two_factor_auth_secret
             );

@@ -12,6 +12,15 @@ class SettingsTableSeeder extends Seeder
      */
     protected $settings = [
         [
+            'key'         => 'company_name',
+            'name'        => 'Company name',
+            'description' => 'Company name',
+            'value'       => 'S01.ONE',
+            'field'       => '{"name":"value","label":"Company name","type":"text"}',
+            'active'      => 1,
+
+        ],
+        [
             'key'         => 'logo',
             'name'        => 'Logo',
             'description' => 'Logo for website',
@@ -32,7 +41,7 @@ class SettingsTableSeeder extends Seeder
         [
             'key'         => 'email',
             'name'        => 'E-mail',
-            'description' => 'E-mail ',
+            'description' => 'E-mail',
             'value'       => 'admin@s01.one',
             'field'       => '{"name":"value","label":"E-mail","type":"email"}',
             'active'      => 1,
