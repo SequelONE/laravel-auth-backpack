@@ -61,12 +61,6 @@
                                     <a class="dropdown-item" href="{{ route('settings.2fa') }}">
                                         {{ __('2FA') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('settings.social') }}">
-                                        {{ __('Social Providers') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('settings') }}">
-                                        {{ __('Settings') }}
-                                    </a>
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -1,6 +1,24 @@
 @extends('layouts.app')
 
 @section('head')
+    <title>Profile | {{ config('app.name', 'Laravel') }}</title>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@sequeloneinc">
+    <meta name="twitter:creator" content="@sequeloneinc">
+    <meta name="twitter:title" content="Profile | {{ config('app.name', 'Laravel') }}">
+    <meta name="twitter:description" content="Profile">
+    <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="https://getbootstrap.com/docs/4.2/examples/">
+    <meta property="og:title" content="Profile | {{ config('app.name', 'Laravel') }}">
+    <meta property="og:description" name="description" content="Profile">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('img/logo.png') }}">
+    <meta property="og:image:secure_url" content="{{ asset('img/logo.png') }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
 
     <style type="text/css">
@@ -133,6 +151,51 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row">
+                        <hr class="dropdown-divider"><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-2 col-md-3">
+                            <p><strong>{{ __('Social providers') }}:</strong></p>
+                        </div>
+                        <div class="col-12 col-lg-10 col-md-9">
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <p>You can log in to social networks for easy login.</p>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','google') }}" class="btn btn-danger btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Google">
+                                        <i class="fa-brands fa-google"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Facebook">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Yandex">
+                                        <i class="fa-brands fa-yandex"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with VK">
+                                        <i class="fa-brands fa-vk"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','twitter') }}" class="btn btn-outline-primary btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Twitter">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-1 col-1">
+                                    <a href="{{ route('social.redirect','github') }}" class="btn btn-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with GitHub">
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,4 +270,13 @@
             });
         })
     </script>
+    <script>
+        var tooltipTriggerList = [].slice.call(
+            document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
 @endsection
+

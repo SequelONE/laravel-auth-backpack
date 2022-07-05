@@ -143,24 +143,6 @@ class UserController extends Controller
         return response()->json(['success'=>'Crop Image Uploaded Successfully']);
     }
 
-    public function settings()
-    {
-        if($this->userAuth()) {
-            return view('auth.profile.settings');
-        } else {
-            return redirect('/login');
-        }
-    }
-
-    public function socialProviders()
-    {
-        if($this->userAuth()) {
-            return view('auth.profile.providers');
-        } else {
-            return redirect('/login');
-        }
-    }
-
     /**
      * Write code on Method
      *
