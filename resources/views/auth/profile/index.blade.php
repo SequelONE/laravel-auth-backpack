@@ -46,7 +46,7 @@
                 </div>
             @endif
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card border-primary">
                 <div class="card-header bg-primary text-white">{{ __('Navigation') }}</div>
                 <div class="card-body">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card border-primary">
                 <div class="card-header bg-primary text-white">{{ __('Profile') }}</div>
 
@@ -263,7 +263,7 @@
                         success: function(data){
                             console.log(data);
                             $modal.modal('hide');
-                            alert("Crop image successfully uploaded");
+                            location.reload();
                         }
                     });
                 }

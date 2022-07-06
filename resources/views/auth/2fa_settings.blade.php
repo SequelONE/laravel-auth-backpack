@@ -24,7 +24,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4">
+            <div class="col-md-3">
 				<div class="card border-primary mb-3">
 					<div class="card-header bg-primary text-white">{{ __('Navigation') }}</div>
 
@@ -33,7 +33,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-9">
                 <div class="card border-primary mb-3">
                     <div class="card-header bg-primary text-white"><strong>Two-factor authentication</strong></div>
                     <div class="card-body">
