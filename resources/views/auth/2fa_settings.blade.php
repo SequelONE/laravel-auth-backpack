@@ -37,48 +37,50 @@
                 <div class="card">
                     <div class="card-header"><strong>Two-factor authentication</strong></div>
                     <div class="card-body">
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
-                        @if($data['user']->loginSecurity == null)
+                        @if($data['user']->loginSecurity === null)
                             <form class="form-horizontal" method="POST" action="{{ route('generate2faSecret') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">
-                                        Generate Secret Key to Enable 2FA
+                                        <i class="fa-solid fa-key"></i> Generate Secret Key to Enable 2FA
                                     </button>
                                 </div>
                             </form>
                         @elseif(!$data['user']->loginSecurity->two_factor_auth_enable)
                             <ol>
                                 <li>
-                                    <p>Scan this QR code with your Google Authenticator app. Alternatively, you can use the code: <code>{{ $data['secret'] }}</code></p>
+                                    <p>Scan this QR code with your Google Authenticator app. Alternatively, you can use the code:</p>
+                                    <div class="alert alert-warning" role="alert">
+                                        <i class="fa-solid fa-circle-check"></i><code style="padding-left: 10px;">{{ $data['secret'] }}</code>
+                                    </div>
                                     <p><img src="{{ $data['google2fa_url'] }}" alt="" /></p>
                                 </li>
                                 <li>
                                     <p>Enter the PIN from the Google Authenticator app:</p>
                                     <form class="form-horizontal" method="POST" action="{{ route('enable2fa') }}">
                                         {{ csrf_field() }}
-                                        <div class="form-group{{ $errors->has('verify-code') ? ' has-error' : '' }}">
-                                            <label for="secret" class="control-label">Authenticator Code</label>
-                                            <input id="secret" type="password" class="form-control" name="secret" required>
-                                            @if ($errors->has('verify-code'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('verify-code') }}</strong>
-                                                </span>
-                                            @endif
+                                        <div class="row">
+                                            <div class="col-12 col-lg-12">
+                                                <label for="secret" class="control-label"><strong>Authenticator Code</strong></label>
+                                            </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">
-                                            Enable 2FA
-                                        </button>
+                                        <div class="row">
+                                            <div class="col-8 col-lg-9">
+                                                <div class="form-group{{ $errors->has('verify-code') ? ' has-error' : '' }}">
+                                                    <input id="secret" type="text" class="form-control" name="secret" required>
+                                                    @if ($errors->has('verify-code'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('verify-code') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-lg-3">
+                                                <button type="submit" class="btn btn-primary" id="2fa-enable">
+                                                    <i class="fa-solid fa-lock"></i> Enable 2FA
+                                                </button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </li>
                             </ol>
@@ -98,7 +100,7 @@
                             <form class="form-horizontal" method="POST" action="{{ route('disable2fa') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                    <label for="change-password" class="control-label">Current Password</label>
+                                    <label for="change-password" class="control-label"><strong>Current Password</strong></label>
                                     <div class="row">
                                         <div class="col-6 col-lg-9 col-md-8">
                                             <input id="current-password" type="password" class="form-control col-md-4" name="current-password" required>
@@ -109,7 +111,9 @@
                                             @endif
                                         </div>
                                         <div class="col-6 col-lg-3 col-md-4">
-                                            <button type="submit" class="btn btn-primary ">Disable 2FA</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa-solid fa-unlock"></i> Disable 2FA
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -120,4 +124,26 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascripts')
+    <script>
+        function inputFloat() {
+            this.value = this.value.replace (/[^0-9]/g, '');
+            if (!/^\.?$/.test(this.value) && !isFinite(this.value)) {
+                this.value = parseFloat(this.value) || this.value.slice(0, -1);
+            }
+            (this.value < 1 || this.value > 999999) && (this.value = '');
+        }
+        secret.oninput = secret.onkeydown = inputFloat;
+
+        document.querySelector('input[name=secret]').addEventListener('keyup', function(e) {
+            if (this.value.length === 6) {
+                document.getElementById('2fa-enable').click();
+                document.getElementById('2fa-enable').disabled = true;
+                document.getElementById('2fa-enable').innerHTML = '';
+                document.getElementById('2fa-enable').innerHTML += '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="visually-hidden">Loading...</span> Enable 2FA';
+            }
+        });
+    </script>
 @endsection
