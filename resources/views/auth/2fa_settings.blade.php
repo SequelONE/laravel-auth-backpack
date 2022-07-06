@@ -25,8 +25,8 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4">
-				<div class="card">
-					<div class="card-header">{{ __('Navigation') }}</div>
+				<div class="card border-primary mb-3">
+					<div class="card-header bg-primary text-white">{{ __('Navigation') }}</div>
 
 					<div class="card-body">
                         @include('auth.profile.sidebar')
@@ -34,8 +34,8 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-                <div class="card">
-                    <div class="card-header"><strong>Two-factor authentication</strong></div>
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary text-white"><strong>Two-factor authentication</strong></div>
                     <div class="card-body">
                         @if($data['user']->loginSecurity === null)
                             <form class="form-horizontal" method="POST" action="{{ route('generate2faSecret') }}">
@@ -67,7 +67,7 @@
                                         <div class="row">
                                             <div class="col-8 col-lg-9">
                                                 <div class="form-group{{ $errors->has('verify-code') ? ' has-error' : '' }}">
-                                                    <input id="secret" type="text" class="form-control" name="secret" required>
+                                                    <input id="secret" type="text" class="form-control border-primary" name="secret" required>
                                                     @if ($errors->has('verify-code'))
                                                         <span class="help-block">
                                                             <strong>{{ $errors->first('verify-code') }}</strong>
@@ -103,7 +103,7 @@
                                     <label for="change-password" class="control-label"><strong>Current Password</strong></label>
                                     <div class="row">
                                         <div class="col-6 col-lg-9 col-md-8">
-                                            <input id="current-password" type="password" class="form-control col-md-4" name="current-password" required>
+                                            <input id="current-password" type="password" class="form-control col-md-4 border-primary" name="current-password" required>
                                             @if ($errors->has('current-password'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('current-password') }}</strong>

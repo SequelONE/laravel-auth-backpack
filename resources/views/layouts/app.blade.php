@@ -91,7 +91,7 @@
             @yield('content')
         </main>
 
-        <footer class="footer mt-auto py-3 bg-white shadow-sm">
+        <footer class="footer mt-auto py-3 bg-white shadow-sm border-top">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-md-6">

@@ -26,7 +26,7 @@
             overflow: hidden;
             width: 160px;
             height: 160px;
-            margin: 10px;
+            margin-left: 15px;
             border: 1px solid red;
         }
         .modal-lg{
@@ -47,16 +47,16 @@
             @endif
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">{{ __('Navigation') }}</div>
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">{{ __('Navigation') }}</div>
                 <div class="card-body">
                     @include('auth.profile.sidebar')
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Profile') }}</div>
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">{{ __('Profile') }}</div>
 
                 <div class="card-body">
                         <div class="row">
@@ -65,14 +65,14 @@
                             </div>
                             <div class="col-12 col-lg-10 col-md-9">
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control image" name="avatar" placeholder="Avatar" id="avatar">
+                                    <input type="file" class="form-control image border-primary" value="{{ Auth::user()->avatar }}" name="avatar" placeholder="Avatar" id="avatar">
                                 </div>
                             </div>
                         </div>
                         <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
+                            <div class="modal-dialog modal-lg border-warning">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header bg-warning text-black">
                                         <h5 class="modal-title" id="staticBackdropLabel">Upload avatar</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
@@ -103,8 +103,8 @@
                             </div>
                             <div class="col-12 col-lg-10 col-md-9">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="email"><i class="fa-solid fa-at"></i></span>
-                                    <input type="email" value="{{ Auth::user()->email }}" class="form-control" name="email" id="email" placeholder="E-mail" aria-label="E-mail" aria-describedby="email">
+                                    <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-at"></i></span>
+                                    <input type="email" value="{{ Auth::user()->email }}" class="form-control border-primary" name="email" id="email" placeholder="E-mail" aria-label="E-mail" aria-describedby="email">
                                 </div>
                             </div>
                         </div>
@@ -114,8 +114,8 @@
                             </div>
                             <div class="col-12 col-lg-10 col-md-9">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="name"><i class="fa-solid fa-user"></i></span>
-                                    <input type="text" value="{{ Auth::user()->name }}" class="form-control" name="name" id="name" placeholder="Name" aria-label="Name" aria-describedby="name">
+                                    <span class="input-group-text border-primary bg-primary text-white" id="name"><i class="fa-solid fa-user"></i></span>
+                                    <input type="text" value="{{ Auth::user()->name }}" class="form-control border-primary" name="name" id="name" placeholder="Name" aria-label="Name" aria-describedby="name">
                                 </div>
                             </div>
                         </div>
