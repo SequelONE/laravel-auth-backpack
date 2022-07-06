@@ -104,7 +104,7 @@
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-unlock"></i></span>
-                                    <input id="password-confirm" type="password" class="form-control border-primary" name="password_confirmation" required autocomplete="new-password" disabled>
+                                    <input id="password-confirm" minlength="8" type="password" class="form-control border-primary" name="password_confirmation" required autocomplete="new-password" disabled>
                                 </div>
                                 <div  class="progress" style="height: 5px;">
                                     <div id="progressbar2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
