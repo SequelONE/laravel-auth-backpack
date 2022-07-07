@@ -41,9 +41,11 @@
                             <form class="form-horizontal" method="POST" action="{{ route('generate2faSecret') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa-solid fa-key"></i> Generate Secret Key to Enable 2FA
-                                    </button>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa-solid fa-key"></i> Generate Secret Key to Enable 2FA
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         @elseif(!$data['user']->loginSecurity->two_factor_auth_enable)
@@ -76,9 +78,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-lg-3">
-                                                <button type="submit" class="btn btn-primary" id="2fa-enable">
-                                                    <i class="fa-solid fa-lock"></i> Enable 2FA
-                                                </button>
+                                                <div class="d-grid gap-2">
+                                                    <button type="submit" class="btn btn-primary" id="2fa-enable">
+                                                        <i class="fa-solid fa-lock"></i> Enable 2FA
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -111,9 +115,11 @@
                                             @endif
                                         </div>
                                         <div class="col-6 col-lg-3 col-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="fa-solid fa-unlock"></i> Disable 2FA
-                                            </button>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa-solid fa-unlock"></i> Disable 2FA
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
