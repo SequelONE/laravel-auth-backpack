@@ -38,14 +38,6 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-12">
-            @if (session('status'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session('status') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-        </div>
         <div class="col-md-3">
             <div class="card border-primary">
                 <div class="card-header bg-primary text-white">{{ __('Navigation') }}</div>
@@ -59,6 +51,8 @@
                 <div class="card-header bg-primary text-white">{{ __('Profile') }}</div>
 
                 <div class="card-body">
+                    <form action="{{route('profile.update')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-12 col-lg-2 col-md-3">
                                 <p><img class="rounded-circle border border-1" src="{{ Auth::user()->avatar() }}" alt="{{ Auth::user()->name }}" /></p>
@@ -98,8 +92,6 @@
                                 </div>
                             </div>
                         </div>
-                    <form action="{{route('profile.update')}}" method="post" enctype="multipart/form-data">
-                            @csrf
                         <div class="row">
                             <div class="col-12 col-lg-2 col-md-3">
                                 <p><strong>E-mail:</strong></p>

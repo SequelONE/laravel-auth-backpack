@@ -137,8 +137,15 @@ class UserController extends Controller
         $imageFullPath = $folderPath.$imageName;
         file_put_contents($imageFullPath, $image_base64);
         $saveFile = Auth::user();
-        $saveFile->avatar = 'uploads/avatars/' . $imageName;
-        $saveFile->save();
+
+        if(isset($saveFile->avatar)) {
+            unlink($saveFile->avatar);
+            $saveFile->avatar = 'uploads/avatars/' . $imageName;
+            $saveFile->save();
+        } else {
+            $saveFile->avatar = 'uploads/avatars/' . $imageName;
+            $saveFile->save();
+        }
 
         return response()->json(['success'=>'Crop Image Uploaded Successfully']);
     }
