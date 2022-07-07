@@ -9,6 +9,41 @@
     <link rel="shortcut icon" href="{{ \App\Models\Setting::get('favicon') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style type="text/css">
+
+        /* ============ desktop view ============ */
+        @media all and (min-width: 992px) {
+
+            .dropdown-menu li{
+                position: relative;
+            }
+            .dropdown-menu .submenu{
+                display: none;
+                position: absolute;
+                left:100%; top:-7px;
+            }
+            .dropdown-menu .submenu-left{
+                right:100%; left:auto;
+            }
+
+            .dropdown-menu > li:hover{ background-color: #f1f1f1 }
+            .dropdown-menu > li:hover > .submenu{
+                display: block;
+            }
+        }
+        /* ============ desktop view .end// ============ */
+
+        /* ============ small devices ============ */
+        @media (max-width: 991px) {
+
+            .dropdown-menu .dropdown-menu{
+                margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+            }
+
+        }
+        /* ============ small devices .end// ============ */
+
+    </style>
 </head>
 <body>
     <div id="app" class="d-flex flex-column min-vh-100">
@@ -107,5 +142,60 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('javascripts')
+    <script type="text/javascript">
+        //	window.addEventListener("resize", function() {
+        //		"use strict"; window.location.reload();
+        //	});
+
+
+        document.addEventListener("DOMContentLoaded", function(){
+
+
+            /////// Prevent closing from click inside dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(function(element){
+                element.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            })
+
+
+
+            // make it as accordion for smaller screens
+            if (window.innerWidth < 992) {
+
+                // close all inner dropdowns when parent is closed
+                document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+                    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                        // after dropdown is hidden, then find all submenus
+                        this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+                            // hide every submenu as well
+                            everysubmenu.style.display = 'none';
+                        });
+                    })
+                });
+
+                document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+                    element.addEventListener('click', function (e) {
+
+                        let nextEl = this.nextElementSibling;
+                        if(nextEl && nextEl.classList.contains('submenu')) {
+                            // prevent opening link if link needs to open dropdown
+                            e.preventDefault();
+                            console.log(nextEl);
+                            if(nextEl.style.display == 'block'){
+                                nextEl.style.display = 'none';
+                            } else {
+                                nextEl.style.display = 'block';
+                            }
+
+                        }
+                    });
+                })
+            }
+            // end if innerWidth
+
+        });
+        // DOMContentLoaded  end
+    </script>
 </body>
 </html>

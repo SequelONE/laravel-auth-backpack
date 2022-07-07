@@ -1,4 +1,4 @@
-@foreach (\App\Models\MenuItem::getTree() as $item)
+@foreach ($items as $i => $item)
     @if($item->status === 1)
         <li class="nav-item">
             @if ($item->children->count() === 0)

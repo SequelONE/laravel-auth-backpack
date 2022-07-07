@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\ViewComposers\PageComposer;
+use App\Http\ViewComposers\MenuComposer;
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
@@ -24,6 +24,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('pages.menu', PageComposer::class);
+        view()->composer('menu.menu', MenuComposer::class);
     }
 }

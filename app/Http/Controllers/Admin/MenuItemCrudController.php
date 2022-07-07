@@ -59,6 +59,7 @@ class MenuItemCrudController extends CrudController
                 'label' => 'Status',
                 'type' => 'checkbox',
                 'name' => 'status',
+                'default'    => 1,
             ]);
         });
     }

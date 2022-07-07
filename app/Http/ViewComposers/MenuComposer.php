@@ -2,17 +2,17 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Models\Page;
+use App\Models\MenuItem;
 use Illuminate\View\View;
 
-class PageComposer
+class MenuComposer
 {
     public function compose(View $view)
     {
-        $pages = Page::whereNull('parent_id')
+        $items = MenuItem::whereNull('parent_id')
             ->with('children')
             ->get();
 
-        return $view->with('pages', $pages);
+        return $view->with('items', $items);
     }
 }
