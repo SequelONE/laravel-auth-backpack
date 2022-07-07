@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\SocialAccount;
+use Illuminate\Support\Facades\Auth;
 
 class SocialLoginController extends Controller
 {
@@ -19,8 +20,8 @@ class SocialLoginController extends Controller
 
             // First Find Social Account
             $account = SocialAccount::where([
-                'provider_name'=>$provider,
-                'provider_id'=>$social_user->getId()
+                'provider_name' => $provider,
+                'provider_id' => $social_user->getId()
             ])->first();
 
             // If Social Account Exist then Find User and Login
@@ -31,26 +32,27 @@ class SocialLoginController extends Controller
 
             // Find User
             $user = User::where([
-                'email'=>$social_user->getEmail()
+                'id' => Auth::id()
             ])->first();
 
             // If User not get then create new user
             if(!$user){
                 $user = User::create([
-                    'email'=>$social_user->getEmail(),
-                    'name'=>$social_user->getName()
+                    'email' => $social_user->getEmail(),
+                    'name' => $social_user->getName()
                 ]);
             }
 
             // Create Social Accounts
             $user->socialAccounts()->create([
-                'provider_id'=>$social_user->getId(),
-                'provider_name'=>$provider
+                'user_id' => Auth::id(),
+                'provider_id' => $social_user->getId(),
+                'provider_name' => $provider
             ]);
 
             // Login
             auth()->login($user);
-            return redirect()->route('home');
+            return redirect()->route('profile');
 
         }catch(\Exception $e){
             return redirect()->route('login');

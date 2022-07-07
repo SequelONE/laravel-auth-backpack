@@ -158,33 +158,34 @@
                                 <div class="col-md-12 col-12">
                                     <p>You can log in to social networks for easy login.</p>
                                 </div>
+
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','google') }}" class="btn btn-danger btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Google">
+                                    <a href="{{ route('social.redirect','google') }}" class="btn btn-danger btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'google')->first()->provider_name ?? '' === 'google') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Google">
                                         <i class="fa-brands fa-google"></i>
                                     </a>
                                 </div>
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Facebook">
+                                    <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'facebook')->first()->provider_name ?? '' === 'facebook') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Facebook">
                                         <i class="fa-brands fa-facebook"></i>
                                     </a>
                                 </div>
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Yandex">
+                                    <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'yandex')->first()->provider_name ?? '' === 'yandex') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Yandex">
                                         <i class="fa-brands fa-yandex"></i>
                                     </a>
                                 </div>
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with VK">
+                                    <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'vkontakte')->first()->provider_name ?? '' === 'vkontakte') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with VK">
                                         <i class="fa-brands fa-vk"></i>
                                     </a>
                                 </div>
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','twitter') }}" class="btn btn-outline-primary btn-block disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Twitter">
+                                    <a href="{{ route('social.redirect','twitter') }}" class="btn btn-outline-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'twitter')->first()->provider_name ?? '' === 'twitter') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Twitter">
                                         <i class="fa-brands fa-twitter"></i>
                                     </a>
                                 </div>
                                 <div class="col-md-1 col-1">
-                                    <a href="{{ route('social.redirect','github') }}" class="btn btn-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with GitHub">
+                                    <a href="{{ route('social.redirect','github') }}" class="btn btn-dark btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'github')->first()->provider_name ?? '' === 'github') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="Login with GitHub">
                                         <i class="fa-brands fa-github"></i>
                                     </a>
                                 </div>
