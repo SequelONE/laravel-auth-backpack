@@ -62,6 +62,9 @@
                         <div class="row">
                             <div class="col-12 col-lg-2 col-md-3">
                                 <p><img class="rounded-circle border border-1" src="{{ Auth::user()->avatar() }}" alt="{{ Auth::user()->name }}" /></p>
+                                @if(Auth::user()->avatar !== NULL)
+                                    <p><a href="#" class="btn btn-outline-danger btn-sm btn-block" id="avatarDelete">Delete avatar</a></p>
+                                @endif
                             </div>
                             <div class="col-12 col-lg-10 col-md-9">
                                 <div class="input-group mb-3">
@@ -268,7 +271,19 @@
                     });
                 }
             });
-        })
+        });
+        $("#avatarDelete").click(function(){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "{{ route('profile.avatar.delete') }}",
+                data: {"_token": "{{ csrf_token() }}"},
+                success: function(data){
+                    console.log(data);
+                    location.reload();
+                }
+            });
+        });
     </script>
     <script>
         var tooltipTriggerList = [].slice.call(

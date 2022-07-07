@@ -143,6 +143,18 @@ class UserController extends Controller
         return response()->json(['success'=>'Crop Image Uploaded Successfully']);
     }
 
+    public function deleteImage()
+    {
+        $deleteFile = Auth::user();
+
+        unlink($deleteFile->avatar);
+
+        $deleteFile->avatar = NULL;
+        $deleteFile->save();
+
+        return response()->json(['success'=>'Avatar Deleted Successfully']);
+    }
+
     /**
      * Write code on Method
      *
