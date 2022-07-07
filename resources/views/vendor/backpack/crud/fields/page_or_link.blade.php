@@ -12,7 +12,7 @@
     $field['options']['internal_link'] = $field['options']['internal_link'] ?? trans('backpack::crud.internal_link');
     $field['options']['external_link'] = $field['options']['external_link'] ?? trans('backpack::crud.external_link');
 
-    $field['pages'] = $field['pages'] ?? ($field['page_model'] ?? config('sequelone.pages-crud.page_model_class'))::all();
+    $field['pages'] = $field['pages'] ?? ($field['page_model'] ?? config('backpack.pagemanager.page_model_class'))::all();
 ?>
 
 @include('crud::fields.inc.wrapper_start')
@@ -21,7 +21,7 @@
 
     <div class="row" data-init-function="bpFieldInitPageOrLinkElement">
         {{-- hidden placeholders for content --}}
-        <input type="hidden" value="{{ $entry->{$field['name']['page_id']} ?? '' }}" name="{{ $field['name']['page_id'] }}" />
+        <input type="hidden" value="{{ $entry->{$field['name']['page_id']} ?? 1 }}" name="{{ $field['name']['page_id'] }}" />
         <input type="hidden" value="{{ $entry->{$field['name']['link']} ?? '' }}" name="{{ $field['name']['link'] }}" />
 
         <div class="col-sm-3">
@@ -68,9 +68,9 @@
                 <input
                     type="text"
                     class="form-control"
+                    name="link"
                     placeholder="{{ trans('backpack::crud.internal_link_placeholder', ['url', url(config('backpack.base.route_prefix').'/page')]) }}"
                     for="{{ $field['name']['link'] }}"
-                    required
 
                     @if (isset($entry) && $entry->{$field['name']['type']} !== 'internal_link')
                         disabled="disabled"
@@ -87,9 +87,9 @@
                 <input
                     type="url"
                     class="form-control"
+                    name="link"
                     placeholder="{{ trans('backpack::crud.page_link_placeholder') }}"
                     for="{{ $field['name']['link'] }}"
-                    required
 
                     @if (isset($entry) && $entry->{$field['name']['type']} !== 'external_link')
                         disabled="disabled"
