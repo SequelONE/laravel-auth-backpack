@@ -137,12 +137,10 @@
                         <div class="col-12 col-lg-10 col-md-9">
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
-                                <div class="input-group mb-3">
-                                    <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" autofocus>
-                                    <button type="submit" class="btn btn-outline-danger">
-                                        {{ __('Send Password Reset Link') }}
-                                    </button>
-                                </div>
+                                <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" autofocus>
+                                <button type="submit" class="btn btn-outline-danger">
+                                    {{ __('Send Password Reset Link') }}
+                                </button>
                             </form>
                         </div>
                     </div>

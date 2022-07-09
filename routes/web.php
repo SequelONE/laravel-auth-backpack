@@ -2,10 +2,10 @@
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\SocialLoginController;
-use App\Http\Conntrollers\Admin\CacheCrudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +59,8 @@ Route::get('/user/2fa', function () {
 })->middleware(['auth', '2fa', 'verified']);
 
 // Social providers
-Route::get('auth/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
-Route::get('auth/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
+Route::get('oauth/social/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
+Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
 
 // Pages
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Socialite;
+use Exception;
 use App\Models\User;
 use App\Models\SocialAccount;
 use Illuminate\Support\Facades\Auth;
@@ -11,12 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class SocialLoginController extends Controller
 {
     public function redirectToProvider(String $provider){
-        return \Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     public function providerCallback(String $provider){
         try{
-            $social_user = \Socialite::driver($provider)->user();
+            $social_user = Socialite::driver($provider)->user();
 
             // First Find Social Account
             $account = SocialAccount::where([
@@ -27,19 +29,26 @@ class SocialLoginController extends Controller
             // If Social Account Exist then Find User and Login
             if($account){
                 auth()->login($account->user);
-                return redirect()->route('home');
+                return redirect()->route('profile')->with('success', 'You have successfully authenticated through your provider ' . $account->provider_name . '.');
             }
 
             // Find User
-            $user = User::where([
-                'id' => Auth::id()
-            ])->first();
+            if(Auth::check() === false) {
+                $user = User::where([
+                    'email' => $social_user->getEmail()
+                ])->first();
+            } else {
+                $user = User::where([
+                    'id' => Auth::id()
+                ])->first();
+            }
 
             // If User not get then create new user
             if(!$user){
                 $user = User::create([
                     'email' => $social_user->getEmail(),
-                    'name' => $social_user->getName()
+                    'name' => $social_user->getName(),
+                    'password' => Hash::make('password'),
                 ]);
             }
 
@@ -52,10 +61,10 @@ class SocialLoginController extends Controller
 
             // Login
             auth()->login($user);
-            return redirect()->route('profile');
+            return redirect()->route('profile')->with('success', 'You have successfully authenticated through your provider' . $account->provider_name . '.');
 
-        }catch(\Exception $e){
-            return redirect()->route('login');
+        }catch(Exception $e){
+            return redirect()->route('login')->with('error', $e->getMessage());
         }
     }
 }
