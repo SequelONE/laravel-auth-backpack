@@ -10,7 +10,7 @@
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
-    <meta property="og:url" content="https://getbootstrap.com/docs/4.2/examples/">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ !empty($extras->meta_title) ? $extras->meta_title : '' }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ !empty($extras->meta_description) ? $extras->meta_description : '' }}">
     <meta property="og:type" content="website">

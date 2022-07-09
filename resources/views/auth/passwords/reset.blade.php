@@ -10,7 +10,7 @@
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
-    <meta property="og:url" content="https://getbootstrap.com/docs/4.2/examples/">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ __('Reset Password') }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ __('Reset Password') }}">
     <meta property="og:type" content="website">
@@ -32,6 +32,8 @@
                     <form class="needs-validation" novalidate method="POST" action="{{ route('password.update') }}">
                         @csrf
 
+                        <input type="hidden" name="token" value="{{ $token }}">
+
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -39,13 +41,12 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-at"></i></span>
                                     <input id="email" type="email" class="form-control border-primary @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                                </div>
-
-                                @error('email')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -56,6 +57,11 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-lock"></i></span>
                                     <input id="password" minlength="8" type="password" class="form-control border-primary @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div  class="progress" style="height: 5px;">
                                     <div id="progressbar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
@@ -73,12 +79,6 @@
                                     Number, special character
                                     Caplital Letter and Small letters
                                 </div>
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 

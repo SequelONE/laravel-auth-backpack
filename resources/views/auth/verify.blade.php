@@ -10,7 +10,7 @@
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
-    <meta property="og:url" content="https://getbootstrap.com/docs/4.2/examples/">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ __('Verify Your Email Address') }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ __('Verify Your Email Address') }}">
     <meta property="og:type" content="website">

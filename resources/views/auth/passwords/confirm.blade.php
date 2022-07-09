@@ -10,7 +10,7 @@
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
-    <meta property="og:url" content="https://getbootstrap.com/docs/4.2/examples/">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ __('Confirm Password') }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ __('Confirm Password') }}">
     <meta property="og:type" content="website">
