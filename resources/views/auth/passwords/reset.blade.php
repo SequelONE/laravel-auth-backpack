@@ -86,22 +86,9 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3" id="password-confirm-validated">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-lock"></i></span>
-                                    <input id="password-confirm" minlength="8" type="password" class="form-control border-primary" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                                <div  class="progress" style="height: 5px;">
-                                    <div id="progressbar2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-
-                                    </div>
-                                </div>
-                                <div id="feedbackin" class="valid-feedback">
-                                    Strong Password!
-                                </div>
-                                <div id="feedbackirn" class="invalid-feedback">
-                                    Atlead 8 characters,
-                                    Number, special character
-                                    Caplital Letter and Small letters
+                                    <input id="password-confirm" type="password" class="form-control border-primary" name="password_confirmation" required autocomplete="new-password" disabled>
                                 </div>
                             </div>
                         </div>
@@ -132,13 +119,8 @@
                 let validation = Array.prototype.filter.call(forms, function(form) {
                     // making sure password enters the right characters
                     form.password.addEventListener('keypress', function(event){
-                        console.log("keypress");
-                        console.log("event.which: " + event.which);
                         let checkx = true;
                         let chr = String.fromCharCode(event.which);
-                        console.log("char: " + chr);
-
-
                         let matchedCase = [];
                         matchedCase.push("[!@#$%&*_?]"); // Special Charector
                         matchedCase.push("[A-Z]");      // Uppercase Alpabates
@@ -147,7 +129,6 @@
 
                         for (let i = 0; i < matchedCase.length; i++) {
                             if (new RegExp(matchedCase[i]).test(chr)) {
-                                console.log("checkx: is true");
                                 checkx = false;
                             }
                         }
@@ -163,12 +144,8 @@
                     });
 
                     form.password_confirmation.addEventListener('keypress', function(event){
-                        console.log("keypress");
-                        console.log("event.which: " + event.which);
                         let checkx = true;
                         let chr = String.fromCharCode(event.which);
-                        console.log("char: " + chr);
-
 
                         let matchedCase = [];
                         matchedCase.push("[!@#$%&*_?]"); // Special Charector
@@ -178,7 +155,6 @@
 
                         for (let i = 0; i < matchedCase.length; i++) {
                             if (new RegExp(matchedCase[i]).test(chr)) {
-                                console.log("checkx: is true");
                                 checkx = false;
                             }
                         }
@@ -218,12 +194,9 @@
                                 if(i === 2) messageCase.splice(messageCase.indexOf(" Numbers"), 1);
                                 if(i === 3) messageCase.splice(messageCase.indexOf(" Lower Case"), 1);
                                 ctr++;
-                                //console.log(ctr);
-                                //console.log(rti);
                             }
                         }
 
-                        //console.log(rti);
                         // Display it
                         let progressbar = 0;
                         let strength = "";
@@ -268,9 +241,6 @@
                         }
 
                         sometext += messageCase;
-                        console.log(sometext);
-
-                        console.log(sometext);
 
                         if(sometext){
                             sometext = " You Need" + sometext;
@@ -287,102 +257,14 @@
                         $("#progressbar").width( percentage );
 
                         if(form.password.checkValidity() === true){
-                            form.reset.disabled = false;
                             form.password_confirmation.disabled = false;
+                            form.password_confirmation.classList.add('is-invalid');
                         } else {
-                            form.reset.disabled = true;
                             form.password_confirmation.disabled = true;
                         }
-
-
-
                     });
 
                     form.password_confirmation.addEventListener('keyup', function(){
-
-                        let messageCase = [];
-                        messageCase.push(" Special Charector"); // Special Charector
-                        messageCase.push(" Upper Case");      // Uppercase Alpabates
-                        messageCase.push(" Numbers");      // Numbers
-                        messageCase.push(" Lower Case");     // Lowercase Alphabates
-
-                        let ctr = 0;
-                        let rti = "";
-                        for (let i = 0; i < matchedCase.length; i++) {
-                            if (new RegExp(matchedCase[i]).test(form.password_confirmation.value)) {
-                                if(i === 0) messageCase.splice(messageCase.indexOf(" Special Charector"), 1);
-                                if(i === 1) messageCase.splice(messageCase.indexOf(" Upper Case"), 1);
-                                if(i === 2) messageCase.splice(messageCase.indexOf(" Numbers"), 1);
-                                if(i === 3) messageCase.splice(messageCase.indexOf(" Lower Case"), 1);
-                                ctr++;
-                                //console.log(ctr);
-                                //console.log(rti);
-                            }
-                        }
-
-                        //console.log(rti);
-                        // Display it
-                        let progressbar2 = 0;
-                        let strength = "";
-                        let bClass2 = "";
-                        switch (ctr) {
-                            case 0:
-                            case 1:
-                                strength = "Way too Weak";
-                                progressbar2 = 15;
-                                bClass2 = "bg-danger";
-                                break;
-                            case 2:
-                                strength = "Very Weak";
-                                progressbar2 = 25;
-                                bClass2 = "bg-danger";
-                                break;
-                            case 3:
-                                strength = "Weak";
-                                progressbar2 = 34;
-                                bClass2 = "bg-warning";
-                                break;
-                            case 4:
-                                strength = "Medium";
-                                progressbar2 = 65;
-                                bClass2 = "bg-warning";
-                                break;
-                        }
-
-                        if (strength === "Medium" && form.password_confirmation.value.length >= 8 ) {
-                            strength = "Strong";
-                            bClass2 = "bg-success";
-                            form.password_confirmation.setCustomValidity("");
-                        } else {
-                            form.password_confirmation.setCustomValidity(strength);
-                        }
-
-                        let sometext = "";
-
-                        if(form.password_confirmation.value.length < 8 ){
-                            let lengthI = 8 - form.password_confirmation.value.length;
-                            sometext += ` ${lengthI} more Characters, `;
-                        }
-
-                        sometext += messageCase;
-                        console.log(sometext);
-
-                        console.log(sometext);
-
-                        if(sometext){
-                            sometext = " You Need" + sometext;
-                        }
-
-                        $("#feedbackin, #feedbackirn").text(strength + sometext);
-                        $("#progressbar2").removeClass( "bg-danger bg-warning bg-success" ).addClass(bClass2);
-                        let plength = form.password_confirmation.value.length ;
-                        if(plength > 0) progressbar2 += ((plength - 0) * 1.75) ;
-                        //console.log("plength: " + plength);
-                        let  percentage = progressbar2 + "%";
-                        form.password_confirmation.parentNode.classList.add('was-validated');
-                        //console.log("pacentage: " + percentage);
-                        $("#progressbar2").width( percentage );
-
                         function Validate() {
                             let password = document.getElementById("password").value;
                             let confirmPassword = document.getElementById("password-confirm").value;
@@ -392,13 +274,14 @@
                             return true;
                         }
 
-                        if(form.password.checkValidity() === true){
+                        if(form.password_confirmation.checkValidity() === true && Validate() === true){
+                            form.password_confirmation.parentNode.classList.add('was-validated');
                             form.reset.disabled = false;
                         } else {
                             form.reset.disabled = true;
+                            let element = document.getElementById("password-confirm-validated");
+                            element.classList.remove("was-validated");
                         }
-
-                        Validate();
 
                     });
 
