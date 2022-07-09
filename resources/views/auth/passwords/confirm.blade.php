@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>{{ __('Confirm Password') }} | {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ trans('auth.confirmPassword') }} | {{ config('app.name', 'Laravel') }}</title>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@sequeloneinc">
     <meta name="twitter:creator" content="@sequeloneinc">
-    <meta name="twitter:title" content="{{ __('Confirm Password') }} | {{ config('app.name', 'Laravel') }}">
-    <meta name="twitter:description" content="{{ __('Confirm Password') }}">
+    <meta name="twitter:title" content="{{ trans('auth.confirmPassword') }} | {{ config('app.name', 'Laravel') }}">
+    <meta name="twitter:description" content="{{ trans('auth.confirmPassword') }}">
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ __('Confirm Password') }} | {{ config('app.name', 'Laravel') }}">
+    <meta property="og:title" content="{{ trans('auth.confirmPassword') }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ __('Confirm Password') }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('img/logo.png') }}">
@@ -26,16 +26,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-primary">
-                <div class="card-header bg-primary text-white">{{ __('Confirm Password') }}</div>
+                <div class="card-header bg-primary text-white">{{ trans('auth.confirmPassword') }}</div>
 
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    {{ trans('auth.confirmPasswordContinuing') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ trans('auth.password') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -54,12 +54,12 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
+                                    {{ trans('auth.forgot') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ trans('auth.confirmPassword') }}
                                     </a>
                                 @endif
                             </div>

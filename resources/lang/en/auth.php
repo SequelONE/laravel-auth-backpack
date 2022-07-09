@@ -30,6 +30,7 @@ return [
     'invalidToken' => 'Invalid activation token. ',
     'activationSent' => 'Activation email sent. ',
     'alreadyActivated' => 'Already activated. ',
+    'confirmPasswordContinuing' => 'Please confirm your password before continuing.',
 
     // Labels
     'whoops' => 'Whoops! ',
@@ -45,6 +46,7 @@ return [
     'last_name' => 'Last Name',
     'confirmPassword' => 'Confirm Password',
     'register' => 'Register',
+    'captcha' => 'Captcha',
 
     // Placeholders
     'ph_name' => 'Username',
@@ -78,4 +80,38 @@ return [
     'captcha_wrong' => 'Wrong captcha, please try again.',
     'roleRequired' => 'User role is required.',
 
+    // Password validation
+    'charactersLong' => 'Your password must be 8-20 characters long, must contain special characters "!@#$%&*_?", numbers, lower and upper letters only.',
+    'characters' => 'At least 8 characters, number, special character capital letter and small letters',
+    'strongPassword' => 'Strong Password!',
+
+    'specialChars' => 'special chars',
+    'upperCase' => 'upper case',
+    'numbers' => 'numbers',
+    'lowerCase' => 'lower case',
+
+    'wayTooWeak' => 'Way too weak',
+    'veryWeak' => 'Very Weak',
+    'weak' => 'Weak',
+    'medium' => 'Medium',
+    'strong' => 'Strong',
+    'moreChars' => 'more chars',
+    'yourRequest' => 'your request',
+
+    // Labels social providers
+    'socialProviders' => 'Social providers',
+    'loginSocialProvider' => 'You can log in to social networks for easy login.',
+    'yandex' => 'Login with Yandex',
+    'twitter' => 'Login with Twitter',
+    'facebook' => 'Login with Facebook',
+    'vk' => 'Login with VK',
+    'github' => 'Login with GitHub',
+    'google' => 'Login with Google',
+
+    // E-mail verify
+    'emailVerify' => 'Verify Your Email Address',
+    'verificationLink' => 'A fresh verification link has been sent to your email address.',
+    'checkEmail' => 'Before proceeding, please check your email for a verification link.',
+    'notReceive' => 'If you did not receive the email',
+    'clickHereRequest' => 'click here to request another',
 ];

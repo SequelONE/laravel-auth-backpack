@@ -120,7 +120,7 @@ class UserController extends Controller
             $user->name = $request['name'];
             $user->email = $request['email'];
             $user->save();
-            return back()->with('success','Profile Updated');
+            return back()->with('success', trans('profile.profileUpdated'));
         } else {
             return redirect('/login');
         }
@@ -147,7 +147,7 @@ class UserController extends Controller
             $saveFile->save();
         }
 
-        return response()->json(['success'=>'Crop Image Uploaded Successfully']);
+        return response()->json(['success' => trans('profile.cropImageUploaded')]);
     }
 
     public function deleteImage()
@@ -159,7 +159,7 @@ class UserController extends Controller
         $deleteFile->avatar = NULL;
         $deleteFile->save();
 
-        return response()->json(['success'=>'Avatar Deleted Successfully']);
+        return response()->json(['success' => trans('profile.avatarDeletedSuccess')]);
     }
 
     /**

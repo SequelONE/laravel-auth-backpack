@@ -35,8 +35,12 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
 // Settings
-Route::group(['prefix' => 'settings'], function(){
-    Route::get('/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('settings.2fa')->middleware(['auth', 'verified']);
+Route::group(['prefix' => 'profile'], function(){
+    Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
+    Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update')->middleware(['auth', '2fa', 'verified']);
+    Route::post('/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update')->middleware(['auth', '2fa', 'verified']);
+    Route::post('/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete')->middleware(['auth', '2fa', 'verified']);
+    Route::get('/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
 });
 
 // Settings -> 2FA
@@ -65,8 +69,4 @@ Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'red
 // Pages
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
-Route::get('/profile', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
-Route::post('/profile/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update')->middleware(['auth', '2fa', 'verified']);
-Route::post('/profile/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update')->middleware(['auth', '2fa', 'verified']);
-Route::post('/profile/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete')->middleware(['auth', '2fa', 'verified']);
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);

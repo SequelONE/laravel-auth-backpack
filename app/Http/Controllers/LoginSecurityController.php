@@ -64,7 +64,7 @@ class LoginSecurityController extends Controller
         $login_security->two_factor_auth_secret = $google2fa->generateSecretKey(64);
         $login_security->save();
 
-        return redirect('/settings/2fa')->with('success',"Der secret Schlüssel wurde generiert.");
+        return redirect('/profile/2fa')->with('success', trans('profile.secretKeyGenerated'));
     }
 
     /**
@@ -93,9 +93,9 @@ class LoginSecurityController extends Controller
         if($valid){
             $user->loginSecurity->two_factor_auth_enable = 1;
             $user->loginSecurity->save();
-            return redirect('/settings/2fa')->with('success',"Die Zwei-Faktor-Authentifizierung wurde für dein Konto aktiviert. Bewahre dein Einmalpasswort ( " . $code . " ) an einem sicheren Ort auf, da es nicht wieder angezeigt werden wird.");
+            return redirect('/profile/2fa')->with('success', trans('profile.2faEnabled', ['code' => $code]));
         }else{
-            return redirect('/settings/2fa')->with('error',"Ungültiger Bestätigungscode, bitte versuchen Sie es erneut.");
+            return redirect('/profile/2fa')->with('error', trans('profile.invalidCode'));
         }
     }
 
@@ -105,7 +105,7 @@ class LoginSecurityController extends Controller
     public function disable2fa(Request $request){
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error","Ihr Passwort stimmt nicht mit Ihrem Kontopasswort überein. Bitte versuchen Sie es erneut.");
+            return redirect()->back()->with("error", trans('profile.passwordDoesNotMatch'));
         }
 
         $validatedData = $request->validate([
@@ -114,7 +114,7 @@ class LoginSecurityController extends Controller
         $user = Auth::user();
         $user->loginSecurity->two_factor_auth_enable = 0;
         $user->loginSecurity->save();
-        return redirect('/settings/2fa')->with('success',"2FA ist jetzt deaktiviert.");
+        return redirect('/profile/2fa')->with('success', trans('profile.2faDisabled'));
     }
 
     /**
@@ -147,9 +147,9 @@ class LoginSecurityController extends Controller
 
             $user->loginSecurity->two_factor_auth_enable = 0;
             $user->loginSecurity->save();
-            return redirect('/settings/2fa');
+            return redirect('/profile/2fa');
         } else {
-            return redirect('/user/2fa/scratch')->with('error', "Das Einmalpasswort ist falsch.");
+            return redirect('/user/2fa/scratch')->with('error', trans('profile.totpIncorrect'));
         }
     }
 
@@ -174,6 +174,6 @@ class LoginSecurityController extends Controller
             $recovery_codes->save();
         }
 
-        return redirect('/settings/2fa')->with('success',"Dein Einmalpasswort ist ( " . $code . " ). Bewahre es an einem sicheren Ort auf.");
+        return redirect('/profile/2fa')->with('success', trans('profile.newOTP', ['code' => $code]));
     }
 }

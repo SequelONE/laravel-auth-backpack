@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>{{ __('Reset Password') }} | {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ trans('auth.resetPassword') }} | {{ config('app.name', 'Laravel') }}</title>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@sequeloneinc">
     <meta name="twitter:creator" content="@sequeloneinc">
-    <meta name="twitter:title" content="{{ __('Reset Password') }} | {{ config('app.name', 'Laravel') }}">
-    <meta name="twitter:description" content="{{ __('Reset Password') }}">
+    <meta name="twitter:title" content="{{ trans('auth.resetPassword') }} | {{ config('app.name', 'Laravel') }}">
+    <meta name="twitter:description" content="{{ trans('auth.resetPassword') }}}">
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ __('Reset Password') }} | {{ config('app.name', 'Laravel') }}">
-    <meta property="og:description" name="description" content="{{ __('Reset Password') }}">
+    <meta property="og:title" content="{{ trans('auth.resetPassword') }} | {{ config('app.name', 'Laravel') }}">
+    <meta property="og:description" name="description" content="{{ trans('auth.resetPassword') }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('img/logo.png') }}">
     <meta property="og:image:secure_url" content="{{ asset('img/logo.png') }}">
@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-primary">
-                <div class="card-header bg-primary text-white">{{ __('Reset Password') }}</div>
+                <div class="card-header bg-primary text-white">{{ trans('auth.resetPassword') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -39,7 +39,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ trans('auth.email') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -58,7 +58,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ trans('auth.sendResetLink') }}
                                 </button>
                             </div>
                         </div>

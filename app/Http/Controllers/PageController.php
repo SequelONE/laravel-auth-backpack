@@ -13,7 +13,7 @@ class PageController extends Controller
 
         if (!$page)
         {
-            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+            abort(404, trans('page.backOnHomepage', ['url' => url('')]));
         }
 
         $this->data['title'] = $page->title;
@@ -35,7 +35,7 @@ class PageController extends Controller
 
         if (!$page)
         {
-            abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+            abort(404, trans('page.backOnHomepage', ['url' => url('')]));
         }
 
         $this->data['title'] = $page->title;

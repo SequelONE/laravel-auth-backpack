@@ -29,7 +29,7 @@ class SocialLoginController extends Controller
             // If Social Account Exist then Find User and Login
             if($account){
                 auth()->login($account->user);
-                return redirect()->route('profile')->with('success', 'You have successfully authenticated through your provider ' . $account->provider_name . '.');
+                return redirect()->route('profile')->with('success', trans('profile.authSocialProviderSuccess', ['provider_name' => $account->provider_name]));
             }
 
             // Find User
@@ -61,7 +61,7 @@ class SocialLoginController extends Controller
 
             // Login
             auth()->login($user);
-            return redirect()->route('profile')->with('success', 'You have successfully authenticated through your provider' . $account->provider_name . '.');
+            return redirect()->route('profile')->with('success', trans('profile.authSocialProviderSuccess', ['provider_name' => $account->provider_name]));
 
         }catch(Exception $e){
             return redirect()->route('login')->with('error', $e->getMessage());

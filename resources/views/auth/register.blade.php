@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>{{ __('Register') }} | {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ trans('auth.register') }} | {{ config('app.name', 'Laravel') }}</title>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@sequeloneinc">
     <meta name="twitter:creator" content="@sequeloneinc">
-    <meta name="twitter:title" content="{{ __('Register') }} | {{ config('app.name', 'Laravel') }}">
-    <meta name="twitter:description" content="{{ __('Register') }}">
+    <meta name="twitter:title" content="{{ trans('auth.register') }} | {{ config('app.name', 'Laravel') }}">
+    <meta name="twitter:description" content="{{ trans('auth.register') }}">
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ __('Register') }} | {{ config('app.name', 'Laravel') }}">
-    <meta property="og:description" name="description" content="{{ __('Register') }}">
+    <meta property="og:title" content="{{ trans('auth.register') }} | {{ config('app.name', 'Laravel') }}">
+    <meta property="og:description" name="description" content="{{ trans('auth.register') }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('img/logo.png') }}">
     <meta property="og:image:secure_url" content="{{ asset('img/logo.png') }}">
@@ -26,13 +26,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-primary">
-                <div class="card-header bg-primary text-white">{{ __('Register') }}</div>
+                <div class="card-header bg-primary text-white">{{ trans('auth.register') }}</div>
 
                 <div class="card-body">
                     <form class="needs-validation" novalidate method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ trans('auth.name') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ trans('auth.email') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ trans('auth.password') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -84,21 +84,19 @@
                                     </div>
                                 </div>
                                 <small id="passwordHelpBlock" class="form-text text-muted">
-                                    Your password must be 8-20 characters long,  must contain special characters "!@#$%&*_?", numbers, lower and upper letters only.
+                                    {{ trans('auth.charactersLong') }}
                                 </small>
                                 <div id="feedbackin" class="valid-feedback">
-                                    Strong Password!
+                                    {{ trans('auth.strongPassword') }}
                                 </div>
                                 <div id="feedbackirn" class="invalid-feedback">
-                                    Atlead 8 characters,
-                                    Number, special character
-                                    Caplital Letter and Small letters
+                                    {{ trans('auth.characters') }}
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ trans('auth.confirmPassword') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3" id="password-confirm-validated">
@@ -109,7 +107,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="recaptcha" class="col-md-4 col-form-label text-md-end">{{ __('ReCaptcha') }}</label>
+                            <label for="recaptcha" class="col-md-4 col-form-label text-md-end">{{ trans('auth.captcha') }}</label>
 
                             <div class="col-md-6">
                                 {!! htmlFormSnippet() !!}
@@ -119,7 +117,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary" id="register" disabled>
-                                    {{ __('Register') }}
+                                    {{ trans('auth.register') }}
                                 </button>
                             </div>
                         </div>
@@ -128,12 +126,12 @@
                         <p class="text-center">or</p>
                         <div class="row">
                             <div class="col-12 text-center">
-                                <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with VK"><i class="fa-brands fa-vk"></i></a>
-                                <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Facebook"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="{{ route('social.redirect','github') }}" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Github"><i class="fa-brands fa-github"></i></a>
-                                <a href="{{ route('social.redirect','google') }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Google"><i class="fa-brands fa-google"></i></a>
-                                <a href="{{ route('social.redirect','twitter') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Twitter"><i class="fa-brands fa-twitter"></i></a>
-                                <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Yandex"><i class="fa-brands fa-yandex"></i></a>
+                                <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.vk') }}"><i class="fa-brands fa-vk"></i></a>
+                                <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.facebook') }}"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="{{ route('social.redirect','github') }}" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.github') }}"><i class="fa-brands fa-github"></i></a>
+                                <a href="{{ route('social.redirect','google') }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.google') }}"><i class="fa-brands fa-google"></i></a>
+                                <a href="{{ route('social.redirect','twitter') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.twitter') }}"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.yandex') }}"><i class="fa-brands fa-yandex"></i></a>
                             </div>
                         </div>
                     </form>
@@ -151,18 +149,15 @@
         (function() {
             'use strict';
             window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 let forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
                 let validation = Array.prototype.filter.call(forms, function(form) {
-                    // making sure password enters the right characters
                     form.password.addEventListener('keypress', function(event){
                         let checkx = true;
                         let chr = String.fromCharCode(event.which);
                         let matchedCase = [];
-                        matchedCase.push("[!@#$%&*_?]"); // Special Charector
-                        matchedCase.push("[A-Z]");      // Uppercase Alpabates
-                        matchedCase.push("[0-9]");      // Numbers
+                        matchedCase.push("[!@#$%&*_?]");
+                        matchedCase.push("[A-Z]");
+                        matchedCase.push("[0-9]");
                         matchedCase.push("[a-z]");
 
                         for (let i = 0; i < matchedCase.length; i++) {
@@ -186,9 +181,9 @@
                         let chr = String.fromCharCode(event.which);
 
                         let matchedCase = [];
-                        matchedCase.push("[!@#$%&*_?]"); // Special Charector
-                        matchedCase.push("[A-Z]");      // Uppercase Alpabates
-                        matchedCase.push("[0-9]");      // Numbers
+                        matchedCase.push("[!@#$%&*_?]");
+                        matchedCase.push("[A-Z]");
+                        matchedCase.push("[0-9]");
                         matchedCase.push("[a-z]");
 
                         for (let i = 0; i < matchedCase.length; i++) {
@@ -207,64 +202,61 @@
 
                     });
 
-                    //Validate Password to have more than 8 Characters and A capital Letter, small letter, number and special character
-                    // Create an array and push all possible values that you want in password
                     let matchedCase = [];
-                    matchedCase.push("[$@$$!%*#?&]"); // Special Charector
-                    matchedCase.push("[A-Z]");      // Uppercase Alpabates
-                    matchedCase.push("[0-9]");      // Numbers
-                    matchedCase.push("[a-z]");     // Lowercase Alphabates
+                    matchedCase.push("[$@$$!%*#?&]");
+                    matchedCase.push("[A-Z]");
+                    matchedCase.push("[0-9]");
+                    matchedCase.push("[a-z]");
 
                     form.password.addEventListener('keyup', function(){
 
                         let messageCase = [];
-                        messageCase.push(" Special Charector"); // Special Charector
-                        messageCase.push(" Upper Case");      // Uppercase Alpabates
-                        messageCase.push(" Numbers");      // Numbers
-                        messageCase.push(" Lower Case");     // Lowercase Alphabates
+                        messageCase.push(" {{ trans('auth.specialChars') }}");
+                        messageCase.push(" {{ trans('auth.upperCase') }}");
+                        messageCase.push(" {{ trans('auth.numbers') }}");
+                        messageCase.push(" {{ trans('auth.lowerCase') }}");
 
                         let ctr = 0;
                         let rti = "";
                         for (let i = 0; i < matchedCase.length; i++) {
                             if (new RegExp(matchedCase[i]).test(form.password.value)) {
-                                if(i === 0) messageCase.splice(messageCase.indexOf(" Special Charector"), 1);
-                                if(i === 1) messageCase.splice(messageCase.indexOf(" Upper Case"), 1);
-                                if(i === 2) messageCase.splice(messageCase.indexOf(" Numbers"), 1);
-                                if(i === 3) messageCase.splice(messageCase.indexOf(" Lower Case"), 1);
+                                if(i === 0) messageCase.splice(messageCase.indexOf(" {{ trans('auth.specialChars') }}"), 1);
+                                if(i === 1) messageCase.splice(messageCase.indexOf(" {{ trans('auth.upperCase') }}"), 1);
+                                if(i === 2) messageCase.splice(messageCase.indexOf(" {{ trans('auth.numbers') }}"), 1);
+                                if(i === 3) messageCase.splice(messageCase.indexOf(" {{ trans('auth.lowerCase') }}"), 1);
                                 ctr++;
                             }
                         }
 
-                        // Display it
                         let progressbar = 0;
                         let strength = "";
                         let bClass = "";
                         switch (ctr) {
                             case 0:
                             case 1:
-                                strength = "Way too Weak";
+                                strength = "{{ trans('auth.wayTooWeak') }}";
                                 progressbar = 15;
                                 bClass = "bg-danger";
                                 break;
                             case 2:
-                                strength = "Very Weak";
+                                strength = "{{ trans('auth.veryWeak') }}";
                                 progressbar = 25;
                                 bClass = "bg-danger";
                                 break;
                             case 3:
-                                strength = "Weak";
+                                strength = "{{ trans('auth.weak') }}";
                                 progressbar = 34;
                                 bClass = "bg-warning";
                                 break;
                             case 4:
-                                strength = "Medium";
+                                strength = "{{ trans('auth.medium') }}";
                                 progressbar = 65;
                                 bClass = "bg-warning";
                                 break;
                         }
 
-                        if (strength === "Medium" && form.password.value.length >= 8 ) {
-                            strength = "Strong";
+                        if (strength === "{{ trans('auth.medium') }}" && form.password.value.length >= 8 ) {
+                            strength = "{{ trans('auth.strong') }}";
                             bClass = "bg-success";
                             form.password.setCustomValidity("");
                         } else {
@@ -275,13 +267,13 @@
 
                         if(form.password.value.length < 8 ){
                             let lengthI = 8 - form.password.value.length;
-                            sometext += ` ${lengthI} more Characters, `;
+                            sometext += ` ${lengthI} {{ trans('auth.moreChars') }}, `;
                         }
 
                         sometext += messageCase;
 
                         if(sometext){
-                            sometext = " You Need" + sometext;
+                            sometext = " {{ trans('auth.yourRequest') }}" + sometext;
                         }
 
                         $("#feedbackin, #feedbackirn").text(strength + sometext);
@@ -312,9 +304,9 @@
 
                         if(form.password_confirmation.checkValidity() === true && Validate() === true){
                             form.password_confirmation.parentNode.classList.add('was-validated');
-                            form.reset.disabled = false;
+                            form.register.disabled = false;
                         } else {
-                            form.reset.disabled = true;
+                            form.register.disabled = true;
                             let element = document.getElementById("password-confirm-validated");
                             element.classList.remove("was-validated");
                         }

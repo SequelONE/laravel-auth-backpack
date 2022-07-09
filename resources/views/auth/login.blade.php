@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>{{ __('Login') }} | {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ trans('auth.login') }} | {{ config('app.name', 'Laravel') }}</title>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@sequeloneinc">
     <meta name="twitter:creator" content="@sequeloneinc">
-    <meta name="twitter:title" content="{{ __('Login') }} | {{ config('app.name', 'Laravel') }}">
-    <meta name="twitter:description" content="{{ __('Login') }}">
+    <meta name="twitter:title" content="{{ trans('auth.login') }} | {{ config('app.name', 'Laravel') }}">
+    <meta name="twitter:description" content="{{ trans('auth.login') }}}">
     <meta name="twitter:image" content="{{ asset('img/logo.png') }}">
 
     <!-- Facebook -->
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ __('Login') }} | {{ config('app.name', 'Laravel') }}">
+    <meta property="og:title" content="{{ trans('auth.login') }} | {{ config('app.name', 'Laravel') }}">
     <meta property="og:description" name="description" content="{{ __('Login') }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('img/logo.png') }}">
@@ -26,14 +26,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-primary">
-                <div class="card-header bg-primary text-white">{{ __('Login') }}</div>
+                <div class="card-header bg-primary text-white">{{ trans('auth.login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ trans('auth.email') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ trans('auth.password') }}</label>
 
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -72,7 +72,7 @@
                                     <input class="form-check-input border-primary" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ trans('auth.rememberMe') }}
                                     </label>
                                 </div>
                             </div>
@@ -81,12 +81,12 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ trans('auth.login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ trans('auth.forgot') }}
                                     </a>
                                 @endif
                             </div>
@@ -95,12 +95,12 @@
                         <p class="text-center">or</p>
                         <div class="row">
                             <div class="col-12 text-center">
-                                <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with VK"><i class="fa-brands fa-vk"></i></a>
-                                <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Facebook"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="{{ route('social.redirect','github') }}" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Github"><i class="fa-brands fa-github"></i></a>
-                                <a href="{{ route('social.redirect','google') }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Google"><i class="fa-brands fa-google"></i></a>
-                                <a href="{{ route('social.redirect','twitter') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Twitter"><i class="fa-brands fa-twitter"></i></a>
-                                <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Login with Yandex"><i class="fa-brands fa-yandex"></i></a>
+                                <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.vk') }}"><i class="fa-brands fa-vk"></i></a>
+                                <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.facebook') }}"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="{{ route('social.redirect','github') }}" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.github') }}"><i class="fa-brands fa-github"></i></a>
+                                <a href="{{ route('social.redirect','google') }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.google') }}"><i class="fa-brands fa-google"></i></a>
+                                <a href="{{ route('social.redirect','twitter') }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.twitter') }}"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.yandex') }}"><i class="fa-brands fa-yandex"></i></a>
                             </div>
                         </div>
                     </form>
