@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait; // <------------------------------- this one
 //use Backpack\CRUD\app\Notifications\ResetPasswordNotification;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;// <---------------------- and this one
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -59,7 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function sendPasswordResetNotification($token)
     {
-        $url = config('app.url') . 'password/reset/'.$token.'?email=' . Auth::user()->email;
+        if(Auth::check() === true) {
+            $email = Auth::user()->email;
+        } else {
+            $email = request()->post('email');
+        }
+        $url = config('app.url') . 'password/reset/'.$token.'?email=' . $email;
 
         $this->notify(new ResetPasswordNotification($url));
     }

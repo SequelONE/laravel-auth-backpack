@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # {{ trans('mail.whoops') }}
 @else
-# {{ trans('mail.hello') }}, {{ Auth::user()->name }}!
+# {{ trans('mail.hello') }}, @if(Auth::check() === true) {{ Auth::user()->name }} @else @php $user = \App\Models\User::where('email', request()->post('email'))->first(); @endphp {{ $user->name }} @endif!
 @endif
 @endif
 
