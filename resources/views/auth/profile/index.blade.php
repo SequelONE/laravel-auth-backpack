@@ -121,7 +121,7 @@
                             <div class="col-12 col-lg-10 col-md-9">
                                 <div class="input-group mb-3">
                                     <button type="submit" class="btn btn-outline-primary">
-                                        {{ trans('profile.update') }}
+                                        <i class="fa-solid fa-user-pen"></i> {{ trans('profile.update') }}
                                     </button>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                 @csrf
                                 <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email" autofocus>
                                 <button type="submit" class="btn btn-outline-danger">
-                                    {{ trans('auth.sendResetLink') }}
+                                    <i class="fa-solid fa-envelope"></i> {{ trans('auth.sendResetLink') }}
                                 </button>
                             </form>
                         </div>
@@ -198,9 +198,7 @@
                             <p><strong>{{ trans('profile.2fa') }}:</strong></p>
                         </div>
                         <div class="col-12 col-lg-10 col-md-9">
-                            <div class="row">
-                                <a href="{{ route('profile.2fa') }}" class="btn btn-outline-danger"><i class="fa-solid fa-key"></i> {{ trans('profile.2fa') }}</a>
-                            </div>
+                            <a href="{{ route('profile.2fa') }}" class="btn btn-outline-danger"><i class="fa-solid fa-key"></i> {{ trans('profile.2fa') }}</a>
                         </div>
                     </div>
                 </div>
