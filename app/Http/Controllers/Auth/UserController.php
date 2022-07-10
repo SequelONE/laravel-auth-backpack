@@ -13,8 +13,6 @@ use \ParagonIE\ConstantTime\Base32;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Creativeorange\Gravatar\Gravatar;
 use App\Models\UserCode;
-use App\Models\User;
-use Session;
 
 class UserController extends Controller
 {

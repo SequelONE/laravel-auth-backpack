@@ -135,6 +135,7 @@ return [
         'copyright' => '© ' . copyright(2015),
         'website_name' => env('APP_NAME', 'Laravel'),
         'website' => env('APP_URL', 'http://localhost/'),
+        'website_support' => env('APP_URL', 'http://localhost/') . 'support',
     ],
 
 ];
