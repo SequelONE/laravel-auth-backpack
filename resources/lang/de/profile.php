@@ -14,6 +14,7 @@ return [
     */
 
     'profile' => 'Profil',
+    'admin' => 'Adminpanel',
     'navigation' => 'Navigation',
     'deleteAvatar' => 'Avatar löschen',
     'uploadAvatar' => 'Avatar hochladen',

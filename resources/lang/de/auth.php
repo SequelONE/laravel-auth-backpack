@@ -39,6 +39,7 @@ return [
     'password' => 'Passwort',
     'rememberMe' => ' Erinnere dich an mich',
     'login' => 'Anmelden',
+    'logout' => 'Abmelden',
     'forgot' => 'Passwort vergessen?',
     'forgot_message' => 'Probleme mit dem Passwort?',
     'name' => 'Benutzername',

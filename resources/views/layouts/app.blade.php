@@ -68,13 +68,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ trans('auth.login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ trans('auth.register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -86,18 +86,18 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @hasanyrole('administrator|developer|manager')
                                     <a class="dropdown-item" href="/admin">
-                                        {{ __('Admin') }}
+                                        {{ trans('profile.admin') }}
                                     </a>
                                     <hr>
                                     @endhasanyrole
                                     <a class="dropdown-item" href="{{ route('profile') }}">
-                                        {{ __('Profile') }}
+                                        {{ trans('profile.profile') }}
                                     </a>
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ trans('auth.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -127,10 +127,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-md-6">
-                        <p class="text"><a href="{{ url('privacy') }}">Privacy Policy</a> | <a href="{{ url('user-agreement') }}">User Agreement</a> | <a href="{{ url('deleting-user-data') }}">Deleting user data</a></p>
+                        <p class="text">
+                            <a href="{{ url('privacy') }}">{{ trans('site.privacyPolicy') }}</a><br/>
+                            <a href="{{ url('user-agreement') }}">{{ trans('site.userAgreement') }}</a><br/>
+                            <a href="{{ url('deleting-user-data') }}">{{ trans('site.deletingUserData') }}</a>
+                        </p>
                     </div>
                     <div class="col-12 col-lg-6 col-md-6">
-                        <p class="text-end">© {{ copyright('2015') }} Powered by <a href="https://github.com/SequelONE/laravel-auth-backpack" rel="nofollow">Laravel Auth Backpack</a>. Developed by <a href="https://sequel.one">SEQUEL.ONE</a></p>
+                        <p class="text-end">© {{ copyright('2015') }} {{ trans('site.poweredBy') }} <a href="https://github.com/SequelONE/laravel-auth-backpack" rel="nofollow">Laravel Auth Backpack</a>. {{ trans('site.developedBy') }} <a href="https://sequel.one">SEQUEL.ONE</a></p>
                     </div>
                 </div>
             </div>
