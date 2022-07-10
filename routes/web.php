@@ -55,7 +55,7 @@ Route::group(['prefix' => 'user'], function(){
     // 2fa middleware
     Route::post('/2fa/validate', function () {
         return redirect(URL()->previous());
-    })->name('2faVerify')->middleware(['2fa', 'verified']);
+    })->name('2faVerify')->middleware(['auth', '2fa', 'verified']);
 });
 
 Route::get('/user/2fa', function () {
@@ -68,5 +68,5 @@ Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'red
 
 // Pages
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', '2fa', 'verified'])->name('home');
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);

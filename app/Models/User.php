@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait; // <------------------------------- this one
+//use Backpack\CRUD\app\Notifications\ResetPasswordNotification;
+use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;// <---------------------- and this one
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -48,6 +50,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Send a password reset notification to the user.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $url = config('app.url') . 'password/reset/'.$token.'?email=' . Auth::user()->email;
+
+        $this->notify(new ResetPasswordNotification($url));
+    }
 
     public function avatar() {
         $avatar = Auth::user()->avatar;

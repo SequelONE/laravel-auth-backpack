@@ -4,16 +4,20 @@
 # {{ $greeting }}
 @else
 @if ($level === 'error')
-# @lang('Whoops!')
+# {{ trans('mail.whoops') }}
 @else
-# @lang('Hello!')
+# {{ trans('mail.hello') }}, {{ Auth::user()->name }}!
 @endif
 @endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
-{{ $line }}
+    {!! $line !!}
+@endforeach
 
+{{-- Outro Lines --}}
+@foreach ($outroLines as $line)
+    {!! $line !!}
 @endforeach
 
 {{-- Action Button --}}
@@ -33,30 +37,18 @@
 @endcomponent
 @endisset
 
-{{-- Outro Lines --}}
-@foreach ($outroLines as $line)
-{{ $line }}
-
-@endforeach
-
 {{-- Salutation --}}
 @if (! empty($salutation))
-{{ $salutation }}
+    <div style="text-align: center">
+        {{ $salutation }}
+    </div>
 @else
-@lang('Regards'),<br>
-{{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
-@lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
-    [
-        'actionText' => $actionText,
-    ]
-) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
+    {{ trans('mail.copyLink', ['actionText' => $actionText]) }} <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 @endslot
 @endisset
 @endcomponent

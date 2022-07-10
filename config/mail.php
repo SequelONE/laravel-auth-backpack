@@ -115,4 +115,26 @@ return [
         ],
     ],
 
+    'body' => [
+        'top_logo'          => env('APP_URL', 'http://localhost/') . 'img/logo-white.png',
+        'welcome_url'       => env('APP_URL', 'http://localhost/') . 'login',
+        'street_address'    => '74706 Osterburken',
+        'phone_number'      => '+49 (1514) 000-00-00',
+        'info_email'        => 'admin@sequel.one',
+        'play_url'          => 'https://play.google.com',
+        'ios_url'           => 'https://store.apple.com',
+
+        // To remove from the email footer - make the value blank
+        'facebook_url'      => 'https://facebook.com',
+        'twitter_url'       => 'https://twitter.com',
+        'instagram_url'     => 'https://instagram.com',
+        'pinterest_url'     => 'https://pinterest.com',
+        'linkedin_url'      => 'https://linkedin.com',
+
+        // Copyright
+        'copyright' => '© ' . copyright(2015),
+        'website_name' => env('APP_NAME', 'Laravel'),
+        'website' => env('APP_URL', 'http://localhost/'),
+    ],
+
 ];
