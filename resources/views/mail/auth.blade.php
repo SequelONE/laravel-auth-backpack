@@ -180,18 +180,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center">
-                                                <!--[if (gte mso 9)|(IE)]><table border="0" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
-                                                <!-- Column -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- gap -->
-                                                <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="30" style="width:30px;max-width:30px;">
-                                                    <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px;">&nbsp;</td>
-                                                    </tr>
-                                                </table>
-                                                <!-- gap -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- Column -->
+                                                @if($ip !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -215,7 +204,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
+                                                @endif
+                                                @if($iso_code !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -239,17 +229,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <!-- Column -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- gap -->
-                                                <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="30" style="width:30px;max-width:30px;">
-                                                    <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px;">&nbsp;</td>
-                                                    </tr>
-                                                </table>
-                                                <!-- gap -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- Column -->
+                                                @endif
+                                                @if($country !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -273,7 +254,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
+                                                @endif
+                                                @if($city !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -297,17 +279,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <!-- Column -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- gap -->
-                                                <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="30" style="width:30px;max-width:30px;">
-                                                    <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px;">&nbsp;</td>
-                                                    </tr>
-                                                </table>
-                                                <!-- gap -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- Column -->
+                                                @endif
+                                                @if($state !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -331,7 +304,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
+                                                @endif
+                                                @if($state_name !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -355,17 +329,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <!-- Column -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- gap -->
-                                                <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="30" style="width:30px;max-width:30px;">
-                                                    <tr>
-                                                        <td height="20" style="font-size:20px;line-height:20px;">&nbsp;</td>
-                                                    </tr>
-                                                </table>
-                                                <!-- gap -->
-                                                <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
-                                                <!-- Column -->
+                                                @endif
+                                                @if($postal_code !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -389,7 +354,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
+                                                @endif
+                                                @if($timezone !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
                                                         <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
@@ -413,9 +379,7 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
-
-
+                                                @endif
                                                 <!-- Column -->
                                                 <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
                                             </td>
