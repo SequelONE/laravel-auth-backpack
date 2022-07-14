@@ -117,7 +117,7 @@
 @section('javascripts')
     <script>
         let password = document.getElementById("password");
-        
+
         document.getElementById("hide").addEventListener("click", function(e){
             if(password.getAttribute("type") === "password"){
                 password.setAttribute("type", "text");
