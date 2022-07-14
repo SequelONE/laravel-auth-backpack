@@ -20,6 +20,7 @@ use App\Http\Controllers\Auth\SocialLoginController;
 
 // Auth
 Auth::routes();
+Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
