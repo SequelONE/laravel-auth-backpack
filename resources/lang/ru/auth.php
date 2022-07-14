@@ -48,6 +48,7 @@ return [
     'confirmPassword' => 'Подтвердите пароль',
     'register' => 'Регистрация',
     'captcha' => 'Капча',
+    'showPassword' => 'Показать пароль',
 
     // Placeholders
     'ph_name' => 'Имя пользователя',

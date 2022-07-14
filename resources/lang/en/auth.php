@@ -48,6 +48,7 @@ return [
     'confirmPassword' => 'Confirm Password',
     'register' => 'Register',
     'captcha' => 'Captcha',
+    'showPassword' => 'Show password',
 
     // Placeholders
     'ph_name' => 'Username',

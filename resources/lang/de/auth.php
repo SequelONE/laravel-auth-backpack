@@ -48,6 +48,7 @@ return [
     'confirmPassword' => 'Passwort bestätigen',
     'registrieren' => 'Registrieren',
     'captcha' => 'Eingabeaufforderung',
+    'showPassword' => 'Passwort anzeigen',
 
     // Platzhalter
     'ph_name' => 'Benutzername',

@@ -56,6 +56,9 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-unlock"></i></span>
                                     <input id="password" type="password" class="form-control border-primary @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <button type="button" id="hide" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.showPassword') }}">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
                                 </div>
 
                                 @error('password')
@@ -113,6 +116,21 @@
 
 @section('javascripts')
     <script>
+        let password = document.getElementById("password");
+        
+        document.getElementById("hide").addEventListener("click", function(e){
+            if(password.getAttribute("type") === "password"){
+                password.setAttribute("type", "text");
+            } else {
+                password.setAttribute("type", "password");
+            }
+
+            $(this)
+                .find('[data-fa-i2svg]')
+                .toggleClass('fa-eye')
+                .toggleClass('fa-eye-slash');
+        });
+
         var tooltipTriggerList = [].slice.call(
             document.querySelectorAll('[data-bs-toggle="tooltip"]')
         );

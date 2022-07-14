@@ -72,6 +72,9 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-unlock"></i></span>
                                     <input id="password" minlength="8" type="password" class="form-control border-primary @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <button type="button" id="hide" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.showPassword') }}">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -102,6 +105,9 @@
                                 <div class="input-group mb-3" id="password-confirm-validated">
                                     <span class="input-group-text border-primary bg-primary text-white" id="email"><i class="fa-solid fa-unlock"></i></span>
                                     <input id="password-confirm" minlength="8" type="password" class="form-control border-primary" name="password_confirmation" required autocomplete="new-password" disabled>
+                                    <button type="button" class="btn btn-outline-primary" id="hideTwo" disabled>
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -286,9 +292,11 @@
 
                         if(form.password.checkValidity() === true){
                             form.password_confirmation.disabled = false;
+                            document.getElementById("hideTwo").disabled = false;
                             form.password_confirmation.classList.add('is-invalid');
                         } else {
                             form.password_confirmation.disabled = true;
+                            document.getElementById("hideTwo").disabled = true;
                         }
                     });
 
@@ -316,6 +324,35 @@
                 });
             }, false);
         })();
+
+        let password = document.getElementById("password");
+        let password_confirmation = document.getElementById("password-confirm");
+
+        document.getElementById("hide").addEventListener("click", function(e){
+            if(password.getAttribute("type") === "password"){
+                password.setAttribute("type", "text");
+            } else {
+                password.setAttribute("type", "password");
+            }
+
+            $(this)
+                .find('[data-fa-i2svg]')
+                .toggleClass('fa-eye')
+                .toggleClass('fa-eye-slash');
+        });
+
+        document.getElementById("hideTwo").addEventListener("click", function(e){
+            if(password_confirmation.getAttribute("type") === "password"){
+                password_confirmation.setAttribute("type", "text");
+            } else {
+                password_confirmation.setAttribute("type", "password");
+            }
+
+            $(this)
+                .find('[data-fa-i2svg]')
+                .toggleClass('fa-eye')
+                .toggleClass('fa-eye-slash');
+        });
 
         let tooltipTriggerList = [].slice.call(
             document.querySelectorAll('[data-bs-toggle="tooltip"]')
