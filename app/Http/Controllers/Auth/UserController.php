@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Crypt;
 use Google2FA;
 use Illuminate\Http\Request;
@@ -26,6 +27,35 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('web');
+    }
+
+    public function users()
+    {
+        $users = User::get();
+        return view('users.index', compact('users'));
+    }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+        return view('users.usersView', compact('user'));
+    }
+
+    public function followUserRequest(Request $request){
+
+        $user = User::findOrFail($request->user_id);
+        User::find(Auth::id())->toggleFollow($user);
+
+        $isFollowing = User::find(Auth::id())->isFollowing($user);
+
+
+        if($isFollowing !== true) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+
+        return response()->json(['success' => $status]);
     }
 
     /**

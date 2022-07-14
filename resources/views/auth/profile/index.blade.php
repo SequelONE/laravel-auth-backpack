@@ -54,8 +54,8 @@
                     <form action="{{route('profile.update')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-12 col-lg-2 col-md-3">
-                                <p><img class="rounded-circle border border-1" src="{{ Auth::user()->avatar() }}" alt="{{ Auth::user()->name }}" /></p>
+                            <div class="col-12 col-lg-2 col-md-3 text-center">
+                                <p><img class="rounded-circle border-primary border" width="100" height="100" src="{{ Auth::user()->avatar() }}" alt="{{ Auth::user()->name }}" /></p>
                                 @if(Auth::user()->avatar !== NULL)
                                     <p><a href="#" class="btn btn-outline-danger btn-sm btn-block" id="avatarDelete">{{ trans('profile.deleteAvatar') }}</a></p>
                                 @endif
@@ -157,32 +157,32 @@
                                     <p>{{ trans('auth.loginSocialProvider') }}</p>
                                 </div>
 
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','google') }}" class="btn btn-danger btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'google')->first()->provider_name ?? '' === 'google') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.google') }}">
                                         <i class="fa-brands fa-google"></i>
                                     </a>
                                 </div>
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','facebook') }}" class="btn btn-outline-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'facebook')->first()->provider_name ?? '' === 'facebook') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.facebook') }}">
                                         <i class="fa-brands fa-facebook"></i>
                                     </a>
                                 </div>
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','yandex') }}" class="btn btn-warning btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'yandex')->first()->provider_name ?? '' === 'yandex') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.yandex') }}">
                                         <i class="fa-brands fa-yandex"></i>
                                     </a>
                                 </div>
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','vkontakte') }}" class="btn btn-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'vkontakte')->first()->provider_name ?? '' === 'vkontakte') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.vk') }}">
                                         <i class="fa-brands fa-vk"></i>
                                     </a>
                                 </div>
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','twitter') }}" class="btn btn-outline-primary btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'twitter')->first()->provider_name ?? '' === 'twitter') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.twitter') }}">
                                         <i class="fa-brands fa-twitter"></i>
                                     </a>
                                 </div>
-                                <div class="col-md-1 col-1">
+                                <div class="col-md-1 col-2">
                                     <a href="{{ route('social.redirect','github') }}" class="btn btn-dark btn-block @if(\App\Models\SocialAccount::where('user_id', Auth::id())->where('provider_name', 'github')->first()->provider_name ?? '' === 'github') disabled @endif " data-bs-toggle="tooltip" data-bs-placement="top" title="{{ trans('auth.github') }}">
                                         <i class="fa-brands fa-github"></i>
                                     </a>
@@ -240,8 +240,8 @@
         $modal.on('shown.bs.modal', function () {
             cropper = new Cropper(image, {
                 aspectRatio: 1/1,
-                minCropBoxWidth: 100,
-                minCropBoxHeight: 100,
+                minCropBoxWidth: 200,
+                minCropBoxHeight: 200,
                 viewMode: 3,
                 preview: '.preview'
             });
@@ -251,8 +251,8 @@
         });
         $("#crop").click(function(){
             canvas = cropper.getCroppedCanvas({
-                width: 100,
-                height: 100,
+                width: 200,
+                height: 200,
             });
             canvas.toBlob(function(blob) {
                 url = URL.createObjectURL(blob);

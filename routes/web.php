@@ -20,7 +20,6 @@ use App\Http\Controllers\Auth\SocialLoginController;
 
 // Auth
 Auth::routes();
-Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
@@ -70,4 +69,8 @@ Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'red
 // Pages
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', '2fa', 'verified'])->name('home');
+Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users')->middleware(['auth', '2fa', 'verified']);
+Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view')->middleware(['auth', '2fa', 'verified']);
+Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow')->middleware(['auth', '2fa', 'verified']);
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);
