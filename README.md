@@ -547,6 +547,6 @@ By default, the following packages have been added and configured:
 
 ## Contributors
 
-- [SEQUEL.ONE](https://github.com/SequelONE)
+- [Andrej Kopp](https://github.com/SequelONE)
 - [Cristian Tabacitu](https://github.com/tabacitu) ([Backpack 5](https://backpackforlaravel.com))
 - [Taylor Otwell](https://github.com/taylorotwell) ([Laravel](https://laravel.com))
