@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -54,7 +55,9 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        Mail::to($request->user())->send(new UserAuthentification());
+        if($request->user()->ip !== request()->ip()) {
+            Mail::to($request->user())->send(new UserAuthentification());
+        }
 
         return redirect('/profile');
     }

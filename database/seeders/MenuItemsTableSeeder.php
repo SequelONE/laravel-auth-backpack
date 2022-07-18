@@ -92,6 +92,14 @@ class MenuItemsTableSeeder extends Seeder
                 'status' => 1,
             ],
             [
+                'name' => 'Users',
+                'type' => 'internal_link',
+                'link' => 'users',
+                'page_id' => NULL,
+                'parent_id' => NULL,
+                'status' => 1,
+            ],
+            [
                 'name' => 'Privacy Policy',
                 'type' => 'page_link',
                 'link' => NULL,
