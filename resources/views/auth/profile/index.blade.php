@@ -201,6 +201,24 @@
                             <a href="{{ route('profile.2fa') }}" class="btn btn-outline-danger"><i class="fa-solid fa-key"></i> {{ trans('profile.2fa') }}</a>
                         </div>
                     </div>
+                    <div class="row">
+                        <hr class="dropdown-divider"><br />
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-2 col-md-3">
+                            <p><strong>{{ trans('profile.lastActivity') }}:</strong></p>
+                        </div>
+                        <div class="col-12 col-lg-10 col-md-9">
+                            <div class="alert alert-warning" role="alert">
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-warning"><strong>{{ trans('profile.ipAddresses') }}:</strong></li>
+                                    @foreach($sessions as $session)
+                                        <li class="list-group-item list-group-item-warning">{{ $session->ip_address }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -61,4 +61,7 @@ return [
 
     // Social providers
     'authSocialProviderSuccess' => 'You have successfully authenticated through your provider :provider_name.',
+
+    'lastActivity' => 'Last activity',
+    'ipAddresses' => 'IP-Addresses',
 ];

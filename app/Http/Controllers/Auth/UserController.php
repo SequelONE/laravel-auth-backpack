@@ -14,6 +14,7 @@ use \ParagonIE\ConstantTime\Base32;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Creativeorange\Gravatar\Gravatar;
 use App\Models\UserCode;
+use App\Models\Session;
 
 class UserController extends Controller
 {
@@ -131,7 +132,10 @@ class UserController extends Controller
         if($this->userAuth()) {
             $email = Auth::user()->email;
             $gravatar = (new \Creativeorange\Gravatar\Gravatar)->get($email, 'default');
-            return view('auth.profile.index', compact('gravatar'));
+
+            $sessions = Session::select('ip_address')->where('user_id', Auth::id())->limit(5)->get();
+
+            return view('auth.profile.index', compact('gravatar'), compact('sessions'));
         } else {
             return redirect('/login');
         }

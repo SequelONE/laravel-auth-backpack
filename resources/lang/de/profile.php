@@ -61,4 +61,7 @@ return [
 
     // Soziale Anbieter
     'authSocialProviderSuccess' => 'Sie haben sich erfolgreich über Ihren Provider authentifiziert :provider_name.',
+
+    'lastActivity' => 'Letzte Aktivität',
+    'ipAddresses' => 'IP-Adressen',
 ];
