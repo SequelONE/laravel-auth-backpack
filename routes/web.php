@@ -73,4 +73,8 @@ Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class
 Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users')->middleware(['auth', '2fa', 'verified']);
 Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view')->middleware(['auth', '2fa', 'verified']);
 Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow')->middleware(['auth', '2fa', 'verified']);
+Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store'])->name('contacts');
+Route::get('/mailable', function () {
+    return new App\Mail\Contact($data);
+});
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);

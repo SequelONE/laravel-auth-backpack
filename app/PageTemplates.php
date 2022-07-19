@@ -136,4 +136,43 @@ trait PageTemplates
             'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
         ]);
     }
+
+    private function contacts()
+    {
+        $this->crud->addField([   // CustomHTML
+            'name' => 'metas_separator',
+            'type' => 'custom_html',
+            'value' => '<br><h2>'.trans('sequelone::pages-crud.metas').'</h2><hr>',
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_title',
+            'label' => trans('sequelone::pages-crud.meta_title'),
+            'fake' => true,
+            'store_in' => 'extras',
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_description',
+            'label' => trans('sequelone::pages-crud.meta_description'),
+            'fake' => true,
+            'store_in' => 'extras',
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_keywords',
+            'type' => 'textarea',
+            'label' => trans('sequelone::pages-crud.meta_keywords'),
+            'fake' => true,
+            'store_in' => 'extras',
+        ]);
+        $this->crud->addField([   // CustomHTML
+            'name' => 'content_separator',
+            'type' => 'custom_html',
+            'value' => '<br><h2>'.trans('sequelone::pages-crud.content').'</h2><hr>',
+        ]);
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => trans('sequelone::pages-crud.content'),
+            'type' => 'summernote',
+            'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
+        ]);
+    }
 }

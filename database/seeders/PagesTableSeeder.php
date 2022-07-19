@@ -129,6 +129,18 @@ class PagesTableSeeder extends Seeder
                 ],
             ],
             [
+                'template' => 'contacts',
+                'name' => 'Contacts',
+                'title' => 'Contacts',
+                'slug' => 'contacts',
+                'content' => '<p>Text</p>',
+                'extras' => [
+                    'meta_title' => 'Contacts',
+                    'meta_description' => 'Contacts',
+                    'meta_keywords' => NULL
+                ],
+            ],
+            [
                 'template' => 'services',
                 'name' => 'Privacy Policy',
                 'title' => 'Privacy Policy',

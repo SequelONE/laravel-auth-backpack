@@ -124,6 +124,10 @@ return [
         'play_url'          => 'https://play.google.com',
         'ios_url'           => 'https://store.apple.com',
 
+        'icon_one'          => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-1_Icon-1.png',
+        'icon_two'          => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-5_Intro.png',
+        'icon_three'        => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-3_Intro.png',
+
         // To remove from the email footer - make the value blank
         'facebook_url'      => 'https://facebook.com',
         'twitter_url'       => 'https://twitter.com',

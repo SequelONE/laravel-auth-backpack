@@ -3,6 +3,15 @@
 return [
     'hello' => 'Hallo',
     'whoops' => 'Hoppla!',
+    'messageFromSite' => 'Sie haben eine Nachricht von Ihrer Website erhalten. Sie können es unten lesen.',
+    'name' => 'Name',
+    'email' => 'E-mail',
+    'phone' => 'Telefon',
+    'message' => 'Nachricht',
+    'captcha' => 'Captcha',
+    'submit' => 'Senden',
+    'subject' => 'Thema',
+    'attachment' => 'Anlage',
 
     'clickButton' => 'Klicken Sie auf die Schaltfläche unten, um Ihre E-Mail-Adresse zu bestätigen.',
     'verifyEmail' => 'E-Mail-Adresse bestätigen',

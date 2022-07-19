@@ -3,6 +3,15 @@
 return [
     'hello' => 'Hello',
     'whoops' => 'Whoops!',
+    'messageFromSite' => 'You have received a message from your website. You can read it below.',
+    'name' => 'Name',
+    'email' => 'E-mail',
+    'phone' => 'Phone',
+    'message' => 'Message',
+    'captcha' => 'Captcha',
+    'submit' => 'Send',
+    'subject' => 'Subject',
+    'attachment' => 'Attachment',
 
     // E-mail verification
     'clickButton' => 'Click the button below to verify your email address.',
