@@ -10,7 +10,7 @@ class SocialAccount extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'provider_name', 'provider_id'
+        'user_id', 'avatar', 'provider_name', 'provider_id'
     ];
 
     // User

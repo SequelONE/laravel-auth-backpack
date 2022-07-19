@@ -48,6 +48,7 @@ class SocialLoginController extends Controller
                 $user = User::create([
                     'email' => $social_user->getEmail(),
                     'name' => $social_user->getName(),
+                    'avatar' => $social_user->getAvatar(),
                     'password' => Hash::make('password'),
                 ]);
             }
@@ -55,6 +56,7 @@ class SocialLoginController extends Controller
             // Create Social Accounts
             $user->socialAccounts()->create([
                 'user_id' => Auth::id(),
+                'avatar' => $social_user->getAvatar(),
                 'provider_id' => $social_user->getId(),
                 'provider_name' => $provider
             ]);
