@@ -180,6 +180,31 @@
                                         </tr>
                                         <tr>
                                             <td align="center">
+                                                @if($os !== null)
+                                                    <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
+                                                        <tr  >
+                                                            <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
+
+                                                                <div>
+                                                                    {{ trans('mail.os') }}:
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr  >
+                                                            <td height="10" style="font-size:10px;line-height:10px;">&nbsp;</td>
+                                                        </tr>
+                                                        <tr  >
+                                                            <td class="center-text"  align="left" style="font-family:'Poppins',Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;padding-bottom: 15px;">
+
+                                                                <div>
+                                                                    {{ $os }}
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                @endif
                                                 @if($ip !== null)
                                                 <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
                                                     <tr  >
@@ -349,31 +374,6 @@
 
                                                             <div>
                                                                 {{ $postal_code }}
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                @endif
-                                                @if($timezone !== null)
-                                                <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="225" style="width:225px;max-width:225px;">
-                                                    <tr  >
-                                                        <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:26px;font-weight:400;font-style:normal;color:#343e9e;text-decoration:none;letter-spacing:0px;">
-
-                                                            <div>
-                                                                {{ trans('mail.timezone') }}:
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr  >
-                                                        <td height="10" style="font-size:10px;line-height:10px;">&nbsp;</td>
-                                                    </tr>
-                                                    <tr  >
-                                                        <td class="center-text"  align="left" style="font-family:'Poppins',Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;padding-bottom: 15px;">
-
-                                                            <div>
-                                                                {{ $timezone }}
                                                             </div>
 
                                                         </td>

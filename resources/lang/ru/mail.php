@@ -25,6 +25,7 @@ return [
     'notRequestPasswordReset' => 'Если вы не запрашивали сброс пароля, никаких дальнейших действий не требуется.',
 
     // User Auth
+    'os' => 'Операционная система',
     'ipAdresse' => 'IP-адрес',
     'isoCode' => 'ISO код',
     'country' => 'Страна',

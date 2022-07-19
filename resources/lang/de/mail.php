@@ -25,6 +25,7 @@ return [
     'notRequestPasswordReset' => 'Wenn Sie kein Zurücksetzen des Passworts angefordert haben, sind keine weiteren Maßnahmen erforderlich.',
 
     // User Auth
+    'os' => 'Betriebssystem',
     'ipAdresse' => 'IP-Adresse',
     'isoCode' => 'ISO Code',
     'country' => 'Land',

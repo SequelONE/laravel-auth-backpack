@@ -26,6 +26,7 @@ return [
     'notRequestPasswordReset' => 'If you did not request a password reset, no further action is required.',
 
     // User Auth
+    'os' => 'Operating system',
     'ipAdresse' => 'IP-Adresse',
     'isoCode' => 'ISO Code',
     'country' => 'Country',

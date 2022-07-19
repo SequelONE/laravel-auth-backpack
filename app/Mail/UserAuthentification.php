@@ -47,7 +47,8 @@ class UserAuthentification extends Mailable
                 'timezone' => $geoip->timezone,
                 'continent' => $geoip->continent,
                 'currency' => $geoip->currency,
-                'default' => $geoip->id
+                'default' => $geoip->id,
+                'os' => getOS()
             ]);
     }
 }
