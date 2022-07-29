@@ -17,10 +17,13 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('template');
             $table->string('name');
-            $table->string('title');
-            $table->string('slug');
-            $table->text('content')->nullable();
+            $table->json('title')->nullable();
+            $table->json('introtext')->nullable();
+            $table->json('content')->nullable();
             $table->json('extras')->nullable();
+            $table->string('slug')->unique();
+            $table->string('shortlink')->unique()->nullable();
+            $table->tinyInteger('status')->default(1)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

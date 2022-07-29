@@ -14,4 +14,9 @@ return [
     'backups' => 'Резервные копии',
     'logs' => 'Логи',
     'clearCache' => 'Очистить кэш',
+
+    // Pages
+    'general' => 'Основное',
+    'seo' => 'SEO',
+    'introtext' => 'Краткое содержание',
 ];

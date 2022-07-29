@@ -6,13 +6,15 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
-use Str;
+use Illuminate\Support\Str;
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 
 class Page extends Model
 {
     use CrudTrait;
     use Sluggable;
     use SluggableScopeHelpers;
+    use HasTranslations;
 
     /*
     |--------------------------------------------------------------------------
@@ -24,9 +26,10 @@ class Page extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = ['template', 'name', 'title', 'slug', 'content', 'extras'];
+    protected $fillable = ['template', 'name', 'title', 'introtext', 'content', 'slug', 'shortlink', 'extras', 'status'];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $translatable = ['title', 'introtext', 'content', 'extras'];
     protected $fakeColumns = ['extras'];
     protected $casts = [
         'extras' => 'array',

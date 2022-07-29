@@ -22,157 +22,193 @@ trait PageTemplates
 
     private function welcome()
     {
+        $this->crud->addField([
+            'name' => 'introtext',
+            'label' => trans('admin.introtext'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => trans('backpack::pagemanager.content'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
         $this->crud->addField([   // CustomHTML
             'name' => 'metas_separator',
             'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.metas').'</h2><hr>',
+            'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_title',
-            'label' => trans('sequelone::pages-crud.meta_title'),
+            'label' => trans('backpack::pagemanager.meta_title'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_description',
-            'label' => trans('sequelone::pages-crud.meta_description'),
+            'label' => trans('backpack::pagemanager.meta_description'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_keywords',
             'type' => 'textarea',
-            'label' => trans('sequelone::pages-crud.meta_keywords'),
+            'label' => trans('backpack::pagemanager.meta_keywords'),
             'fake' => true,
             'store_in' => 'extras',
-        ]);
-        $this->crud->addField([   // CustomHTML
-            'name' => 'content_separator',
-            'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.content').'</h2><hr>',
-        ]);
-        $this->crud->addField([
-            'name' => 'content',
-            'label' => trans('sequelone::pages-crud.content'),
-            'type' => 'summernote',
-            'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
+            'tab' => trans('admin.seo'),
         ]);
     }
 
     private function services()
     {
-        $this->crud->addField([   // CustomHTML
-                        'name' => 'metas_separator',
-                        'type' => 'custom_html',
-                        'value' => '<br><h2>'.trans('sequelone::pages-crud.metas').'</h2><hr>',
-                    ]);
         $this->crud->addField([
-                        'name' => 'meta_title',
-                        'label' => trans('sequelone::pages-crud.meta_title'),
-                        'fake' => true,
-                        'store_in' => 'extras',
-                    ]);
-        $this->crud->addField([
-                        'name' => 'meta_description',
-                        'label' => trans('sequelone::pages-crud.meta_description'),
-                        'fake' => true,
-                        'store_in' => 'extras',
-                    ]);
-        $this->crud->addField([
-                        'name' => 'meta_keywords',
-                        'type' => 'textarea',
-                        'label' => trans('sequelone::pages-crud.meta_keywords'),
-                        'fake' => true,
-                        'store_in' => 'extras',
-                    ]);
-        $this->crud->addField([   // CustomHTML
-                        'name' => 'content_separator',
-                        'type' => 'custom_html',
-                        'value' => '<br><h2>'.trans('sequelone::pages-crud.content').'</h2><hr>',
-                    ]);
-        $this->crud->addField([
-                        'name' => 'content',
-                        'label' => trans('sequelone::pages-crud.content'),
-                        'type' => 'summernote',
-                        'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
-                    ]);
-    }
+            'name' => 'introtext',
+            'label' => trans('admin.introtext'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
 
-    private function about_us()
-    {
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => trans('backpack::pagemanager.content'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
         $this->crud->addField([   // CustomHTML
             'name' => 'metas_separator',
             'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.metas').'</h2><hr>',
+            'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_title',
-            'label' => trans('sequelone::pages-crud.meta_title'),
+            'label' => trans('backpack::pagemanager.meta_title'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_description',
-            'label' => trans('sequelone::pages-crud.meta_description'),
+            'label' => trans('backpack::pagemanager.meta_description'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_keywords',
             'type' => 'textarea',
-            'label' => trans('sequelone::pages-crud.meta_keywords'),
+            'label' => trans('backpack::pagemanager.meta_keywords'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
-        $this->crud->addField([   // CustomHTML
-            'name' => 'content_separator',
-            'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.content').'</h2><hr>',
+    }
+
+    private function about_us()
+    {
+        $this->crud->addField([
+            'name' => 'introtext',
+            'label' => trans('admin.introtext'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
         ]);
+
         $this->crud->addField([
             'name' => 'content',
-            'label' => trans('sequelone::pages-crud.content'),
+            'label' => trans('backpack::pagemanager.content'),
             'type' => 'summernote',
-            'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
+        $this->crud->addField([   // CustomHTML
+            'name' => 'metas_separator',
+            'type' => 'custom_html',
+            'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+            'tab' => trans('admin.seo'),
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_title',
+            'label' => trans('backpack::pagemanager.meta_title'),
+            'fake' => true,
+            'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_description',
+            'label' => trans('backpack::pagemanager.meta_description'),
+            'fake' => true,
+            'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
+        ]);
+        $this->crud->addField([
+            'name' => 'meta_keywords',
+            'type' => 'textarea',
+            'label' => trans('backpack::pagemanager.meta_keywords'),
+            'fake' => true,
+            'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
     }
 
     private function contacts()
     {
+        $this->crud->addField([
+            'name' => 'introtext',
+            'label' => trans('admin.introtext'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => trans('backpack::pagemanager.content'),
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+            'tab' => trans('admin.general'),
+        ]);
+
         $this->crud->addField([   // CustomHTML
             'name' => 'metas_separator',
             'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.metas').'</h2><hr>',
+            'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_title',
-            'label' => trans('sequelone::pages-crud.meta_title'),
+            'label' => trans('backpack::pagemanager.meta_title'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_description',
-            'label' => trans('sequelone::pages-crud.meta_description'),
+            'label' => trans('backpack::pagemanager.meta_description'),
             'fake' => true,
             'store_in' => 'extras',
+            'tab' => trans('admin.seo'),
         ]);
         $this->crud->addField([
             'name' => 'meta_keywords',
             'type' => 'textarea',
-            'label' => trans('sequelone::pages-crud.meta_keywords'),
+            'label' => trans('backpack::pagemanager.meta_keywords'),
             'fake' => true,
             'store_in' => 'extras',
-        ]);
-        $this->crud->addField([   // CustomHTML
-            'name' => 'content_separator',
-            'type' => 'custom_html',
-            'value' => '<br><h2>'.trans('sequelone::pages-crud.content').'</h2><hr>',
-        ]);
-        $this->crud->addField([
-            'name' => 'content',
-            'label' => trans('sequelone::pages-crud.content'),
-            'type' => 'summernote',
-            'placeholder' => trans('sequelone::pages-crud.content_placeholder'),
+            'tab' => trans('admin.seo'),
         ]);
     }
 }
