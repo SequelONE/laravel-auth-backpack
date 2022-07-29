@@ -34,13 +34,20 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
-// Profile
-Route::group(['prefix' => 'profile'], function(){
-    Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
-    Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update')->middleware(['auth', '2fa', 'verified']);
-    Route::post('/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update')->middleware(['auth', '2fa', 'verified']);
-    Route::post('/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete')->middleware(['auth', '2fa', 'verified']);
-    Route::get('/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
+Route::group(['middleware' => ['auth', '2fa', 'verified']], function()
+{
+    // Profile
+    Route::group(['prefix' => 'profile'], function(){
+        Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile');
+        Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update');
+        Route::post('/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update');
+        Route::post('/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete');
+    });
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users');
+    Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view');
+    Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow');
 });
 
 // Settings -> 2FA
@@ -61,11 +68,8 @@ Route::group(['prefix' => 'auth'], function(){
 // General routes
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
 Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
-Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users')->middleware(['auth', '2fa', 'verified']);
-Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view')->middleware(['auth', '2fa', 'verified']);
-Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow')->middleware(['auth', '2fa', 'verified']);
 Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store'])->name('contacts');
 Route::get('/mailable', function () {
     return new App\Mail\UserAuthentification();
