@@ -25,8 +25,8 @@
     <div class="container">
         <div class="row justify-content-md-center">
 			<div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ trans('profile.2faTotp') }}</div>
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">{{ trans('profile.2faTotp') }}</div>
                     <div class="card-body">
 
                         @if (session('error'))
@@ -42,15 +42,17 @@
 
                         <p>{{ trans('profile.2faTotpEnter') }}:</p>
                         <form class="form-horizontal" action="{{ route('totp2fa') }}" method="POST">
-                            {{ csrf_field() }}
+                            @csrf
 							<div class="otp">
 								<div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
 									<label for="code" class="control-label">{{ trans('profile.2faTotp') }}</label>
-									<input id="code" name="code" class="form-control col-md-4"  type="password"/>
+									<input id="code" name="code" class="form-control border-primary"  type="password"/>
 								</div>
 							</div>
-                            <button class="btn btn-primary" type="submit">Authenticate</button>
-							<a class="btn" href="/user/2fa">{{ trans('profile.2faTotp') }}</a>
+                            <button class="btn btn-primary mt-3" type="submit" id="2faScratch">
+                                <i class="fa-solid fa-lock"></i> {{ trans('profile.2faAuthenticate') }}
+                            </button>
+							<a class="btn btn-link mt-3" href="{{ route('home') }}">{{ trans('profile.2faTotp') }}</a>
                         </form>
                     </div>
                 </div>

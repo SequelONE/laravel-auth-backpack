@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('web');
+        $this->middleware(['auth', 'verified']);
     }
 
     public function users()
@@ -205,9 +205,7 @@ class UserController extends Controller
             $userId = Auth::id();
             $user = DB::table('users_codes')->find($userId);
 
-            return view('auth.profile.2fa', [
-
-            ]);
+            return view('auth.profile.2fa');
         } else {
             return redirect('/login');
         }

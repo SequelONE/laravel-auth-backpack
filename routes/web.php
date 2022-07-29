@@ -34,7 +34,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
-// Settings
+// Profile
 Route::group(['prefix' => 'profile'], function(){
     Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile')->middleware(['auth', '2fa', 'verified']);
     Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update')->middleware(['auth', '2fa', 'verified']);
@@ -44,31 +44,24 @@ Route::group(['prefix' => 'profile'], function(){
 });
 
 // Settings -> 2FA
-Route::group(['prefix' => 'user'], function(){
+Route::group(['prefix' => 'auth'], function(){
     Route::post('/2fa/generate/secret', [App\Http\Controllers\LoginSecurityController::class, 'generate2faSecret'])->name('generate2faSecret');
     Route::post('/2fa/enable', [App\Http\Controllers\LoginSecurityController::class, 'enable2fa'])->name('enable2fa');
     Route::post('/2fa/disable', [App\Http\Controllers\LoginSecurityController::class, 'disable2fa'])->name('disable2fa');
-    Route::get('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'show2faFormTotp']);
+    Route::get('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'show2faFormTotp'])->name('scratch2fa');
     Route::post('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'totpValidate'])->name('totp2fa');
     Route::post('/2fa/generate/password', [App\Http\Controllers\LoginSecurityController::class, 'newPassword'])->name('newTotp2fa');
 
     // 2fa middleware
     Route::post('/2fa/validate', function () {
         return redirect(URL()->previous());
-    })->name('2faVerify')->middleware(['auth', '2fa', 'verified']);
+    })->name('2faVerify')->middleware('2fa');
 });
 
-Route::get('/user/2fa', function () {
-    return redirect('/home');
-})->middleware(['auth', '2fa', 'verified']);
-
-// Social providers
-Route::get('oauth/social/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
-Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
-
-// Pages
+// General routes
 Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', '2fa', 'verified'])->name('home');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users')->middleware(['auth', '2fa', 'verified']);
 Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view')->middleware(['auth', '2fa', 'verified']);
@@ -77,4 +70,10 @@ Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store
 Route::get('/mailable', function () {
     return new App\Mail\UserAuthentification();
 });
+
+// Social providers
+Route::get('oauth/social/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
+Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
+
+// Pages
 Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);

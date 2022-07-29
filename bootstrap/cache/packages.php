@@ -74,6 +74,28 @@
       0 => 'Barryvdh\\Elfinder\\ElfinderServiceProvider',
     ),
   ),
+  'biscolab/laravel-recaptcha' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
+    ),
+  ),
+  'bkwld/croppa' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Bkwld\\Croppa\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Croppa' => 'Bkwld\\Croppa\\Facade',
+    ),
+  ),
   'creativeorange/gravatar' => 
   array (
     'providers' => 
@@ -146,6 +168,17 @@
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
+  'laravel/socialite' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Socialite' => 'Laravel\\Socialite\\Facades\\Socialite',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -174,6 +207,24 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'overtrue/laravel-follow' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Overtrue\\LaravelFollow\\FollowServiceProvider',
+    ),
+  ),
+  'pragmarx/google2fa-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'PragmaRX\\Google2FALaravel\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Google2FA' => 'PragmaRX\\Google2FALaravel\\Facade',
+    ),
+  ),
   'prologue/alerts' => 
   array (
     'providers' => 
@@ -183,6 +234,13 @@
     'aliases' => 
     array (
       'Alert' => 'Prologue\\Alerts\\Facades\\Alert',
+    ),
+  ),
+  'socialiteproviders/manager' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'SocialiteProviders\\Manager\\ServiceProvider',
     ),
   ),
   'spatie/laravel-backup' => 
@@ -197,6 +255,17 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'torann/geoip' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Torann\\GeoIP\\GeoIPServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'GeoIP' => 'Torann\\GeoIP\\Facades\\GeoIP',
     ),
   ),
 );

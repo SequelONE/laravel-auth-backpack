@@ -22,26 +22,29 @@ class LoginSecurityController extends Controller
         $this->middleware('auth');
     }
 
+    public function user() {
+        return Auth::user();
+    }
+
     /**
      * Show 2FA Setting form
      */
     public function show2faForm(Request $request){
-        $user = Auth::user();
         $google2fa_url = "";
         $secret_key = "";
 
-        if($user->loginSecurity()->exists()){
+        if($this->user()->loginSecurity()->exists()){
             $google2fa = (new \PragmaRX\Google2FAQRCode\Google2FA());
             $google2fa_url = $google2fa->getQRCodeInline(
                 Setting::get('company_name'),
-                $user->email,
-                $user->loginSecurity->two_factor_auth_secret
+                $this->user()->email,
+                $this->user()->loginSecurity->google2fa_secret
             );
-            $secret_key = $user->loginSecurity->two_factor_auth_secret;
+            $secret_key = $this->user()->loginSecurity->google2fa_secret;
         }
 
         $data = array(
-            'user' => $user,
+            'user' => $this->user(),
             'secret' => $secret_key,
             'google2fa_url' => $google2fa_url
         );
@@ -53,15 +56,14 @@ class LoginSecurityController extends Controller
      * Generate 2FA secret key
      */
     public function generate2faSecret(Request $request){
-        $user = Auth::user();
         // Initialise the 2FA class
         $google2fa = (new \PragmaRX\Google2FAQRCode\Google2FA());
 
         // Add the secret key to the registration data
-        $login_security = LoginSecurity::firstOrNew(array('user_id' => $user->id));
-        $login_security->user_id = $user->id;
-        $login_security->two_factor_auth_enable = 0;
-        $login_security->two_factor_auth_secret = $google2fa->generateSecretKey(64);
+        $login_security = LoginSecurity::firstOrNew(array('user_id' => $this->user()->id));
+        $login_security->user_id = $this->user()->id;
+        $login_security->google2fa_enable = 0;
+        $login_security->google2fa_secret = $google2fa->generateSecretKey(64);
         $login_security->save();
 
         return redirect('/profile/2fa')->with('success', trans('profile.secretKeyGenerated'));
@@ -71,11 +73,10 @@ class LoginSecurityController extends Controller
      * Enable 2FA
      */
     public function enable2fa(Request $request){
-        $user = Auth::user();
         $google2fa = (new \PragmaRX\Google2FAQRCode\Google2FA());
 
         $secret = $request->input('secret');
-        $valid = $google2fa->verifyKey($user->loginSecurity->two_factor_auth_secret, $secret);
+        $valid = $google2fa->verifyKey($this->user()->loginSecurity->google2fa_secret, $secret);
 
         // Initialise the Recovery Codes 2FA class
         $recovery = (new \PragmaRX\Recovery\Recovery());
@@ -83,16 +84,16 @@ class LoginSecurityController extends Controller
 
         foreach($codes as $code) {
             // Add the secret key to the registration data
-            $recovery_codes = RecoveryCode::firstOrNew(array('user_id' => $user->id));
-            $recovery_codes->user_id = $user->id;
+            $recovery_codes = RecoveryCode::firstOrNew(array('user_id' => $this->user()->id));
+            $recovery_codes->user_id = $this->user()->id;
             $recovery_codes->code = Base32::encode($code);
             $recovery_codes->status = 1;
             $recovery_codes->save();
         }
 
         if($valid){
-            $user->loginSecurity->two_factor_auth_enable = 1;
-            $user->loginSecurity->save();
+            $this->user()->loginSecurity->google2fa_enable = 1;
+            $this->user()->loginSecurity->save();
             return redirect('/profile/2fa')->with('success', trans('profile.2faEnabled', ['code' => $code]));
         }else{
             return redirect('/profile/2fa')->with('error', trans('profile.invalidCode'));
@@ -103,7 +104,7 @@ class LoginSecurityController extends Controller
      * Disable 2FA
      */
     public function disable2fa(Request $request){
-        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+        if (!(Hash::check($request->get('current-password'), $this->user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error", trans('profile.passwordDoesNotMatch'));
         }
@@ -111,9 +112,8 @@ class LoginSecurityController extends Controller
         $validatedData = $request->validate([
             'current-password' => 'required',
         ]);
-        $user = Auth::user();
-        $user->loginSecurity->two_factor_auth_enable = 0;
-        $user->loginSecurity->save();
+        $this->user()->loginSecurity->google2fa_enable = 0;
+        $this->user()->loginSecurity->save();
         return redirect('/profile/2fa')->with('success', trans('profile.2faDisabled'));
     }
 
@@ -132,24 +132,22 @@ class LoginSecurityController extends Controller
             'code' => 'required',
         ]);
 
-        $user = Auth::user();
-
-        $recoveryCodes = RecoveryCode::findOrFail(array('user_id' => $user->id));
+        $recoveryCodes = RecoveryCode::findOrFail(array('user_id' => $this->user()->id));
         foreach($recoveryCodes as $rc) {
             $code = $rc->code;
             $status = $rc->status;
         }
 
         if (Base32::encode($request->code) === $code && $status === 1) {
-            $recCode = RecoveryCode::firstOrNew(array('user_id' => $user->id));
+            $recCode = RecoveryCode::firstOrNew(array('user_id' => $this->user()->id));
             $recCode->status = 0;
             $recCode->save();
 
-            $user->loginSecurity->two_factor_auth_enable = 0;
-            $user->loginSecurity->save();
+            $this->user()->loginSecurity->google2fa_enable = 0;
+            $this->user()->loginSecurity->save();
             return redirect('/profile/2fa');
         } else {
-            return redirect('/user/2fa/scratch')->with('error', trans('profile.totpIncorrect'));
+            return redirect('/auth/2fa/scratch')->with('error', trans('profile.totpIncorrect'));
         }
     }
 
@@ -157,18 +155,17 @@ class LoginSecurityController extends Controller
      * Generate new one time password
      */
     public function newPassword(Request $request) {
-        $user = Auth::user();
         // Initialise the Recovery Codes 2FA class
         $recovery = (new \PragmaRX\Recovery\Recovery());
         $codes = $recovery->setCount(1)->setBlocks(1)->setChars(8)->toArray();
 
-        $user->loginSecurity->two_factor_auth_enable = 1;
-        $user->loginSecurity->save();
+        $this->user()->loginSecurity->google2fa_enable = 1;
+        $this->user()->loginSecurity->save();
 
         foreach($codes as $code) {
             // Add the secret key to the registration data
-            $recovery_codes = RecoveryCode::firstOrNew(array('user_id' => $user->id));
-            $recovery_codes->user_id = $user->id;
+            $recovery_codes = RecoveryCode::firstOrNew(array('user_id' => $this->user()->id));
+            $recovery_codes->user_id = $this->user()->id;
             $recovery_codes->code = Base32::encode($code);
             $recovery_codes->status = 1;
             $recovery_codes->save();

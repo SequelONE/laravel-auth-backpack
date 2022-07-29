@@ -11,8 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use PragmaRX\Google2FALaravel\Google2FA;
 
 class LoginController extends Controller
 {
@@ -57,9 +59,26 @@ class LoginController extends Controller
     {
         if($request->user()->ip !== request()->ip()) {
             Mail::to($request->user())->send(new UserAuthentification());
+            return redirect()->intended($this->redirectTo);
         }
 
-        return redirect('/profile');
+        return redirect("login")->withSuccess('Oppes! Invalid credentials');
+    }
+
+    /**
+     * Log out account user.
+     *
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function perform()
+    {
+        Session::flush();
+
+        Google2FA::logout();
+
+        Auth::logout();
+
+        return redirect('login');
     }
 
 }

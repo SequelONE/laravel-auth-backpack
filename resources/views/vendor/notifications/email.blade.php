@@ -6,17 +6,12 @@
 @if ($level === 'error')
 # {{ trans('mail.whoops') }}
 @else
-# {{ trans('mail.hello') }}, @if(Auth::check() === true) {{ Auth::user()->name }} @else @php $user = \App\Models\User::where('email', request()->post('email'))->first(); @endphp {{ $user->name }} @endif!
+# {{ trans('mail.hello') }}@if(Auth::check() === true), {{ Auth::user()->name }} @endif!
 @endif
 @endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
-    {!! $line !!}
-@endforeach
-
-{{-- Outro Lines --}}
-@foreach ($outroLines as $line)
     {!! $line !!}
 @endforeach
 
@@ -36,6 +31,11 @@
 {{ $actionText }}
 @endcomponent
 @endisset
+
+{{-- Outro Lines --}}
+@foreach ($outroLines as $line)
+    {!! $line !!}
+@endforeach
 
 {{-- Salutation --}}
 @if (! empty($salutation))

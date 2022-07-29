@@ -25,8 +25,8 @@
     <div class="container">
         <div class="row justify-content-md-center">
 			<div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ trans('profile.2fa') }}</div>
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">{{ trans('profile.2fa') }}</div>
                     <div class="card-body">
 
                         @if ($errors->any())
@@ -40,20 +40,100 @@
                         @endif
 
                         <p>{{ trans('profile.2faGoogleAuthenticator') }}:</p>
-                        <form class="form-horizontal" action="{{ route('2faVerify') }}" method="POST">
-                            {{ csrf_field() }}
+                        <form class="form-horizontal" action="{{ route('2faVerify') }}" method="POST" id="sing_in_two_steps_form">
+                            @csrf
 							<div class="otp">
 								<div class="form-group{{ $errors->has('one_time_password-code') ? ' has-error' : '' }}">
 									<label for="one_time_password" class="control-label">{{ trans('profile.2faTotp') }}</label>
-									<input id="one_time_password" name="one_time_password" class="form-control col-md-4"  type="text"/>
+                                    <div class="row">
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_1" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_2" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_3" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_4" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_5" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                        <div class="col-2 col-lg-1 col-md-1">
+                                            <input type="text" name="code_6" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control border-primary bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2" value="" inputmode="text">
+                                        </div>
+                                    </div>
+									<input id="one_time_password" name="one_time_password" class="form-control col-md-4"  type="hidden"/>
 								</div>
 							</div>
-                            <button class="btn btn-primary" type="submit">{{ trans('profile.2faAuthenticate') }}</button>
-							<a class="btn" href="/user/2fa/scratch">{{ trans('profile.2faTotp') }}</a>
+                            <button class="btn btn-primary" type="submit" id="2faAuth">
+                                <i class="fa-solid fa-lock"></i> {{ trans('profile.2faAuthenticate') }}
+                            </button>
+							<a class="btn btn-link" href="{{ route('scratch2fa') }}">{{ trans('profile.2faTotp') }}</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascripts')
+    <script>
+        let form = document.querySelector("form#sing_in_two_steps_form");
+
+        let input1 = form.querySelector("[name=code_1]");
+        let input2 = form.querySelector("[name=code_2]");
+        let input3 = form.querySelector("[name=code_3]");
+        let input4 = form.querySelector("[name=code_4]");
+        let input5 = form.querySelector("[name=code_5]");
+        let input6 = form.querySelector("[name=code_6]");
+
+        input1.focus();
+
+        input1.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input2.focus();
+            }
+        });
+
+        input2.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input3.focus();
+            }
+        });
+
+        input3.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input4.focus();
+            }
+        });
+
+        input4.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input5.focus();
+            }
+        });
+
+        input5.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input6.focus();
+            }
+        });
+
+        input6.addEventListener("keyup", function() {
+            if (this.value.length === 1) {
+                input6.blur();
+
+                form.one_time_password.value = input1.value + input2.value + input3.value + input4.value + input5.value + input6.value;
+
+                document.getElementById('2faAuth').click();
+                document.getElementById('2faAuth').disabled = true;
+                document.getElementById('2faAuth').innerHTML = '';
+                document.getElementById('2faAuth').innerHTML += '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="visually-hidden">{{ trans('profile.loading') }}</span> {{ trans('profile.2faAuthenticate') }}';
+            }
+        });
+    </script>
 @endsection

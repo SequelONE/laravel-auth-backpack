@@ -39,7 +39,7 @@
                     <div class="card-body">
                         @if($data['user']->loginSecurity === null)
                             <form class="form-horizontal" method="POST" action="{{ route('generate2faSecret') }}">
-                                {{ csrf_field() }}
+                                @csrf
                                 <div class="form-group">
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-primary">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                             </form>
-                        @elseif(!$data['user']->loginSecurity->two_factor_auth_enable)
+                        @elseif(!$data['user']->loginSecurity->google2fa_enable)
                             <ol>
                                 <li>
                                     <p>{{ trans('profile.2faScanQRCode') }}:</p>
@@ -88,7 +88,7 @@
                                     </form>
                                 </li>
                             </ol>
-                        @elseif($data['user']->loginSecurity->two_factor_auth_enable)
+                        @elseif($data['user']->loginSecurity->google2fa_enable)
                             <div class="alert alert-success">
                                 {!! trans('profile.2faEnableInAccount') !!}
                             </div>
