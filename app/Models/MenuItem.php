@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 
 class MenuItem extends Model
 {
     use CrudTrait;
+    use HasTranslations;
 
     protected $table = 'menu_items';
-    protected $fillable = ['name', 'type', 'link', 'alias', 'page_id', 'parent_id', 'status'];
+    protected $fillable = ['name', 'title', 'type', 'link', 'alias', 'page_id', 'parent_id', 'status'];
+    protected $translatable = ['title'];
 
     public function parent()
     {

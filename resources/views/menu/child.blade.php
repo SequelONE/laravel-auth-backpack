@@ -1,6 +1,6 @@
 <li>
     <a class="dropdown-item{{ (url()->current() === $child->url()) ? ' active ' : '' }}" href="{{ $child->url() }}">
-        {{ $child->name }}
+        {{ $child->title }}
     </a>
     @if ($child->children->count() !== 0)
         <ul class="submenu dropdown-menu" aria-labelledby="dropdownMenuReference">

@@ -41,6 +41,11 @@ class MenuItemCrudController extends CrudController
                 'label' => 'Label',
             ]);
             $this->crud->addField([
+                'name' => 'title',
+                'label' => 'Title',
+                'type' => 'text',
+            ]);
+            $this->crud->addField([
                 'label' => 'Parent',
                 'type' => 'select',
                 'name' => 'parent_id',
