@@ -14,4 +14,9 @@ return [
     'backups' => 'Backups',
     'logs' => 'Logs',
     'clearCache' => 'Clear cache',
+	
+	// Pages
+    'general' => 'General',
+    'seo' => 'SEO',
+    'introtext' => 'Introtext',
 ];
