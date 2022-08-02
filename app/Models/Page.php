@@ -31,9 +31,7 @@ class Page extends Model
     // protected $dates = [];
     protected $translatable = ['title', 'introtext', 'content', 'extras'];
     protected $fakeColumns = ['extras'];
-    protected $casts = [
-        'extras' => 'array',
-    ];
+    //protected $casts = [];
 
     /**
      * Return the sluggable configuration array for this model.
