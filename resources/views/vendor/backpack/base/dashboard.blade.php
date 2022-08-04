@@ -43,7 +43,7 @@
                             <strong>PHP</strong>: ' . phpversion() .'<br />
                             <strong>Laravel</strong>: ' . App::VERSION() . '<br />
                             <strong>Backpack</strong>: ' . strtok(\PackageVersions\Versions::getVersion('backpack/crud'), '@') . '<br />
-                            <strong>Backpack PRO</strong>: ' . backpack_pro_version() . '
+                            <strong>Backpack PRO</strong>: ' . strtok(backpack_pro_version(), '@') . '
                         ',
                     ]
                 ],
