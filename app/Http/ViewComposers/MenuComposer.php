@@ -11,6 +11,7 @@ class MenuComposer
     {
         $items = MenuItem::whereNull('parent_id')
             ->with('children')
+			->orderBy('lft')
             ->get();
 
         return $view->with('items', $items);
