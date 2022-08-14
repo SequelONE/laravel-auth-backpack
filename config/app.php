@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        PragmaRX\Google2FALaravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,7 +230,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        
+        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
     ],
 
 ];

@@ -1,5 +1,5 @@
 <li>
-    <a class="dropdown-item{{ (url()->current() === $child->url()) ? ' active ' : '' }}" href="{{ $child->url() }}">
+    <a class="dropdown-item{{ (url()->current() === $child->url()) ? ' active ' : '' }}" href="{{ LaravelLocalization::localizeUrl($child->url()) }}">
         {{ $child->title }}
     </a>
     @if ($child->children->count() !== 0)

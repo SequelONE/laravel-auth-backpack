@@ -18,66 +18,72 @@ use App\Http\Controllers\Auth\SocialLoginController;
 |
 */
 
-// Auth
-Auth::routes();
-Route::get('/email/verify', function () {
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+    // Auth
+    Auth::routes();
+    Route::get('/email/verify', function () {
+        return view('auth.verify');
+    })->middleware('auth')->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
 
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
 
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+        return back()->with('message', 'Verification link sent!');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
-Route::group(['middleware' => ['auth', '2fa', 'verified']], function()
-{
-    // Profile
-    Route::group(['prefix' => 'profile'], function(){
-        Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile');
-        Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update');
-        Route::post('/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update');
-        Route::post('/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete');
+    Route::group(['middleware' => ['auth', '2fa', 'verified']], function()
+    {
+        // Profile
+        Route::group(['prefix' => 'profile'], function(){
+            Route::get('/', [App\Http\Controllers\Auth\UserController::class, 'profile'])->name('profile');
+            Route::post('/update',[App\Http\Controllers\Auth\UserController::class, 'profileUpdate'])->name('profile.update');
+            Route::post('/avatar/update', [App\Http\Controllers\Auth\UserController::class, 'uploadCropImage'])->name('profile.avatar.update');
+            Route::post('/avatar/delete', [App\Http\Controllers\Auth\UserController::class, 'deleteImage'])->name('profile.avatar.delete');
+        });
+
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users');
+        Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view');
+        Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow');
     });
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/users', [App\Http\Controllers\Auth\UserController::class, 'users'])->name('users');
-    Route::get('/user/{id}', [App\Http\Controllers\Auth\UserController::class, 'user'])->name('user.view');
-    Route::post('/user/follow', [App\Http\Controllers\Auth\UserController::class, 'followUserRequest'])->name('follow');
+    // Settings -> 2FA
+    Route::group(['prefix' => 'auth'], function(){
+        Route::post('/2fa/generate/secret', [App\Http\Controllers\LoginSecurityController::class, 'generate2faSecret'])->name('generate2faSecret');
+        Route::post('/2fa/enable', [App\Http\Controllers\LoginSecurityController::class, 'enable2fa'])->name('enable2fa');
+        Route::post('/2fa/disable', [App\Http\Controllers\LoginSecurityController::class, 'disable2fa'])->name('disable2fa');
+        Route::get('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'show2faFormTotp'])->name('scratch2fa');
+        Route::post('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'totpValidate'])->name('totp2fa');
+        Route::post('/2fa/generate/password', [App\Http\Controllers\LoginSecurityController::class, 'newPassword'])->name('newTotp2fa');
+
+        // 2fa middleware
+        Route::post('/2fa/validate', function () {
+            return redirect(URL()->previous());
+        })->name('2faVerify')->middleware('2fa');
+    });
+
+    // General routes
+    Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
+    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
+    Route::get('/profile/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
+    Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
+    Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store'])->name('contacts');
+    Route::get('/mailable', function () {
+        return new App\Mail\UserAuthentification();
+    });
+
+    // Social providers
+    Route::get('oauth/social/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
+    Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
+
+    // Pages
+    Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);
 });
-
-// Settings -> 2FA
-Route::group(['prefix' => 'auth'], function(){
-    Route::post('/2fa/generate/secret', [App\Http\Controllers\LoginSecurityController::class, 'generate2faSecret'])->name('generate2faSecret');
-    Route::post('/2fa/enable', [App\Http\Controllers\LoginSecurityController::class, 'enable2fa'])->name('enable2fa');
-    Route::post('/2fa/disable', [App\Http\Controllers\LoginSecurityController::class, 'disable2fa'])->name('disable2fa');
-    Route::get('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'show2faFormTotp'])->name('scratch2fa');
-    Route::post('/2fa/scratch', [App\Http\Controllers\LoginSecurityController::class, 'totpValidate'])->name('totp2fa');
-    Route::post('/2fa/generate/password', [App\Http\Controllers\LoginSecurityController::class, 'newPassword'])->name('newTotp2fa');
-
-    // 2fa middleware
-    Route::post('/2fa/validate', function () {
-        return redirect(URL()->previous());
-    })->name('2faVerify')->middleware('2fa');
-});
-
-// General routes
-Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
-Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
-Route::get('/profile/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
-Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
-Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store'])->name('contacts');
-Route::get('/mailable', function () {
-    return new App\Mail\UserAuthentification();
-});
-
-// Social providers
-Route::get('oauth/social/provider/{provider}/callback',[SocialLoginController::class,'providerCallback']);
-Route::get('oauth/social/provider/{provider}',[SocialLoginController::class,'redirectToProvider'])->name('social.redirect');
-
-// Pages
-Route::get('{page}', [App\Http\Controllers\PageController::class, 'index'])->name('page')->where(['page' => '^(.*)$']);
