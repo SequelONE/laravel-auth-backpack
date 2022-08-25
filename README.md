@@ -10,6 +10,8 @@ Localization of all routes is present. Make a multilingual website from scratch.
 
 PHP >= 7.3 and Laravel >= 8 support.
 
+Demonstration: [S01](https://s01.one)
+
 ## Installation
 
 Clone the repository to your server directory:

@@ -12,7 +12,7 @@ class MenuItem extends Model
     use HasTranslations;
 
     protected $table = 'menu_items';
-    protected $fillable = ['name', 'title', 'type', 'link', 'alias', 'page_id', 'parent_id', 'status'];
+    protected $fillable = ['name', 'title', 'type', 'link', 'alias', 'page_id', 'parent_id', 'context_id', 'status'];
     protected $translatable = ['title'];
 
     public function parent()
@@ -28,6 +28,11 @@ class MenuItem extends Model
     public function page()
     {
         return $this->belongsTo('App\Models\Page', 'page_id');
+    }
+
+    public function context()
+    {
+        return $this->belongsTo('App\Models\Context', 'context_id');
     }
 
     /**

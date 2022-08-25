@@ -12,11 +12,11 @@ class CacheCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    
+
     public function cachePurge()
     {
-        \Alert::add('success', '<i class="nav-icon la la-trash"></i> All cache clear')->flash();
-        Artisan::call('optimize');
+        \Alert::add('success', '<i class="nav-icon la la-trash"></i> ' . trans('admin.cacheCleared'))->flash();
+        Artisan::call('optimize:clear');
 
         return redirect()->back();
     }

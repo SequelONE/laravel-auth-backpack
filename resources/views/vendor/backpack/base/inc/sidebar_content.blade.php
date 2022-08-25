@@ -5,6 +5,7 @@
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-pencil-square-o"></i> {{ trans('admin.content') }}</a>
     <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('context') }}'><i class='nav-icon la la-globe'></i> <span>{{ trans('admin.contexts') }}</span></a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('page') }}'><i class='nav-icon la la-file-o'></i> <span>{{ trans('admin.pages') }}</span></a></li>
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('menu-item') }}'><i class='nav-icon la la-list'></i> <span>{{ trans('admin.menu') }}</span></a></li>
     </ul>

@@ -4,6 +4,7 @@ return [
     // Menu
     'packages' => 'Пакеты',
     'content' => 'Содержимое',
+    'contexts' => 'Контексты',
     'pages' => 'Страницы',
     'menu' => 'Меню',
     'users' => 'Пользователи',
@@ -14,6 +15,9 @@ return [
     'backups' => 'Резервные копии',
     'logs' => 'Логи',
     'clearCache' => 'Очистить кэш',
+
+    // Messages
+    'cacheCleared' => 'Весь кэш очищен',
 
     // Pages
     'general' => 'Основное',
