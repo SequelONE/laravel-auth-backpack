@@ -15,8 +15,15 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('locale')) {
-            App::setLocale(session()->get('locale'));
+        $string = $_SERVER['REQUEST_URI'];
+        $find   = config('backpack.base.route_prefix');
+        
+        $pos = strpos($string, $find);
+        
+        if($pos === 1) {
+            if (session()->has('locale')) {
+                App::setLocale(session()->get('locale'));
+            }
         }
         return $next($request);
     }
