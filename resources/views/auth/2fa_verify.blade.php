@@ -99,31 +99,39 @@
             }
         });
 
-        input2.addEventListener("keyup", function() {
+        input2.addEventListener("keyup", function(e) {
             if (this.value.length === 1) {
+                input3.focus();
+            } else if(e.keyCode == 8) {
+                input1.focus();
+            }
+        });
+
+        input3.addEventListener("keyup", function(e) {
+            if (this.value.length === 1) {
+                input4.focus();
+            } else if(e.keyCode == 8) {
+                input2.focus();
+            }
+        });
+
+        input4.addEventListener("keyup", function(e) {
+            if (this.value.length === 1) {
+                input5.focus();
+            } else if(e.keyCode == 8) {
                 input3.focus();
             }
         });
 
-        input3.addEventListener("keyup", function() {
+        input5.addEventListener("keyup", function(e) {
             if (this.value.length === 1) {
+                input6.focus();
+            } else if(e.keyCode == 8) {
                 input4.focus();
             }
         });
 
-        input4.addEventListener("keyup", function() {
-            if (this.value.length === 1) {
-                input5.focus();
-            }
-        });
-
-        input5.addEventListener("keyup", function() {
-            if (this.value.length === 1) {
-                input6.focus();
-            }
-        });
-
-        input6.addEventListener("keyup", function() {
+        input6.addEventListener("keyup", function(e) {
             if (this.value.length === 1) {
                 input6.blur();
 
@@ -133,6 +141,8 @@
                 document.getElementById('2faAuth').disabled = true;
                 document.getElementById('2faAuth').innerHTML = '';
                 document.getElementById('2faAuth').innerHTML += '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="visually-hidden">{{ trans('profile.loading') }}</span> {{ trans('profile.2faAuthenticate') }}';
+            } else if(e.keyCode == 8) {
+                input5.focus();
             }
         });
     </script>
