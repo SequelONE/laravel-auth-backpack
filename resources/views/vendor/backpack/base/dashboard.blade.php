@@ -14,7 +14,7 @@
                     'class'         => 'card bg-success text-white',
                     'content'    => [
                         'body'   => '
-                            <strong>Version</strong>: <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v1.0.0</a><br />
+                            <strong>Version</strong>: <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v1.0.4</a><br />
                             <strong>Website</strong>: <a class="text-white" href="https://sequel.one">sequel.one</a><br />
                             <strong>Docs</strong>: <a class="text-white" href="https://docs.sequel.one/v1.0/laravel-auth-backpack">docs.sequel.one</a><br />
                             <strong>Blog</strong>: <a class="text-white" href="https://blog.sequel.one">blog.sequel.one</a>
@@ -60,7 +60,7 @@
                 ],
             ],
         ]);
-        
+
         Widget::add([
             'type'        => 'jumbotron',
             'heading'     => 'Welcome!',
@@ -68,7 +68,7 @@
             'button_link' => route('logout'),
             'button_text' => 'Logout',
         ]);
-        
+
         Widget::add([
             'type'    => 'div',
             'class'   => 'row',
