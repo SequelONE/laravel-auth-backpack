@@ -74,6 +74,12 @@ php artisan db:seed
 ```phpregexp
 php artisan migrate:fresh --seed
 ```
+##### Context
+Added support for multi-domain through contexts. 
+
+After installing the seeders, it is necessary to change the default host to the host of your site in the admin panel in the contexts (http://localhost/admin/context) section.
+
+Pages linked to contexts will be displayed only on the specified subdomain or other domain. In the menu, items with the selected context are displayed only on are displayed only on a specific subdomain or domain.
 
 ##### Seeded Users
 

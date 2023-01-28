@@ -39,6 +39,11 @@ class Context extends Model
         return $this->hasMany('Backpack\MenuCRUD\app\Models\MenuItem');
     }
 
+    public function pages()
+    {
+        return $this->hasMany('Backpack\PageManager\app\Models\Page');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

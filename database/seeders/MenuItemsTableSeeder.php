@@ -24,6 +24,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 1,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1
                 ],
                 [
@@ -33,6 +34,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 2,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1
                 ],
                 [
@@ -42,6 +44,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 3,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -51,6 +54,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 4,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -60,6 +64,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 5,
                     'parent_id' => 4,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -69,6 +74,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 6,
                     'parent_id' => 4,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -78,6 +84,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 7,
                     'parent_id' => 4,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -87,6 +94,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 8,
                     'parent_id' => 4,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -96,6 +104,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 9,
                     'parent_id' => 4,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -105,6 +114,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 10,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -114,6 +124,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => 'users',
                     'page_id' => NULL,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 1,
                 ],
                 [
@@ -123,6 +134,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 11,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 0,
                 ],
                 [
@@ -132,6 +144,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 12,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 0,
                 ],
                 [
@@ -141,6 +154,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 13,
                     'parent_id' => NULL,
+                    'context_id' => 1,
                     'status' => 0,
                 ],
                 [
@@ -150,6 +164,7 @@ class MenuItemsTableSeeder extends Seeder
                     'link' => NULL,
                     'page_id' => 13,
                     'parent_id' => 9,
+                    'context_id' => 1,
                     'status' => 0,
                 ],
             ], ['name', 'title', 'type', 'link', 'link', 'page_id', 'parent_id', 'status']);

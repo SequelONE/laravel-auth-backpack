@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Context;
 use SequelONE\MenuCRUD\app\Models\MenuItem;
 
 class PageController extends Controller
 {
     public function welcome()
     {
-        $page = Page::where('slug', '/')->first();
+        $currentDomain = request()->getHttpHost();
+        $context = Context::where('subdomain', $currentDomain)->first();
 
-        if (!$page)
+        if($context !== null) {
+            $page = Page::where('slug', '/')->first();
+        } else {
+            abort(404, trans('page.backOnHomepage', ['url' => url('')]));
+        }
+
+        if (!$page || $page->context_id !== $context->id)
         {
             abort(404, trans('page.backOnHomepage', ['url' => url('')]));
         }
@@ -31,9 +39,16 @@ class PageController extends Controller
      */
     public function index($slug, $subs = null)
     {
-        $page = Page::findBySlug($slug);
+        $currentDomain = request()->getHttpHost();
+        $context = Context::where('subdomain', $currentDomain)->first();
 
-        if (!$page)
+        if($context !== null) {
+            $page = Page::findBySlug($slug);
+        } else {
+            abort(404, trans('page.backOnHomepage', ['url' => url('')]));
+        }
+
+        if (!$page || $page->context_id !== $context->id)
         {
             abort(404, trans('page.backOnHomepage', ['url' => url('')]));
         }

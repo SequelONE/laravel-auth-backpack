@@ -23,6 +23,7 @@ class CreatePagesTable extends Migration
             $table->json('extras')->nullable();
             $table->string('slug')->unique();
             $table->string('shortlink')->unique()->nullable();
+            $table->integer('context_id')->unsigned()->nullable();
             $table->tinyInteger('status')->default(1)->nullable();
             $table->timestamps();
             $table->softDeletes();

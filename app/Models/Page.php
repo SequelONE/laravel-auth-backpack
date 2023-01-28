@@ -75,6 +75,11 @@ class Page extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function context()
+    {
+        return $this->belongsTo('App\Models\Context', 'context_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

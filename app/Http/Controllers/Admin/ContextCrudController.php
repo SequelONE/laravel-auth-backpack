@@ -10,7 +10,6 @@ class ContextCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     public function setup()
     {
@@ -37,6 +36,17 @@ class ContextCrudController extends CrudController
                 'wrapper'   => [
                     'href' => function ($crud, $column, $entry, $related_key) {
                         return backpack_url('menu-item?context_id='.$entry->getKey());
+                    },
+                ],
+            ]);
+
+            $this->crud->addColumn([   // select_multiple: n-n relationship (with pivot table)
+                'label'     => 'Pages', // Table column heading
+                'type'      => 'relationship_count',
+                'name'      => 'pages', // the method that defines the relationship in your Model
+                'wrapper'   => [
+                    'href' => function ($crud, $column, $entry, $related_key) {
+                        return backpack_url('page?context_id='.$entry->getKey());
                     },
                 ],
             ]);
