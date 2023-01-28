@@ -67,12 +67,12 @@
                         <li class="nav-item dropdown">
                             <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . LaravelLocalization::getCurrentLocale() . '.svg')}}" class="border border-1 rounded-circle">
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                        <a class="dropdown-item" rel="alternate" id="navbarDropdown" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle"> {{ $properties['native'] }}</a>
-                                    @endforeach
-                                </div>
                             </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <a class="dropdown-item" rel="alternate" id="navbarDropdown" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle"> {{ $properties['native'] }}</a>
+                                @endforeach
+                            </div>
                         </li>
                         <!-- Authentication Links -->
                         @guest
