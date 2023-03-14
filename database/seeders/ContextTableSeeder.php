@@ -18,8 +18,8 @@ class ContextTableSeeder extends Seeder
             // Default Languages
             Context::upsert([
                 [
-                    'name' => 's01.one',
-                    'subdomain' => 's01.one',
+                    'name' => config('app.domain'),
+                    'subdomain' => config('app.domain'),
                     'active' => 1
                 ],
             ], ['name', 'subdomain', 'active']);
