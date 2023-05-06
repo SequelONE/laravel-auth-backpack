@@ -125,17 +125,6 @@
       'Assets' => 'DigitallyHappy\\Assets\\Facades\\Assets',
     ),
   ),
-  'facade/ignition' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
-    ),
-  ),
   'fruitcake/laravel-cors' => 
   array (
     'providers' => 
@@ -191,6 +180,17 @@
     'providers' => 
     array (
       0 => 'Laravel\\Ui\\UiServiceProvider',
+    ),
+  ),
+  'mcamara/laravel-localization' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'LaravelLocalization' => 'Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization',
     ),
   ),
   'nesbot/carbon' => 
@@ -255,6 +255,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'spatie/laravel-translatable' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\Translatable\\TranslatableServiceProvider',
     ),
   ),
   'torann/geoip' => 
