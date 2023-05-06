@@ -198,6 +198,7 @@ APP_KEY=
 APP_DEBUG=true
 APP_URL=http://localhost
 APP_LOG=daily
+APP_DOMAIN=localhost
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
