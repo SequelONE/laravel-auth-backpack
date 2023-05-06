@@ -10,11 +10,11 @@ Localization of all routes is present. Make a multilingual website from scratch.
 
 ## Laravel compatibility
 
-Laravel      | Laravel + Backpack 5 + Auth
-:-------------|:----------
-8.x (PHP version >= 7.4 required) | 1.0.x
-9.x (PHP version >= 8.0 required) | 2.0.x
-10.x (PHP version >= 8.1 required) | 3.0.x
+Laravel      | Backpack 5 | Auth
+:-------------|:----------|:----------
+8.x (PHP version >= 7.4 required)  | 5.x / 6.x | 1.0.x
+9.x (PHP version >= 8.0 required)  | 5.x / 6.x | 2.0.x
+10.x (PHP version >= 8.1 required) | 5.x / 6.x | 3.0.x
 
 Demonstration: [S01](https://s01.one)
 
