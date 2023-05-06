@@ -138,6 +138,11 @@ and
 php artisan backpack:install
 ```
 
+#### Install FileManager
+```phpregexp
+php artisan backpack:filemanager:install
+```
+
 ### Socialite
 
 #### Get Socialite Login API Keys:
