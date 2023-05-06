@@ -1,16 +1,16 @@
 <p align="center"><a href="https://sequel.one"><img src="https://s01.one/img/logo_slb_auth.png" alt="" /></a></p>
 
-# Laravel + Backpack 5 + Auth
+# Laravel + Backpack + Auth
 
 This build disables Backpack authentication and enables standard Laravel authentication methods. Authorization laravel/ui bootstrap is enabled by default. Account confirmation by email is also included. Authorization via social networks has also been added. The user's account can be protected using two-factor authentication.
 
-Also, an example of how Backpack 5 packages work on the frontend has been added to the assembly.
+Also, an example of how Backpack packages work on the frontend has been added to the assembly.
 
 Localization of all routes is present. Make a multilingual website from scratch.
 
 ## Laravel compatibility
 
-Laravel      | Backpack 5 | Auth
+Laravel      | Backpack | Auth
 :-------------|:----------|:----------
 8.x (PHP version >= 7.4 required)  | 5.x / 6.x | 1.0.x
 9.x (PHP version >= 8.0 required)  | 5.x / 6.x | 2.0.x
