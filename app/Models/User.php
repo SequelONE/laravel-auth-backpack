@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(LoginSecurity::class);
     }
 
-    public function abbr($input = 0) {
+    public static function abbr($input = 0) {
         $abbreviations = [12 => 'T', 9 => 'B', 6 => 'M', 3 => 'K', 0 => ''];
         foreach($abbreviations as $exponent => $abbreviation) {
             if($input >= (10 ** $exponent)) {
@@ -99,7 +99,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function border($count = 0) {
+    public static function border($count = 0) {
         $statuses = [
             15 => '10000000000000000',
             14 => '1000000000000000',

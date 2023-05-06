@@ -8,7 +8,14 @@ Also, an example of how Backpack 5 packages work on the frontend has been added 
 
 Localization of all routes is present. Make a multilingual website from scratch.
 
-PHP >= 7.3 and Laravel >= 8 support.
+## Laravel compatibility
+
+Laravel      | Laravel + Backpack 5 + Auth
+:-------------|:----------
+8.x (PHP version >= 7.4 required) | 1.0.x
+9.x (PHP version >= 8.0 required) | 2.0.x
+10.x (PHP version >= 8.1 required) | 3.0.x
+
 
 Demonstration: [S01](https://s01.one)
 
