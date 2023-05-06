@@ -12,11 +12,10 @@ Localization of all routes is present. Make a multilingual website from scratch.
 
 Laravel      | Backpack | Auth
 :-------------|:----------|:----------
-8.x (PHP version >= 7.4 required)  | 5.x | 1.0.x
+8.x (PHP version >= 7.3 required)  | 5.x | 1.0.x
 9.x (PHP version >= 8.0 required)  | 5.x | 2.0.x
 10.x (PHP version >= 8.1 required) | 5.x | 3.0.x
 10.x (PHP version >= 8.1 required) | 6.x | 4.0.x
-
 
 Demonstration: [S01](https://s01.one)
 
