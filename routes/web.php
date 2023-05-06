@@ -18,6 +18,8 @@ use App\Http\Controllers\Auth\SocialLoginController;
 |
 */
 
+Route::get('/{locale}/lang', [App\Http\Controllers\LocalizationController::class, 'index']);
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -74,7 +76,6 @@ Route::group(
     Route::get('/', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
     Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
     Route::get('/profile/2fa', [App\Http\Controllers\LoginSecurityController::class, 'show2faForm'])->name('profile.2fa')->middleware(['auth', 'verified']);
-    Route::get('/lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
     Route::post('/contacts',  [App\Http\Controllers\ContactController::class, 'store'])->name('contacts');
     Route::get('/mailable', function () {
         return new App\Mail\UserAuthentification();
