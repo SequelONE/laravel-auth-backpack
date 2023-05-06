@@ -1,25 +1,16 @@
 @php $locale = session()->get('locale'); @endphp
 <li class="nav-item dropdown pr-4">
-    <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        @switch($locale)
-            @case('en')
-            <img width="25" height="25" src="{{asset('assets/img/flags/1x1/gb.svg')}}" class="border border-1 rounded-circle"> English
-            @break
-            @case('de')
-            <img width="25" height="25" src="{{asset('assets/img/flags/1x1/de.svg')}}" class="border border-1 rounded-circle"> Deutsch
-            @break
-            @case('ru')
-            <img width="25" height="25" src="{{asset('assets/img/flags/1x1/ru.svg')}}" class="border border-1 rounded-circle"> Русский
-            @break
-            @default
-            <img width="25" height="25" src="{{asset('assets/img/flags/1x1/gb.svg')}}" class="border border-1 rounded-circle"> English
-        @endswitch
-        <span class="caret"></span>
+    @php
+        $array = config('laravellocalization.supportedLocales');
+        $currentLanguageName = $array[$locale]['native'];
+    @endphp
+    <a href="#" hreflang="{{ $locale }}" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        <img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $locale . '.svg')}}" class="border border-1 rounded-circle"> {{ $currentLanguageName }}
     </a>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="/lang/en"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/gb.svg')}}" class="border border-1 rounded-circle"> English</a>
-        <a class="dropdown-item" href="/lang/de"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/de.svg')}}" class="border border-1 rounded-circle"> Deutsch</a>
-        <a class="dropdown-item" href="/lang/ru"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/ru.svg')}}" class="border border-1 rounded-circle"> Русский</a>
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a class="dropdown-item" hreflang="{{ $localeCode }}" href="/{{ $localeCode }}/lang"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle"> {{ $properties['native'] }}</a>
+        @endforeach
     </div>
 </li>
 <li class="nav-item dropdown pr-4">
