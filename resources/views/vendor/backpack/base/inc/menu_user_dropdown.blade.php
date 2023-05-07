@@ -1,4 +1,4 @@
-@php $locale = session()->get('locale'); @endphp
+@php $locale = App::currentLocale(); @endphp
 <li class="nav-item dropdown pr-4">
     @php
         $array = config('laravellocalization.supportedLocales');

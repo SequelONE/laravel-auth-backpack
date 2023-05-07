@@ -23,6 +23,11 @@
 
 @section('content')
     <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                @include('alerts.flash')
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-12 col-md-3">
                 <div class="card border-primary">
@@ -31,7 +36,7 @@
                     </div>
 
                     <div class="card-body text-center">
-                        <img src="@if($user->avatar !== NULL) {{ $user->avatar }} @else {{ Gravatar::get($user->email) }} @endif" width="200" height="200" class="rounded-circle border border-1">
+                        <img src="@if($user->avatar !== NULL) {{ $user->avatar }} @else {{ Gravatar::get($user->email) }} @endif" width="200" height="200" class="img-fluid rounded-circle border border-1">
                     </div>
                 </div>
             </div>
@@ -53,12 +58,12 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="followers" role="tabpanel" aria-labelledby="followers-tab">
                                 <div class="row">
-                                    @include('users.userList', ['users'=>$user->followers()->get()])
+                                    @include('users.followers', ['users' => $user->followers()->with('followers')->get()])
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
                                 <div class="row">
-                                    @include('users.userList', ['users'=>$user->followings()->get()])
+                                    @include('users.followings', ['users' => $user->followings()->with('followable')->get()])
                                 </div>
                             </div>
                         </div>
@@ -75,22 +80,21 @@
             $('.action-follow').click(function(){
                 let user_id = $(this).data('id');
                 let cObj = $(this);
-                let c = $(this).parent("div").find(".tl-follower").text();
-
-                console.log(user_id);
+                let followers = $(this).parent("div").find(".tl-follower").text();
 
                 $.ajax({
                     type:'POST',
                     url:'/user/follow',
                     data:{"_token": "{{ csrf_token() }}", "user_id": user_id},
                     success: function(data) {
-                        console.log(data.success);
                         if(data.success === true){
                             cObj.find("strong").text("{{ trans('users.follow') }}");
-                            cObj.parent("div").find(".tl-follower").text(parseInt(c)-1);
+                            cObj.parent("div").find(".tl-follower").text(parseInt(followers)-1);
+                            $("div").find(".tl-following").text(parseInt(data.followings));
                         }else{
                             cObj.find("strong").text("{{ trans('users.unfollow') }}");
-                            cObj.parent("div").find(".tl-follower").text(parseInt(c)+1);
+                            cObj.parent("div").find(".tl-follower").text(parseInt(followers)+1);
+                            $("div").find(".tl-following").text(parseInt(data.followings));
                         }
                     }
                 });

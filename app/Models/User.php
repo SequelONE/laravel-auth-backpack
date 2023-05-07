@@ -13,13 +13,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Overtrue\LaravelFollow\Followable;
+use Overtrue\LaravelFollow\Traits\Followable;
+use Overtrue\LaravelFollow\Traits\Follower;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use CrudTrait; // <----- this
     use HasRoles; // <------ and this
-    use HasApiTokens, HasFactory, Notifiable, Followable;
+    use HasApiTokens, HasFactory, Notifiable;
+    use Followable;
+    use Follower;
 
     /**
      * The attributes that are mass assignable.
