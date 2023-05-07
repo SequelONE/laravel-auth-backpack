@@ -75,7 +75,7 @@
 @endsection
 
 @section('javascripts')
-    <script>
+    <script type="module">
         $(document).ready(function() {
             $('.action-follow').click(function(){
                 let user_id = $(this).data('id');
