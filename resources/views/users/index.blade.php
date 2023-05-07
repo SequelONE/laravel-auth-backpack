@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <div class="row">
                             @if(Auth::check() === true)
-                                @include('users.userList', ['users' => $users])
+                                @include('users.list', ['users' => $users])
                             @else
                                 <div class="alert alert-warning" role="alert">
                                     {{ trans('users.withoutAuth') }}
@@ -50,22 +50,21 @@
             $('.action-follow').click(function(){
                 let user_id = $(this).data('id');
                 let cObj = $(this);
-                let c = $(this).parent("div").find(".tl-follower").text();
-
-                console.log(user_id);
+                let followers = $(this).parent("div").find(".tl-follower").text();
 
                 $.ajax({
                     type:'POST',
                     url:'/user/follow',
                     data:{"_token": "{{ csrf_token() }}", "user_id": user_id},
                     success: function(data) {
-                        console.log(data.success);
                         if(data.success === true){
                             cObj.find("strong").text("{{ trans('users.follow') }}");
-                            cObj.parent("div").find(".tl-follower").text(parseInt(c)-1);
+                            cObj.parent("div").find(".tl-follower").text(parseInt(followers)-1);
+                            $("div").find(".tl-following").text(parseInt(data.followings));
                         }else{
                             cObj.find("strong").text("{{ trans('users.unfollow') }}");
-                            cObj.parent("div").find(".tl-follower").text(parseInt(c)+1);
+                            cObj.parent("div").find(".tl-follower").text(parseInt(followers)+1);
+                            $("div").find(".tl-following").text(parseInt(data.followings));
                         }
                     }
                 });
