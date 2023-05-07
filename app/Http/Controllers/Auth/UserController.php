@@ -33,13 +33,17 @@ class UserController extends Controller
     public function users()
     {
         $users = User::get();
-        return view('users.index', compact('users'));
+        $user = User::find(auth()->id());
+        return view('users.index', [
+            'users' => $users,
+            'user' => $user
+        ]);
     }
 
     public function user($id)
     {
         $user = User::find($id);
-        return view('users.usersView', compact('user'));
+        return view('users.view', compact('user'));
     }
 
     public function followUserRequest(Request $request){
@@ -48,6 +52,7 @@ class UserController extends Controller
         User::find(Auth::id())->toggleFollow($user);
 
         $isFollowing = User::find(Auth::id())->isFollowing($user);
+        $followings = User::find(Auth::id())->followings()->count();
 
 
         if($isFollowing !== true) {
@@ -56,7 +61,7 @@ class UserController extends Controller
             $status = false;
         }
 
-        return response()->json(['success' => $status]);
+        return response()->json(['success' => $status, 'followings' => $followings]);
     }
 
     /**
