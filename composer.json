@@ -19,7 +19,6 @@
         "biscolab/laravel-recaptcha": "^6.0",
         "bkwld/croppa": "^6.0",
         "christian-riesen/base32": "^1.6",
-<<<<<<< HEAD
         "creativeorange/gravatar": "1.0.23",
         "geoip2/geoip2": "^2.12",
         "guzzlehttp/guzzle": "^7.2",
@@ -29,17 +28,6 @@
         "laravel/ui": "^4.2",
         "mcamara/laravel-localization": "^1.8",
         "overtrue/laravel-follow": "^5.1",
-=======
-        "creativeorange/gravatar": "1.0.22",
-        "geoip2/geoip2": "^2.12",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7",
-        "laravel/ui": "^3.4",
-        "mcamara/laravel-localization": "^1.7",
-        "overtrue/laravel-follow": "^5.0",
->>>>>>> main
         "pragmarx/google2fa": "^8.0",
         "pragmarx/google2fa-laravel": "^2.0",
         "pragmarx/recovery": "^0.2.1",
