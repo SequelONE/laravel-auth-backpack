@@ -6,6 +6,17 @@
       0 => 'Backpack\\BackupManager\\BackupManagerServiceProvider',
     ),
   ),
+  'backpack/basset' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Backpack\\Basset\\BassetServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Basset' => 'Backpack\\Basset\\Facades\\Basset',
+    ),
+  ),
   'backpack/crud' => 
   array (
     'providers' => 
@@ -60,11 +71,39 @@
       0 => 'Backpack\\PermissionManager\\PermissionManagerServiceProvider',
     ),
   ),
+  'backpack/pro' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Backpack\\Pro\\AddonServiceProvider',
+    ),
+  ),
   'backpack/settings' => 
   array (
     'providers' => 
     array (
       0 => 'Backpack\\Settings\\SettingsServiceProvider',
+    ),
+  ),
+  'backpack/theme-coreuiv2' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Backpack\\ThemeCoreuiv2\\AddonServiceProvider',
+    ),
+  ),
+  'backpack/theme-coreuiv4' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Backpack\\ThemeCoreuiv4\\AddonServiceProvider',
+    ),
+  ),
+  'backpack/theme-tabler' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Backpack\\ThemeTabler\\AddonServiceProvider',
     ),
   ),
   'barryvdh/laravel-elfinder' => 
@@ -89,11 +128,11 @@
   array (
     'providers' => 
     array (
-      0 => 'Bkwld\\Croppa\\ServiceProvider',
+      0 => 'Bkwld\\Croppa\\CroppaServiceProvider',
     ),
     'aliases' => 
     array (
-      'Croppa' => 'Bkwld\\Croppa\\Facade',
+      'Croppa' => 'Bkwld\\Croppa\\Facades\\Croppa',
     ),
   ),
   'creativeorange/gravatar' => 
@@ -112,35 +151,6 @@
     'providers' => 
     array (
       0 => 'Cviebrock\\EloquentSluggable\\ServiceProvider',
-    ),
-  ),
-  'digitallyhappy/assets' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'DigitallyHappy\\Assets\\AssetsServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Assets' => 'DigitallyHappy\\Assets\\Facades\\Assets',
-    ),
-  ),
-  'facade/ignition' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
-    ),
-  ),
-  'fruitcake/laravel-cors' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
   'intervention/image' => 
@@ -218,6 +228,13 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'nunomaduro/termwind' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
   'overtrue/laravel-follow' => 
   array (
     'providers' => 
@@ -261,11 +278,33 @@
       0 => 'Spatie\\Backup\\BackupServiceProvider',
     ),
   ),
+  'spatie/laravel-ignition' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
   'spatie/laravel-permission' => 
   array (
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'spatie/laravel-signal-aware-command' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\SignalAwareCommand\\SignalAwareCommandServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Signal' => 'Spatie\\SignalAwareCommand\\Facades\\Signal',
     ),
   ),
   'spatie/laravel-translatable' => 

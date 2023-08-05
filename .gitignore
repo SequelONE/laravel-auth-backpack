@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /packages
 /auth.json
+/.github
