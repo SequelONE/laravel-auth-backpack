@@ -19,4 +19,4 @@
 <x-backpack::menu-item title="{{ trans('admin.settings') }}" icon="la la la-cog" :link="backpack_url('setting')" />
 <x-backpack::menu-item title="{{ trans('admin.backups') }}" icon="la la-hdd-o" :link="backpack_url('backup')" />
 <x-backpack::menu-item title="{{ trans('admin.logs') }}" icon="la la-terminal" :link="backpack_url('log')" />
-<li class='nav-item'><a class='btn btn-outline-warning btn-block' role="button" href='{{ backpack_url('purge') }}'><i class="nav-icon la la-trash"></i> <span>{{ trans('admin.clearCache') }}</span></a></li>
+<x-backpack::menu-item title="{{ trans('admin.clearCache') }}" class="btn btn-outline-warning btn-block" icon="la la-trash" :link="backpack_url('purge')" />

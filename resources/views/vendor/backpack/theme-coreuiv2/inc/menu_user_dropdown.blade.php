@@ -1,4 +1,24 @@
-@php $locale = App::currentLocale(); @endphp
+@php
+    $locale = App::currentLocale();
+    $currentTheme = config()->get('backpack.ui.view_namespace');
+    $theme = substr(str_replace('backpack.', '', $currentTheme),0,-2);
+    $themesArray = [
+        'theme-coreuiv2' => 'CoreUI v2',
+        'theme-coreuiv4' => 'CoreUI v4',
+        'theme-tabler' => 'Tabler',
+    ];
+    $currentThemeName = $themesArray[$theme];
+@endphp
+<li class="nav-item dropdown pr-4">
+    <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        {{ $currentThemeName }}
+    </a>
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        @foreach($themesArray as $themeKey => $themeName)
+            <a href="/{{ $themeKey }}/theme" class="dropdown-item">{{ $themeName }}</a>
+        @endforeach
+    </div>
+</li>
 <li class="nav-item dropdown pr-4">
     @php
         $array = config('laravellocalization.supportedLocales');

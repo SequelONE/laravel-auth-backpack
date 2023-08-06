@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -19,6 +18,7 @@ use App\Http\Controllers\Auth\SocialLoginController;
 */
 
 Route::get('/{locale}/lang', [App\Http\Controllers\LocalizationController::class, 'index']);
+Route::get('/{theme}/theme', [App\Http\Controllers\ThemesController::class, 'index']);
 
 Route::group(
     [
