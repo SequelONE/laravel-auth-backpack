@@ -24,7 +24,7 @@ class SettingsTableSeeder extends Seeder
             'key'         => 'logo',
             'name'        => 'Logo',
             'description' => 'Logo for website',
-            'value'       => 'img/logo.png',
+            'value'       => '/img/logo.png',
             'field'       => '{"name":"value","label":"Image","type":"upload","upload":true}',
             'active'      => 1,
 
@@ -33,7 +33,7 @@ class SettingsTableSeeder extends Seeder
             'key'         => 'favicon',
             'name'        => 'Favicon',
             'description' => 'Favicon for website',
-            'value'       => 'favicon.ico',
+            'value'       => '/favicon.ico',
             'field'       => '{"name":"value","label":"Favicon","type":"upload","upload":true}',
             'active'      => 1,
 

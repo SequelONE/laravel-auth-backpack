@@ -15,6 +15,10 @@ return [
     'backups' => 'Backups',
     'logs' => 'Ereignisprotokolle',
     'clearCache' => 'Cache leeren',
+    'news' => 'Nachrichten',
+    'articles' => 'Artikel',
+    'categories' => 'Ketegorien',
+    'tags' => 'Tags',
 
     // Messages
     'cacheCleared' => 'Der gesamte Cache ist gelöscht',
@@ -23,4 +27,18 @@ return [
     'general' => 'Allgemein',
     'seo' => 'SEO',
     'introtext' => 'Annotation',
+
+    // Dashboard
+    'version' => 'Version',
+    'website' => 'Webseite',
+    'docs' => 'Dokumentation',
+    'blog' => 'Blog',
+    'memory' => 'Memory',
+    'space' => 'Space',
+    'total-space' => 'Total space',
+    'free-space' => 'Free space',
+    'free-memory' => 'Freier Speicher',
+    'memory-usage' => 'Verwendeter Speicher',
+    'free-php-memory' => 'Freier PHP-Speicher',
+    'php-memory-usage' => 'Verwendeter PHP-Speicher',
 ];

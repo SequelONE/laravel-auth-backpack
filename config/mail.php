@@ -116,7 +116,7 @@ return [
     ],
 
     'body' => [
-        'top_logo'          => env('APP_URL', 'http://localhost/') . 'img/logo-white.png',
+        'top_logo'          => env('APP_URL', 'http://localhost/') . '/img/logo-white.png',
         'welcome_url'       => env('APP_URL', 'http://localhost/') . 'login',
         'street_address'    => '74706 Osterburken',
         'phone_number'      => '+49 (1514) 000-00-00',
@@ -124,9 +124,9 @@ return [
         'play_url'          => 'https://play.google.com',
         'ios_url'           => 'https://store.apple.com',
 
-        'icon_one'          => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-1_Icon-1.png',
-        'icon_two'          => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-5_Intro.png',
-        'icon_three'        => env('APP_URL', 'http://localhost/') . 'assets/img/emails/Email-3_Intro.png',
+        'icon_one'          => env('APP_URL', 'http://localhost/') . '/assets/img/emails/Email-1_Icon-1.png',
+        'icon_two'          => env('APP_URL', 'http://localhost/') . '/assets/img/emails/Email-5_Intro.png',
+        'icon_three'        => env('APP_URL', 'http://localhost/') . '/assets/img/emails/Email-3_Intro.png',
 
         // To remove from the email footer - make the value blank
         'facebook_url'      => 'https://facebook.com',

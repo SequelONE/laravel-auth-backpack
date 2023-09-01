@@ -1,35 +1,18 @@
 @php
     $locale = App::currentLocale();
-    $currentTheme = config()->get('backpack.ui.view_namespace');
-    $theme = substr(str_replace('backpack.', '', $currentTheme),0,-2);
-    $themesArray = [
-        'theme-coreuiv2' => 'CoreUI v2',
-        'theme-coreuiv4' => 'CoreUI v4',
-        'theme-tabler' => 'Tabler',
-    ];
-    $currentThemeName = $themesArray[$theme];
 @endphp
-<li class="nav-item dropdown pr-4">
-    <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        {{ $currentThemeName }}
-    </a>
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        @foreach($themesArray as $themeKey => $themeName)
-            <a href="/{{ $themeKey }}/theme" class="dropdown-item">{{ $themeName }}</a>
-        @endforeach
-    </div>
-</li>
+
 <li class="nav-item dropdown pr-4">
     @php
         $array = config('laravellocalization.supportedLocales');
         $currentLanguageName = $array[$locale]['native'];
     @endphp
     <a href="#" hreflang="{{ $locale }}" id="navbarDropdown" class="nav-link dropdown-toggle" @if(Auth::check() === true)style="padding: 15px" @endif role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        <img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $locale . '.svg')}}" class="border border-1 rounded-circle"> {{ $currentLanguageName }}
+        <img width="20" height="20" src="{{asset('assets/img/flags/1x1/' . $locale . '.svg')}}" class="border border-1 rounded-circle">
     </a>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <a class="dropdown-item" hreflang="{{ $localeCode }}" href="/{{ $localeCode }}/lang"><img width="25" height="25" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle"> {{ $properties['native'] }}</a>
+            <a class="dropdown-item" hreflang="{{ $localeCode }}" href="/{{ $localeCode }}/lang"><img width="20" height="20" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle"> {{ $properties['native'] }}</a>
         @endforeach
     </div>
 </li>

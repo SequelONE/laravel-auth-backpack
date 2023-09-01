@@ -1,24 +1,6 @@
 @php
     $locale = App::currentLocale();
-    $currentTheme = config()->get('backpack.ui.view_namespace');
-    $theme = substr(str_replace('backpack.', '', $currentTheme),0,-2);
-    $themesArray = [
-        'theme-coreuiv2' => 'CoreUI v2',
-        'theme-coreuiv4' => 'CoreUI v4',
-        'theme-tabler' => 'Tabler',
-    ];
-    $currentThemeName = $themesArray[$theme];
 @endphp
-<div class="nav-item dropdown">
-    <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Theme">
-        <i class="la la-free-code-camp me-2"></i>{{ $currentThemeName }}
-    </a>
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        @foreach($themesArray as $themeKey => $themeName)
-            <a href="/{{ $themeKey }}/theme" class="dropdown-item">{{ $themeName }}</a>
-        @endforeach
-    </div>
-</div>
 <div class="nav-item dropdown">
     @php
         $array = config('laravellocalization.supportedLocales');

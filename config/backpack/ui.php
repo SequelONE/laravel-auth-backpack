@@ -2,12 +2,6 @@
 
 return [
 
-    // IMPORTANT NOTE: The configurations here get overriden by theme config files.
-    //
-    // Eg. If you're using theme-tabler and config/backpack/theme-tabler.php
-    // has "breadcrumbs" set as false, then THAT value will be used instead
-    // of the value in this file.
-
     /*
     |--------------------------------------------------------------------------
     | Theme (User Interface)
@@ -18,8 +12,8 @@ return [
     // and choosing that view_namespace instead of the default one. Backpack will load a file from there
     // if it exists, otherwise it will load it from the fallback namespace.
 
-    'view_namespace' => 'backpack.theme-coreuiv2::',
-    'view_namespace_fallback' => 'backpack.theme-coreuiv2::',
+    'view_namespace'          => 'backpack.theme-tabler::',
+    'view_namespace_fallback' => 'backpack.theme-tabler::',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +100,7 @@ return [
     // CSS files that are loaded in all pages, using Laravel's @vite() helper
     // Please note that support for Vite was added in Laravel 9.19. Earlier versions are not able to use this feature.
     'vite_styles' => [ // resource file_path
-        // 'resources/css/app.css',
+        // 'resources/css/app.css' => '',
     ],
 
     // --------------
@@ -129,36 +123,6 @@ return [
     // JS files that are loaded in all pages, using Laravel's @vite() helper
     'vite_scripts' => [ // resource file_path
         // 'resources/js/app.js',
-    ],
-
-    'classes' => [
-        /**
-         * Use this as fallback config for themes to pass classes to the table displayed in List Operation
-         * It defaults to: "table table-striped table-hover nowrap rounded card-table table-vcenter card-table shadow-xs border-xs".
-         */
-        'table' => null,
-
-        /**
-         * Use this as fallback config for themes to pass classes to the table wrapper component displayed in List Operation.
-         */
-        'tableWrapper' => null,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Theme (User Interface)
-    |--------------------------------------------------------------------------
-    */
-
-    // EXAMPLE: if you create a new folder in resources/views/vendor/myname/mypackage,
-    // your namespace would be the one below. IMPORTANT: in this case the namespace ends with a dot.
-    // 'view_namespace' => 'vendor.myname.mypackage.',
-
-    // Tell Backpack to look in more places for component views (like widgets)
-    'component_view_namespaces' => [
-        'widgets' => [
-            'backpack::widgets', // falls back to 'resources/views/vendor/backpack/base/widgets'
-        ],
     ],
 
 ];

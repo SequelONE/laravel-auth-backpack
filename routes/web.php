@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\SocialLoginController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,6 @@ use App\Http\Controllers\Auth\SocialLoginController;
 */
 
 Route::get('/{locale}/lang', [App\Http\Controllers\LocalizationController::class, 'index']);
-Route::get('/{theme}/theme', [App\Http\Controllers\ThemesController::class, 'index']);
 
 Route::group(
     [
