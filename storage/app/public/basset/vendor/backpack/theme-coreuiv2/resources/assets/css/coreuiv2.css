@@ -1,0 +1,40 @@
+
+#crudTable_wrapper #crudTable .crud_bulk_actions_checkbox input.form-check-input,
+#crudTable_wrapper table.dataTable .crud_bulk_actions_checkbox input.form-check-input {
+    position: relative;
+    margin: 0 auto;
+}
+
+#crudTable {
+    background-color: #FFFFFF !important;
+}
+
+h1[bp-section=page-heading] {
+    font-size: 2rem;
+    line-height: 2.1rem;
+}
+
+
+.container-repeatable-elements .controls button {
+    background-color: #e8ebf0 !important;
+    height: 24px !important;
+    width: 24px !important;
+    margin-left: 4px!important;
+}
+
+.container-repeatable-elements .controls {
+    left: -16px !important;
+}
+
+.sidebar.sidebar-pills .nav-dropdown .nav-link:not(.nav-dropdown-toggle),
+.sidebar.sidebar-pills .nav-dropdown .nav-title {
+    padding-left: 1.5rem;
+}
+
+.alert > ul {
+    margin-bottom: 0;
+}
+
+#datatable_search_stack .input-icon-addon {
+    display: none;
+}

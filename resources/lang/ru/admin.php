@@ -2,6 +2,7 @@
 
 return [
     // Menu
+    'dashboard' => 'Панель управления',
     'packages' => 'Пакеты',
     'content' => 'Содержимое',
     'contexts' => 'Контексты',
@@ -15,6 +16,12 @@ return [
     'backups' => 'Резервные копии',
     'logs' => 'Логи',
     'clearCache' => 'Очистить кэш',
+    'news' => 'Новости',
+    'articles' => 'Статьи',
+    'categories' => 'Категории',
+    'tags' => 'Теги',
+    'system' => 'Система',
+    'activity-logs' => 'Журнал активности',
 
     // Messages
     'cacheCleared' => 'Весь кэш очищен',
@@ -23,4 +30,18 @@ return [
     'general' => 'Основное',
     'seo' => 'SEO',
     'introtext' => 'Краткое содержание',
+
+    // Dashboard
+    'version' => 'Версия',
+    'website' => 'Веб-сайт',
+    'docs' => 'Документация',
+    'blog' => 'Блог',
+    'memory' => 'Память',
+    'space' => 'Место',
+    'total-space' => 'Всего места',
+    'free-space' => 'Свободного места',
+    'free-memory' => 'Свободная память',
+    'memory-usage' => 'Используемая память',
+    'free-php-memory' => 'Свободная PHP-память',
+    'php-memory-usage' => 'Используемая память PHP',
 ];

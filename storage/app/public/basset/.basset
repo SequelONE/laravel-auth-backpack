@@ -1,0 +1,12 @@
+{
+    "https://github.com/adobe-fonts/source-sans/releases/download/3.046R/WOFF2-source-sans-3.046R.zip": "/1",
+    "vendor/backpack/crud/src/resources/assets/css/common.css": "/vendor/backpack/crud/src/resources/assets/css/common.css",
+    "vendor/backpack/crud/src/resources/assets/img/spinner.svg": "/vendor/backpack/crud/src/resources/assets/img/spinner.svg",
+    "vendor/backpack/crud/src/resources/assets/js/common.js": "/vendor/backpack/crud/src/resources/assets/js/common.js",
+    "vendor/backpack/crud/src/resources/assets/libs/source-sans-pro.css": "/source-sans-pro/source-sans-pro.css",
+    "vendor/backpack/theme-coreuiv2/resources/assets/css/coreuiv2.css": "/vendor/backpack/theme-coreuiv2/resources/assets/css/coreuiv2.css",
+    "vendor/backpack/theme-tabler/resources/assets/css/color-adjustments.css": "/vendor/backpack/theme-tabler/resources/assets/css/color-adjustments.css",
+    "vendor/backpack/theme-tabler/resources/assets/css/colors.css": "/vendor/backpack/theme-tabler/resources/assets/css/colors.css",
+    "vendor/backpack/theme-tabler/resources/assets/css/style.css": "/vendor/backpack/theme-tabler/resources/assets/css/style.css",
+    "vendor/backpack/theme-tabler/resources/assets/js/tabler.js": "/vendor/backpack/theme-tabler/resources/assets/js/tabler.js"
+}

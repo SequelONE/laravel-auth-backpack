@@ -2,6 +2,7 @@
 
 return [
     // Menu
+    'dashboard' => 'Dashboard',
     'packages' => 'Packages',
     'content' => 'Content',
     'contexts' => 'Contexts',
@@ -15,12 +16,32 @@ return [
     'backups' => 'Backups',
     'logs' => 'Logs',
     'clearCache' => 'Clear cache',
+    'news' => 'News',
+    'articles' => 'Articles',
+    'categories' => 'Categories',
+    'tags' => 'Tags',
+    'system' => 'System',
+    'activity-logs' => 'Activity log',
 
     // Messages
     'cacheCleared' => 'All cache clear',
 
-	// Pages
+    // Pages
     'general' => 'General',
     'seo' => 'SEO',
     'introtext' => 'Introtext',
+
+    // Dashboard
+    'version' => 'Version',
+    'website' => 'Website',
+    'docs' => 'Documentation',
+    'blog' => 'Blog',
+    'memory' => 'Memory',
+    'space' => 'Space',
+    'total-space' => 'Total space',
+    'free-space' => 'Free space',
+    'free-memory' => 'Free memory',
+    'memory-usage' => 'Memory Usage',
+    'free-php-memory' => 'Free PHP memory',
+    'php-memory-usage' => 'PHP Memory Usage',
 ];

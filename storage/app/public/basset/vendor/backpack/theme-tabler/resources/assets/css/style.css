@@ -1,0 +1,909 @@
+/**
+    This file adjusts things so that Tabler looks cool and is used always,
+    regardless of skin color applied and dark/light mode used.
+*/
+
+html:not([data-theme]) .show-theme-system { display: initial!important; }
+html[data-theme=light] .show-theme-light { display: initial!important; }
+html[data-theme=dark] .show-theme-dark { display: initial!important; }
+
+.sidebar-toggler {
+    background-color: transparent;
+}
+
+header .sidebar-toggler i {
+    color: var(--tblr-light-text);
+}
+
+.navbar-collapse .dropdown-toggle:after, a.actions-buttons-column:after {
+    all: unset;
+    color: var(--tblr-dark-text);
+    font-family: "Line Awesome Free";
+    content: "\f107";
+    font-weight: 900;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+/*buttons center table*/
+button.buttons-collection:after {
+    all: unset;
+    color: var(--tblr-light-text);
+    font-family: "Line Awesome Free";
+    content: "\f107";
+    font-weight: 900;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.navbar-collapse .dropdown-toggle:hover:after {
+    color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .navbar-collapse .dropdown-toggle:hover:after {
+    color: var(--tblr-gray-200);
+}
+
+table tbody tr td a.btn.btn-sm.btn-link i,
+.btn.btn-light.btn-sm.border.popup_selector i,
+.btn.btn-light.btn-sm.border.clear_elfinder_picker i,
+button.browse i,
+a.btn.btn-sm.btn-secondary.bulk-button i {
+    margin-right: 3px;
+}
+
+.navbar,
+.btn.btn-light.btn-sm.border.popup_selector,
+.btn.btn-light.btn-sm.border.clear_elfinder_picker {
+    box-shadow: none;
+}
+
+table tbody tr td.dtr-control span {
+    margin-left: 3px;
+}
+
+.nav-separator {
+    margin-left: 10px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--tblr-navbar-color);
+}
+
+.table thead th,
+.table tfoot th {
+    background-color: transparent!important;
+}
+
+/* Remove once https://github.com/tabler/tabler/pull/1645 is merged */
+.table thead th,
+.table tfoot th {
+    background: var(--tblr-bg-surface-tertiary);
+    font-size: .625rem;
+    font-weight: var(--tblr-font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 1rem;
+    color: var(--tblr-muted);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    white-space: nowrap;
+}
+
+.table thead th,
+.table tfoot th {
+    font-weight: 700;
+}
+
+table .btn-link {
+    color: var(--tblr-primary);
+}
+table .btn-link:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color: rgba(var(--tblr-primary-rgb), .8);
+}
+table .btn-link:active {
+    background-color: transparent!important;
+    border-color: transparent!important;
+    text-decoration: underline;
+}
+
+.navbar .navbar-nav {
+    min-height: initial;
+}
+
+.navbar.navbar-filters {
+    color: var(--tblr-body-color);
+    background-color: var(--tblr-card-bg);
+    border: var(--tblr-card-border-width) solid var(--tblr-card-border-color);
+    border-radius: var(--tblr-card-border-radius);
+    box-shadow: var(--tblr-card-box-shadow)!important;
+    margin: 0.8rem 0!important;
+    --tblr-card-border-width: var(--tblr-border-width);
+    --tblr-card-border-color: var(--tblr-border-color-translucent);
+    --tblr-card-border-radius: var(--tblr-border-radius);
+    --tblr-card-box-shadow: var(--tblr-shadow-card);
+    --tblr-card-bg: var(--tblr-bg-surface);
+    padding: 0.5rem 1rem!important;
+}
+
+.navbar.navbar-filters .nav-link {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 80%;
+    color: var(--tblr-muted)!important;
+}
+
+.navbar.navbar-filters + div {
+    overflow: hidden;
+}
+
+.form-control[type="search"] {
+    border-radius: var(--tblr-border-radius)!important;
+}
+
+[data-bs-theme=light] tbody {
+    background-color: var(--tblr-table-bg);
+}
+
+[data-bs-theme=dark] #crudTable_processing.dataTables_processing.card {
+    background-color: var(--tblr-dark);
+    border-radius: 0;
+}
+
+[data-bs-theme=light] tbody {
+    background-color: var(--tblr-table-bg);
+}
+
+/* Headers for operations */
+.page-body .container-fluid h2 small {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.page-body .container-fluid h2 {
+    font-size: 27px;
+    font-weight: 400;
+}
+
+[data-bs-theme=dark] .btn-link:hover, [data-bs-theme=dark] a:not(.btn):hover {
+    background-color: transparent;
+    color: var(--tblr-gray-200) !important;
+}
+
+/*aside*/
+aside .navbar-collapse .dropdown-toggle {
+    padding-right: 0 !important;
+}
+
+aside .navbar-collapse .dropdown-item,
+aside .navbar-collapse .dropdown-header {
+    padding-left: 25px !important;
+    padding-right: 0 !important;
+}
+
+aside a.nav-link.active, aside a.nav-link.active:hover {
+    background-color: var(--tblr-navbar-active-bg);
+}
+
+aside a.dropdown-item.active {
+    border-radius: var(--tblr-border-radius) !important;
+}
+
+aside .sidebar-toggler i {
+    color: white;
+}
+
+[data-bs-theme=dark] aside a:not(.btn):hover {
+    color: var(--tblr-primary) !important;
+}
+
+aside .nav-item {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: var(--tblr-navbar-color);
+}
+
+aside .navbar-nav .nav-item.dropdown span.badge {
+    transform: none;
+    position: initial;
+    font-size: 10px;
+    margin-left: 7px;
+}
+
+header.top div ul.navbar-nav li.nav-item a.nav-link span.badge {
+    transform: none;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    position: absolute;
+    font-size: 10px;
+    right: -5px;
+    top: -5px;
+}
+
+[data-bs-theme=dark] aside .navbar-collapse .dropdown-toggle:hover:after {
+    color: var(--tblr-primary);
+}
+
+aside .navbar-collapse .dropdown-toggle:after {
+    all: unset;
+    font-family: "Line Awesome Free";
+    color: var(--tblr-light-text);
+    content: "\f107";
+    font-weight: 900;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+span.badge.bg-warning {
+    color: var(--tblr-dark) !important;
+}
+
+aside li.nav-item a.nav-link i,
+aside div.dropdown-menu a.dropdown-item i,
+header.top div ul.navbar-nav li.nav-item a.nav-link i,
+header.top div.dropdown-menu a.dropdown-item i {
+    margin-right: 7px;
+    font-size: 16px;
+}
+
+/*table hover*/
+#crudTable_wrapper .table-striped > tbody > tr:hover > * {
+    box-shadow: none !important;
+    background-color: rgba(var(--tblr-primary-rgb),.1);
+}
+
+[data-bs-theme=light] table#crudTable {
+    background-color: var(--tblr-white);
+}
+
+[data-bs-theme=dark] table#crudTable {
+    background-color: var(--tblr-bg-surface);
+}
+
+/*filters*/
+[data-bs-theme=dark] .navbar-filters .select2-container .select2-search input {
+    background-color: var(--tblr-gray) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    caret-color: var(--tblr-light-text);
+}
+
+[data-bs-theme=dark] .navbar-filters .dropdown-menu {
+    box-shadow: none;
+}
+
+[data-bs-theme=dark] .navbar-filters .nav-item.active a {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-selection--single {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-container .select2-search {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-container .select2-results {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-selection__rendered {
+    color: var(--tblr-muted) !important;
+}
+
+[data-bs-theme=dark] span.select2-selection.select2-selection--single,
+[data-bs-theme=dark] .select2-selection.select2-selection--multiple ul.select2-selection__rendered {
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: var(--tblr-primary-border-subtle) !important;
+    border-radius: 0 !important;
+}
+
+/*Border radius inputs*/
+span.select2-selection.select2-selection--single,
+.select2-selection.select2-selection--multiple ul.select2-selection__rendered,
+.form-control {
+    border-radius: 0 !important;
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-results ul.select2-results__options li.select2-results__option.select2-results__option--highlighted {
+    background-color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .navbar-filters .select2-results ul.select2-results__options li.select2-results__option[aria-selected="true"]:not(.select2-results__option--highlighted) {
+    background-color: var(--tblr-gray-800);
+    color: var(--tblr-light-text);
+}
+
+[data-bs-theme=dark] .daterangepicker {
+    background-color: var(--tblr-bg-surface);
+    border-width: 0;
+    box-shadow: 0 0 10px rgba(var(--tblr-light-rgb), .2);
+}
+
+[data-bs-theme=dark] .daterangepicker .ranges li.active,
+[data-bs-theme=dark] .daterangepicker .ranges li:hover {
+    background-color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table {
+    border-color: var(--tblr-light-border-subtle);
+    background-color: var(--tblr-bg-surface);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table td.off {
+    background-color: var(--tblr-bg-surface);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table td.active,
+[data-bs-theme=dark] .daterangepicker .calendar-table td:hover {
+    background-color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table td.in-range:not(.active) {
+    background-color: var(--tblr-primary-border-subtle);
+    color: var(--tblr-light-text);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table th.prev.available:hover,
+[data-bs-theme=dark] .daterangepicker .calendar-table th.next.available:hover {
+    background-color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span,
+[data-bs-theme=dark] .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .next span {
+    border-color: var(--tblr-muted) !important;
+}
+
+[data-bs-theme=dark] .daterangepicker .calendar-table .prev:hover span,
+[data-bs-theme=dark] .daterangepicker .calendar-table .next:hover span {
+    border-color: var(--tblr-light-text) !important;
+}
+
+[data-bs-theme=dark] .daterangepicker.show-ranges.ltr .drp-calendar.left {
+    border-left-color: var(--tblr-gray);
+}
+
+[data-bs-theme=dark] .daterangepicker .drp-buttons {
+    border-top-color: var(--tblr-gray);
+}
+
+/*pagination*/
+[data-bs-theme=dark] ul.pagination li.paginate_button.page-item.active a {
+    color: var(--tblr-light-text);
+}
+
+[data-bs-theme=dark] ul.pagination li.paginate_button.page-item.active a:hover {
+    background-color: rgb(var(--tblr-primary-rgb));
+}
+
+/*reorder*/
+[data-bs-theme=dark] ol.sortable li div, [data-bs-theme=dark] ul.select_and_order_all li {
+    background-color: var(--tblr-bg-surface);
+    color: var(--tblr-light-text);
+    border-color: var(--tblr-primary-border-subtle) !important;
+}
+
+/*modal*/
+[data-bs-theme=dark] div.dtr-modal div.dtr-modal-display {
+    background-color: var(--tblr-bg-surface);
+}
+
+[data-bs-theme=dark] div.dtr-modal div.dtr-modal-display .dtr-modal-close {
+    background-color: var(--tblr-danger);
+    color: var(--tblr-light-text);
+    border: none;
+}
+
+[data-bs-theme=dark] div.dtr-modal div.dtr-modal-display table.table.table-striped tr td {
+    color: var(--tblr-light-text);
+}
+
+/*tabbed fields*/
+div.tab-container div.tab-content {
+    padding: 25px;
+    background-color: var(--tblr-bg-surface) !important;
+    border: none !important;
+}
+
+div.tab-container ul {
+    --tblr-nav-tabs-border-width: 0 !important;
+}
+
+div.tab-container ul li.nav-item .active {
+    background-color: var(--tblr-bg-surface) !important;
+    --tblr-nav-tabs-border-width: 0 !important;
+}
+
+[data-bs-theme=light] div.tab-container div.tab-content {
+    background-color: #fff !important;
+}
+
+[data-bs-theme=light] div.tab-container ul li.nav-item .active {
+    background-color: #fff !important;
+    --tblr-nav-tabs-border-width: 0 !important;
+}
+
+[data-bs-theme=dark] .select_and_order_all,
+[data-bs-theme=dark] .select_and_order_selected {
+    border: 1px solid var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .select_and_order_all li,
+[data-bs-theme=dark] .select_and_order_selected li {
+    background-color: var(--tblr-primary-border-subtle);
+    border: none !important;
+}
+
+/*repeatable fields*/
+[data-bs-theme=dark] .repeatable-element {
+    background-color: var(--tblr-primary-border-subtle) !important;
+}
+
+/*browse field*/
+[data-bs-theme=dark] button.browse {
+    background-color: var(--tblr-primary-border-subtle);
+    color: var(--tblr-light-text)
+}
+
+button.browse,
+div.btn-file,
+div.array-controls button.btn-light {
+    box-shadow: none;
+}
+
+/*input file*/
+[data-bs-theme=dark] label.backstrap-file-label {
+    background-color: var(--tblr-primary-border-subtle) !important;
+    border-color: var(--tblr-bg-surface);
+}
+
+[data-bs-theme=dark] label.backstrap-file-label::after,
+[data-bs-theme=dark] div.btn-file {
+    background-color: var(--tblr-gray-500);
+    color: var(--tblr-light);
+}
+
+[data-bs-theme=dark] div.array-controls button.btn-light {
+    background-color: transparent;
+    border-color: var(--tblr-primary);
+    color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] div.array-controls button.btn-light:hover {
+    background-color: var(--tblr-primary);
+    color: var(--tblr-light);
+}
+
+/*modal overlay*/
+div.dtr-modal {
+    z-index: 9999 !important;
+}
+
+footer {
+    padding-top: 20px;
+}
+
+/*bulk buttons*/
+#bottom_buttons a.btn.btn-sm {
+    padding: 5px 10px;
+}
+
+[data-bs-theme=dark] #crudTable_wrapper table tbody tr td input[type=editable_text],
+[data-bs-theme=dark] #crudTable_wrapper table tbody tr td select {
+    color: var(--tblr-light-text);
+    border-bottom: 1px dashed var(--tblr-gray-700) !important;
+}
+
+[data-bs-theme=dark] #crudTable_wrapper table tbody tr td input[type=editable_text]:focus {
+    --bs-table-accent-bg: none !important;
+    box-shadow: none !important;
+}
+
+a.actions-buttons-column {
+    border: none;
+    background-color: var(--tblr-gray-200);
+    --tblr-btn-active-bg: var(--tblr-gray-600);
+}
+
+a.actions-buttons-column:hover {
+    background-color: var(--tblr-gray-600);
+}
+
+a.actions-buttons-column:hover:after,
+a.actions-buttons-column.show:after {
+    color: var(--tblr-light);
+}
+
+[data-bs-theme=dark] a.actions-buttons-column {
+    border: none;
+    background-color: var(--tblr-gray-800);
+    color: var(--tblr-dark-text);
+    --tblr-btn-active-bg: var(--tblr-gray-800);
+}
+
+[data-bs-theme=dark] a.actions-buttons-column:hover {
+    background-color: var(--tblr-gray-900);
+}
+
+[data-bs-theme=dark] a.actions-buttons-column:hover:after,
+[data-bs-theme=dark] a.actions-buttons-column.show:after {
+    color: var(--tblr-dark-text);
+}
+
+/*Force the scrollbar to always be visible, to prevent flicker on AJAX-loading pages.*/
+body {
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+}
+
+/*Adjust topbar*/
+.topbar-transparent {
+    background-color: transparent !important;
+}
+
+/*Sidebar shortcuts*/
+.sidebar-shortcuts :not(:first-child):not(.d-none):before {
+    content: "|";
+    color: var(--tblr-gray-300);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[data-bs-theme=dark] .sidebar-shortcuts :not(:first-child):not(.hide-theme):before {
+    color: var(--tblr-gray-600);
+}
+
+/*Sidebar fixed or not fixed, that's the question*/
+@media (min-width: 992px) {
+    .navbar-vertical:not(.navbar-fixed) {
+        position: absolute !important;
+        overflow-y: scroll;
+    }
+}
+
+[data-bs-theme=dark] .select2-container--bootstrap .select2-dropdown {
+    border-color: var(--tblr-border-color) !important;
+}
+
+div.controls {
+    top: -5px;
+}
+
+.repeatable-group {
+    padding-bottom: 12px;
+}
+.add-repeatable-element-button {
+    margin-top: 5px;
+}
+
+form .form-group.required > label:not(:empty):not(.form-check-label)::after {
+    color: var(--tblr-danger) !important;
+}
+
+label {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+/*Hide separators in horizontal layouts*/
+header .nav-separator {
+    display: none;
+}
+
+.header-operation h3 {
+    font-size: 25px;
+    line-height: 27px !important;
+}
+
+
+ol li.ui-sortable-placeholder.placeholder {
+    width: 100%;
+    height: 35px;
+}
+
+div.row div.form-group {
+    padding-bottom: 10px;
+}
+
+tr.array-row td:has(span.ui-sortable-handle) {
+    vertical-align: middle !important;
+}
+
+[data-bs-theme=dark] tr.array-row td span.ui-sortable-handle,
+[data-bs-theme=dark] tr.array-row td button.removeItem {
+    background-color: var(--tblr-gray-600);
+    color: var(--tblr-light);
+}
+
+/* fix doubleTopBarInHorizontalLayouts */
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: var(--tblr-navbar-brand-font-size);
+}
+
+/* Page headers */
+[bp-section=page-heading] {
+    line-height: normal;
+}
+
+/* Horizontal Overlap Layout */
+.navbar-overlap:after {
+    height: 13rem;
+}
+
+body[bp-layout=horizontal-overlap] .header-operation,
+body[bp-layout=horizontal-overlap] [bp-section=page-heading] {
+    color: var(--tblr-gray-200);
+}
+
+body[bp-layout=horizontal-overlap] .breadcrumb .active {
+    color: var(--tblr-gray-200);
+}
+
+body[bp-layout=horizontal-overlap] .navbar-filters .navbar-nav .nav-link {
+    color: var(--tblr-gray-200);
+}
+
+/* avatar fallback */
+.backpack-avatar-menu-container {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: var(--tblr-primary);
+    border-radius: 50%;
+    color: #FFF;
+    line-height: 35px;
+    font-size: 85%;
+    font-weight: 300;
+}
+
+
+/* Remove once https://github.com/tabler/tabler/pull/1647 is merged */
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(var(--tblr-primary-rgb), 0.5);
+    box-shadow: 0 0 transparent, 0 0 0 0.25rem rgba(var(--tblr-primary-rgb),.25);
+}
+
+
+/* devtools adjustments */
+
+[data-bs-theme="light"] [bp-section=devtools-preview-files] .nav.nav-pills {
+    background: white;
+    border-radius: 4px;
+}
+
+[data-bs-theme="light"] [bp-section=devtools-preview-files] .tab-content {
+    background: white;
+    border-radius: 4px;
+}
+
+/* Alerts */
+
+[data-bs-theme=dark] .alert-danger {
+    background-color: var(--tblr-bg-surface);
+}
+
+/* Swal */
+
+[data-bs-theme=dark] .swal-modal {
+    background-color: var(--tblr-bg-surface);
+}
+
+[data-bs-theme=dark] .swal-title,
+[data-bs-theme=dark] .swal-text {
+    color: var(--tblr-dark-text);
+}
+
+/* CKEditor */
+
+[data-bs-theme=dark] .ck.ck-editor__main>.ck-editor__editable,
+[data-bs-theme=dark] .ck.ck-toolbar {
+    background: var(--tblr-bg-surface) !important;
+    border-color: var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .ck.ck-toolbar .ck.ck-toolbar__separator {
+    background: var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .ck.ck-button {
+    color: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .ck.ck-button:hover {
+    background: var(--tblr-tabler) !important;
+}
+
+[data-bs-theme=dark] .ck.ck-button.ck-on {
+    background: var(--tblr-tabler) !important;
+}
+
+/* EasyMDE */
+
+[data-bs-theme=dark] .EasyMDEContainer,
+[data-bs-theme=dark] .EasyMDEContainer .editor-toolbar,
+[data-bs-theme=dark] .EasyMDEContainer .CodeMirror {
+    background: var(--tblr-bg-surface) !important;
+    border-color: var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .EasyMDEContainer .editor-toolbar,
+[data-bs-theme=dark] .EasyMDEContainer button {
+    color: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .EasyMDEContainer .CodeMirror-code {
+    color: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .EasyMDEContainer .CodeMirror-cursor {
+    border-left: 1px solid var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .EasyMDEContainer .editor-toolbar button:hover {
+    background: var(--tblr-tabler) !important;
+}
+
+[data-bs-theme=dark] .EasyMDEContainer .editor-toolbar button.active {
+    background: var(--tblr-tabler) !important;
+}
+
+/* Select2 badge */
+
+[data-bs-theme=dark] .select2-selection__choice {
+    background: var(--tblr-tabler) !important;
+    color: var(--tblr-bg-surface) !important;
+    border-color: var(--tblr-tabler) !important;
+}
+
+[data-bs-theme=dark] .select2-selection__choice .select2-selection__choice__remove {
+    color: var(--tblr-bg-surface) !important;
+}
+
+[data-bs-theme=dark] .select2-dropdown {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+/* Phone field */
+
+[data-bs-theme=dark] .iti .iti__flag-container,
+[data-bs-theme=dark] .iti .iti__selected-flag {
+    background-color: var(--tblr-bg-surface-secondary) !important;
+}
+
+[data-bs-theme=dark] .iti .iti__selected-dial-code {
+    color: var(--tblr-muted) !important;
+}
+
+[data-bs-theme=dark] .iti .iti__country-list {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .iti .iti__country-name {
+    color: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .iti .iti__active,
+[data-bs-theme=dark] .iti .iti__highlight {
+    background-color: var(--tblr-primary) !important;
+    color: #fff;
+}
+
+/* Icon Picker */
+
+[data-bs-theme=dark] .iconpicker {
+    background-color: transparent;
+    border-color: var(--tblr-primary);
+    color: var(--tblr-primary);
+}
+
+[data-bs-theme=dark] .table-icons td,
+[data-bs-theme=dark] .table-icons .btn-icon {
+    max-width: 35px !important;
+    max-height: 30px !important;
+}
+
+[data-bs-theme=dark] .table-icons .btn-warning {
+    background-color: var(--tblr-primary) !important;
+}
+
+/* Fix border btn-file */
+.btn-file {
+    border-top-right-radius: var(--tblr-border-radius-sm) !important;
+    border-bottom-right-radius: var(--tblr-border-radius-sm) !important;
+    border-radius: var(--tblr-border-radius-sm) !important;
+}
+
+/* Fix modal cancel color */
+[data-bs-theme=dark] .swal-button--cancel {
+    color: #fff !important;
+}
+
+/* Fix export */
+[data-bs-theme=dark] .dt-button-collection .dropdown-menu {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .dt-button-collection .dropdown-menu .dropdown-item:hover {
+    background-color: var(--tblr-primary) !important;
+    color: #fff;
+}
+
+/* Fix visilibity */
+[data-bs-theme=dark] .dt-button-collection {
+    background-color: var(--tblr-dark) !important;
+}
+
+[data-bs-theme=dark] .buttons-colvis .dropdown-menu .dropdown-item:hover {
+    background-color: var(--tblr-primary) !important;
+    color: #fff;
+}
+
+[data-bs-theme=dark] .dt-button-collection {
+    background-color: var(--tblr-dark) !important;
+}
+
+/* Modal Inline Creation */
+
+[data-bs-theme=dark] .bg-light {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+/* Fix floating header */
+
+[data-bs-theme=dark] table.fixedHeader-floating {
+    background-color: var(--tblr-bg-surface);
+}
+
+/* TinyMCE */
+
+[data-bs-theme=dark] .tox,
+[data-bs-theme=dark] .tox .tox-editor-container,
+[data-bs-theme=dark] .tox .tox-editor-header,
+[data-bs-theme=dark] .tox .tox-menubar,
+[data-bs-theme=dark] .tox .tox-toolbar__primary,
+[data-bs-theme=dark] .tox .tox-edit-area html {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+[data-bs-theme=dark] .tox-tinymce {
+    border-color: var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .tox .tox-menubar+.tox-toolbar-overlord {
+    border-color: var(--tblr-primary-border-subtle) !important;
+}
+
+[data-bs-theme=dark] .tox .tox-statusbar,
+[data-bs-theme=dark] .tox .tox-promotion,
+[data-bs-theme=dark] .tox .tox-toolbar-overlord,
+[data-bs-theme=dark] .tox .tox-tbtn--bespoke,
+[data-bs-theme=dark] .tox .tox-promotion-link {
+    background-color: transparent !important;
+}
+
+[data-bs-theme=dark] .tox .tox-mbtn,
+[data-bs-theme=dark] .tox .tox-tbtn {
+    color: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .tox .tox-statusbar__branding svg,
+[data-bs-theme=dark] .tox .tox-icon svg,
+[data-bs-theme=dark] .tox .tox-tbtn__select-chevron svg {
+    fill: var(--tblr-body-color) !important;
+}
+
+[data-bs-theme=dark] .tox button:hover,
+[data-bs-theme=dark] .tox button.tox-mbtn--active,
+[data-bs-theme=dark] .tox button.tox-tbtn--enabled {
+    background: var(--tblr-tabler) !important;
+}

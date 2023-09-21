@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Page extends Model
 {
@@ -15,6 +16,7 @@ class Page extends Model
     use HasTranslations;
     use Sluggable;
     use SluggableScopeHelpers;
+    use RevisionableTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -67,6 +69,11 @@ class Page extends Model
     {
         return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
             '<i class="la la-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
+    }
+
+    public function identifiableName()
+    {
+        return $this->name;
     }
 
     /*

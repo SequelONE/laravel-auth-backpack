@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 // --------------------------
 // Custom Backpack Routes
@@ -19,4 +22,21 @@ Route::group([
     Route::crud('menu-item', 'MenuItemCrudController');
     Route::crud('context', 'ContextCrudController');
     Route::get('purge', 'CacheCrudController@cachePurge');
+
+    Route::post('switch-layout', function (Request $request) {
+        $theme = 'backpack.theme-'.$request->get('theme', 'tabler').'::';
+        Session::put('backpack.ui.view_namespace', $theme);
+
+        if ($theme === 'backpack.theme-tabler::') {
+            Session::put('backpack.theme-tabler.layout', $request->get('layout', 'horizontal'));
+        }
+
+        return Redirect::back();
+    })->name('tabler.switch.layout');
+
+    // ------------------
+    // AJAX Chart Widgets
+    // ------------------
+    Route::get('charts/users', 'Charts\LatestUsersChartController@response');
+    Route::get('charts/new-entries', 'Charts\NewEntriesChartController@response');
 }); // this should be the absolute last line of this file
