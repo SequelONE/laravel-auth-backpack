@@ -44,7 +44,7 @@ php artisan key:generate
 Then run the command:
 
 ```phpregexp
-npm install && npm run dev
+npm install && npm run build
 ```
 
 Create a symbolic link to the file storage folder:
