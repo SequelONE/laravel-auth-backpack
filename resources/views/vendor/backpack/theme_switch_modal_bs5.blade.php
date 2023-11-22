@@ -1,21 +1,4 @@
 @section('before_scripts')
-    <div class="modal modal-blur fade pe-0" id="languages" tabindex="-1" style="display: none;" aria-modal="false" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Languages</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="list-group">
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a class="list-group-item list-group-item-action @if(App::currentLocale() === $localeCode) active @endif" hreflang="{{ $localeCode }}" href="/{{ $localeCode }}/lang" @if(App::currentLocale() === $localeCode) aria-current="true" @endif><img width="30" height="30" src="{{asset('assets/img/flags/1x1/' . $localeCode . '.svg')}}" class="border border-1 rounded-circle me-2"> {{ $properties['native'] }}</a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal modal-blur fade pe-0" id="modal-layout" tabindex="-1" style="display: none;" aria-modal="false" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <form method="POST" action="{{ route('tabler.switch.layout') }}">

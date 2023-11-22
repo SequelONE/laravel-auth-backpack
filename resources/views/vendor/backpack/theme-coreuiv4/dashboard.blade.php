@@ -59,25 +59,26 @@
 
      // notice we use Widget::add() to add widgets to a certain group
     Widget::add()->to('before_content')->type('div')->class('row mt-3')->content([
+
+
         // notice we use Widget::make() to add widgets as content (not in a group)
         Widget::make()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
+            ->class('card border-0 text-white bg-success')
+            ->progressClass('progress-bar')
             ->accentColor('success') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-code-fork']) // ['top|right|bottom']
-            ->description(trans('admin.version') . ' <a href="https://github.com/SequelONE/laravel-auth-backpack">v4.0.3</a>')
+            ->description(trans('admin.version') . ' <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v4.0.4</a>')
             ->hint('<br />
-                <strong>' . trans('admin.website') . '</strong>: <a href="https://' . $domain . '">' . $domain . '</a><br />
-                <strong>' . trans('admin.docs') . '</strong>: <a class="text-dark" href="https://docs.sequel.one/v4/laravel-auth-backpack"><i class="la la-question-circle" aria-hidden="true"></i></a><br /><br />
+                <strong>' . trans('admin.website') . '</strong>: <a class="text-white" href="https://' . $domain . '">' . $domain . '</a><br />
+                <strong>' . trans('admin.docs') . '</strong>: <a class="text-white" href="https://docs.sequel.one/v4/laravel-auth-backpack"><i class="la la-question-circle" aria-hidden="true"></i></a><br /><br />
             '),
         Widget::make()
             ->type('progress')
-            ->class('card mb-3')
+            ->class('card border-0 text-white bg-info')
             ->statusBorder('start') // start|top|bottom
             ->accentColor('info') // primary|secondary|warning|danger|info
             ->ribbon(['top', 'la-info-circle']) // ['top|right|bottom']
-            ->description('Backpack <a target="_blank" href="https://backpackforlaravel.com/docs/6.x/">' . strtok(\Composer\InstalledVersions::getVersion('backpack/crud'), '@') . '</a>')
+            ->description('Backpack <a class="text-white" target="_blank" href="https://backpackforlaravel.com/docs/6.x/">' . strtok(\Composer\InstalledVersions::getVersion('backpack/crud'), '@') . '</a>')
             ->hint('<br />
                 <strong>PHP</strong>: ' . phpversion() .'<br />
                 <strong>Laravel</strong>: ' . App::VERSION() . '<br />
@@ -85,22 +86,17 @@
             '),
         Widget::add()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('danger') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-bolt']) // ['top|right|bottom']
-            ->description(trans('admin.free-memory'))
+            ->class('card border-0 text-white bg-danger')
             ->progressClass('progress-bar')
+            ->description(trans('admin.free-memory'))
             ->value(getNiceFileSize($memUsage["free"]))
             ->progress($memoryUsageValue / $memoryFreeValue * 100)
             ->hint(sprintf("%s / %s (%s%%)", getNiceFileSize($memUsage["total"] - $memUsage["free"]), getNiceFileSize($memUsage["total"]), getServerMemoryUsage(true)))
             ->onlyHere(),
         Widget::make([
             'type' => 'progress',
-            'class'=> 'card mb-3',
-            'statusBorder' => 'start', // start|top|bottom
-            'accentColor' => 'warning', // primary|secondary|warning|danger|info
-            'ribbon' => ['top', 'la-history'], // ['top|right|left|bottom', 'la-xxx']
+            'class'=> 'card border-0',
+            'progressClass' => 'progress-bar',
             'value' => '
                 <a class="btn btn-outline-warning btn-block" role="button" href="' . backpack_url('purge') . '"><i class="nav-icon la la-trash"></i> <span>Clear cache</span></a>
             ',
@@ -109,10 +105,7 @@
         ]),
         Widget::make()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('success') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-user']) // ['top|right|bottom']
+            ->class('card border-0 text-white bg-info')
             ->progressClass('progress-bar')
             ->value($userCount)
             ->description('Registered users.')
@@ -122,10 +115,7 @@
         // but we need to use onlyHere() or remove() at the end
         Widget::add()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('danger') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-bell']) // ['top|right|bottom']
+            ->class('card border-0 text-white bg-info')
             ->description('Registered users.')
             ->progressClass('progress-bar')
             ->value($articleCount)
@@ -137,10 +127,7 @@
         Widget::make()
             ->group('hidden')
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('info') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-star']) // ['top|right|bottom']
+            ->class('card border-0 text-white bg-info')
             ->value($lastArticleDaysAgo.' days')
             ->progressClass('progress-bar')
             ->description('Since last article.')
@@ -150,10 +137,7 @@
         // if you prefer defining your widgets as arrays
         Widget::make([
             'type' => 'progress',
-            'class'=> 'card mb-3',
-            'statusBorder' => 'start', // start|top|bottom
-            'accentColor' => 'primary', // primary|secondary|warning|danger|info
-            'ribbon' => ['top', 'la-list'], // ['top|right|left|bottom', 'la-xxx']
+            'class'=> 'card border-0 text-white bg-info',
             'progressClass' => 'progress-bar',
             'value' => $contextCount,
             'description' => 'Context',
@@ -162,10 +146,7 @@
         ]),
         Widget::make([
             'type' => 'progress',
-            'class'=> 'card mb-3',
-            'statusBorder' => 'start', // start|top|bottom
-            'accentColor' => 'info', // primary|secondary|warning|danger|info
-            'ribbon' => ['top', 'la-list'], // ['top|right|left|bottom', 'la-xxx']
+            'class'=> 'card border-0 text-white bg-info',
             'progressClass' => 'progress-bar',
             'value' => $menuCount,
             'description' => 'Menu items',
@@ -174,10 +155,7 @@
         ]),
         Widget::make([
             'type' => 'progress',
-            'class'=> 'card mb-3',
-            'statusBorder' => 'start', // start|top|bottom
-            'accentColor' => 'success', // primary|secondary|warning|danger|info
-            'ribbon' => ['top', 'la-list'], // ['top|right|left|bottom', 'la-xxx']
+            'class'=> 'card border-0 text-white bg-info',
             'progressClass' => 'progress-bar',
             'value' => $pageCount,
             'description' => 'Pages',
@@ -186,10 +164,7 @@
         ]),
         Widget::add()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('secondary') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-thermometer-quarter']) // ['top|right|bottom']
+            ->class('card border-0 text-white bg-info')
             ->description(trans('admin.free-php-memory'))
             ->progressClass('progress-bar')
             ->value($phpMemoryFreeValue . ' MB')
@@ -198,10 +173,7 @@
             ->onlyHere(),
         Widget::add()
             ->type('progress')
-            ->class('card mb-3')
-            ->statusBorder('start') // start|top|bottom
-            ->accentColor('warning') // primary|secondary|warning|danger|info
-            ->ribbon(['top', 'la-cloud']) // ['top|right|bottom']
+            ->class('card border-0 text-white bg-info')
             ->description(trans('admin.free-space'))
             ->progressClass('progress-bar')
             ->value(free_space())
