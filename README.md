@@ -29,6 +29,20 @@ git clone https://github.com/SequelONE/laravel-auth-backpack.git
 
 Rename the `.env.example` file to `.env`
 
+Be sure to change the `localhost` to your domain or IP address.
+
+```phpregexp
+APP_URL=http://localhost/
+APP_DOMAIN=localhost
+```
+
+Example:
+
+```phpregexp
+APP_URL=https://sequel.one/
+APP_DOMAIN=sequel.one
+```
+
 Run the command:
 
 ```phpregexp

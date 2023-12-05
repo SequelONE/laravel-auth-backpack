@@ -67,7 +67,7 @@
             ->class('card border-0 text-white bg-success')
             ->progressClass('progress-bar')
             ->accentColor('success') // primary|secondary|warning|danger|info
-            ->description(trans('admin.version') . ' <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v4.0.4</a>')
+            ->description(trans('admin.version') . ' <a class="text-white" href="https://github.com/SequelONE/laravel-auth-backpack">v' . config('backpack.ui.version') . '</a>')
             ->hint('<br />
                 <strong>' . trans('admin.website') . '</strong>: <a class="text-white" href="https://' . $domain . '">' . $domain . '</a><br />
                 <strong>' . trans('admin.docs') . '</strong>: <a class="text-white" href="https://docs.sequel.one/v4/laravel-auth-backpack"><i class="la la-question-circle" aria-hidden="true"></i></a><br /><br />
