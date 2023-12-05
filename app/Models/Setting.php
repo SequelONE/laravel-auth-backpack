@@ -5,10 +5,12 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\LogsActivity;
 
 class Setting extends Model
 {
     use CrudTrait;
+    use LogsActivity;
 
     protected $fillable = ['value'];
 

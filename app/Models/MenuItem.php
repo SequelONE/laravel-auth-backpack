@@ -5,11 +5,13 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+use App\Models\Traits\LogsActivity;
 
 class MenuItem extends Model
 {
     use CrudTrait;
     use HasTranslations;
+    use LogsActivity;
 
     protected $table = 'menu_items';
     protected $fillable = ['name', 'title', 'type', 'link', 'alias', 'page_id', 'parent_id', 'context_id', 'status'];

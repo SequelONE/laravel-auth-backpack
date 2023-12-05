@@ -37,10 +37,23 @@ function use_space() {
     return sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $prefix[$class];
 }
 
+function space($bytes) {
+    $prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
+    $base = 1024;
+    $class = min((int)log($bytes , $base) , count($prefix) - 1);
+
+    return sprintf('%1.2f' , $bytes / pow($base,$class));
+}
+
 function convert($size)
 {
     $unit=array('B', 'KB','MB','GB','TB','PB');
     return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+}
+
+function convertValue($size)
+{
+    return @round($size/pow(1024,($i=floor(log($size,1024)))),2);
 }
 
 function getServerMemoryUsage($getPercentage=true)
@@ -138,6 +151,18 @@ function getNiceFileSize($bytes, $binaryPrefix=true) {
         $unit=array('B','KB','MB','GB','TB','PB');
         if ($bytes==0) return '0 ' . $unit[0];
         return @round($bytes/pow(1000,($i=floor(log($bytes,1000)))),2) .' '. (isset($unit[$i]) ? $unit[$i] : 'B');
+    }
+}
+
+function memory($bytes, $binaryPrefix=true) {
+    if ($binaryPrefix) {
+        $unit=array('B','KiB','MiB','GiB','TiB','PiB');
+        if ($bytes==0) return '0 ' . $unit[0];
+        return @round($bytes/pow(1024,($i=floor(log($bytes,1024)))),2);
+    } else {
+        $unit=array('B','KB','MB','GB','TB','PB');
+        if ($bytes==0) return '0 ' . $unit[0];
+        return @round($bytes/pow(1000,($i=floor(log($bytes,1000)))),2);
     }
 }
 

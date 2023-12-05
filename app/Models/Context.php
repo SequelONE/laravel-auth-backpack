@@ -6,12 +6,14 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+use App\Models\Traits\LogsActivity;
 
 class Context extends Model
 {
     use HasFactory;
     use CrudTrait;
     //use HasTranslations;
+    use LogsActivity;
 
     protected $table = 'contexts';
     protected $primaryKey = 'id';

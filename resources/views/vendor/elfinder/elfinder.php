@@ -26,8 +26,6 @@
             // Documentation for client options:
             // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
             $().ready(function() {
-                var theme = 'default';
-
                 $('#elfinder').elfinder({
                     // set your elFinder options here
                     <?php if ($locale) { ?>
@@ -37,29 +35,8 @@
                         _token: '<?= csrf_token() ?>'
                     },
                     url : '<?= route('elfinder.connector') ?>',  // connector URL
-                    soundPath: '<?= asset($dir.'/sounds') ?>',
-                    themes: {
-                        default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
-                        dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
-                    },
-                    theme: theme
-                },
-                function(fm, extraObj) {
-                    fm.bind('open', function() {
-                        setElFinderColorMode();
-                    });
+                    soundPath: '<?= asset($dir.'/sounds') ?>'
                 });
-
-                function isElfinderInDarkMode() {
-                    return typeof window.parent?.colorMode !== 'undefined' && window.parent.colorMode.result === 'dark';
-                }
-
-                function setElFinderColorMode() {
-                    theme = isElfinderInDarkMode() ? 'dark' : 'default';
-
-                    let instance = $('#elfinder').elfinder('instance');
-                    instance.changeTheme(theme).storage('theme', theme);
-                }
             });
         </script>
     </head>

@@ -3,25 +3,11 @@
     <head>
         
         @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles', ['styleBodyElement' => true])
-        <style type="text/css">
-        .elfinder-workzone {
-            min-height: max-content !important;
-        }
-
-        #elfinder {
-            height: 100% !important;
-            width: 100% !important;
-            top:0;
-            left: 0;
-        }
-        </style>
+        @include('vendor.elfinder.common_styles')
 
         <script type="text/javascript">
-            $(document).ready(function () {
-                let elfinderConfig = {
-                    cssAutoLoad : false,
-                    speed: 100,
+            $().ready(function () {
+                var elf = $('#elfinder').elfinder({
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
@@ -47,19 +33,17 @@
                             window.parent.processSelectedFile(file.path, '{{ $input_id  }}');
                         @endif
 
-                        window.parent.jQuery.colorbox.close();
-                    },                    
-                };
-
-                var elf = $('#elfinder').elfinder(elfinderConfig);
-                document.getElementById('elfinder').style.opacity = 1;
-              
-            });          
+                        parent.jQuery.colorbox.close();
+                    }
+                }).elfinder('instance');
+            });
         </script>
+
     </head>
-    <body style="margin:0;position:absolute;top:0;left:0;width:100%;height:100%;transition: opacity 1s ease-out;opacity: 0;">
+    <body>
 
         <!-- Element where elFinder will be created (REQUIRED) -->
-        <div id="elfinder" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+        <div id="elfinder"></div>
+
     </body>
 </html>

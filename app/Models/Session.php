@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\LogsActivity;
 
 class Session extends Model {
+
+    use LogsActivity;
 
     protected $table = 'sessions';
     protected $primaryKey = 'id';

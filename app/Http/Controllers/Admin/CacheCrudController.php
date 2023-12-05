@@ -15,7 +15,7 @@ class CacheCrudController extends CrudController
 
     public function cachePurge()
     {
-        \Alert::add('success', '<i class="nav-icon la la-trash"></i> ' . trans('admin.cacheCleared'))->flash();
+        \Alert::add('success', trans('admin.cacheCleared'))->flash();
         Artisan::call('optimize:clear');
 
         return redirect()->back();
