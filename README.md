@@ -157,6 +157,42 @@ php artisan backpack:install
 php artisan backpack:filemanager:install
 ```
 
+#### Install Basset
+```phpregexp
+php artisan basset:install
+
+#OPTIONAL - publish the config file. 
+php artisan vendor:publish --provider="Backpack\Basset\BassetServiceProvider"
+```
+
+> ##### Note
+> Basset is disabled by default on local environment. If you want to change it, please set BASSET_DEV_MODE=false in your env file.
+
+ In `.env`:
+ 
+```phpregexp
+BASSET_DEV_MODE=false
+```
+
+For local from CDNs:
+
+```phpregexp
+// instead of
+<link href="{{ asset('path/to/public/file.css') }}">
+
+// you can do
+<link href="{{ basset('path/to/public/file.css' }}">
+<link href="{{ basset('https://cdn.com/path/to/file.css') }}">
+<link href="{{ basset(base_path('vendor/org/package/assets/file.css')) }}">
+<link href="{{ basset(storage_path('file.css')) }}">
+```
+
+##### The basset Commands
+```phpregexp
+php artisan basset:cache         # internalizes all @bassets
+php artisan basset:clear         # clears the basset directory
+```
+
 ### Socialite
 
 #### Get Socialite Login API Keys:
@@ -216,8 +252,12 @@ APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
-APP_URL=http://localhost
+APP_URL=http://localhost/
 APP_LOG=daily
+APP_DOMAIN=localhost
+
+BACKPACK_THEME=backpack.theme-tabler
+BASSET_DEV_MODE=false
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
@@ -229,6 +269,7 @@ DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
+DB_PREFIX=
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -251,6 +292,7 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
+MAIL_TO=you@mail.com
 
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
@@ -263,8 +305,15 @@ PUSHER_APP_KEY=
 PUSHER_APP_SECRET=
 PUSHER_APP_CLUSTER=mt1
 
-MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+
+OTP_ENABLED=true
+OTP_LIFETIME=1
+OTP_KEEP_ALIVE=true
+OTP_THROW_EXCEPTION=true
+
+API_DOMAIN=api.site.com
 
 RECAPTCHA_SITE_KEY=YOUR_API_SITE_KEY
 RECAPTCHA_SECRET_KEY=YOUR_API_SECRET_KEY
@@ -292,6 +341,9 @@ VKONTAKTE_REDIRECT_URI="${APP_URL}/auth/provider/vkontakte/callback"
 YANDEX_CLIENT_ID=YOUR_CLIENT_ID
 YANDEX_CLIENT_SECRET=YOUR_CLIENT_SECRET
 YANDEX_REDIRECT_URI="${APP_URL}/auth/provider/yandex/callback"
+
+IPDATA_API_KEY=YOUR_API_KEY
+MAXMIND_LICENSE_KEY=YOUR_LICENSE_KEY
 ```
 
 In some cases, it is necessary to throw off the cache:
@@ -304,14 +356,24 @@ php artisan optimize:clear
 
 By default, the following packages have been added and configured:
 
-- [CRUD](https://github.com/Laravel-Backpack/CRUD)
-- [PermissionManager](https://github.com/Laravel-Backpack/PermissionManager)
-- [Settings](https://github.com/Laravel-Backpack/Settings)
-- [PageManager](https://github.com/Laravel-Backpack/PageManager)
-- [MenuCRUD](https://github.com/Laravel-Backpack/MenuCRUD)
-- [FileManager](https://github.com/Laravel-Backpack/FileManager)
-- [LogManager](https://github.com/Laravel-Backpack/LogManager)
-- [BackupManager](https://github.com/Laravel-Backpack/BackupManager)
+- [Backpack\CRUD](https://github.com/Laravel-Backpack/CRUD)
+- [Backpack\PermissionManager](https://github.com/Laravel-Backpack/PermissionManager)
+- [Backpack\Settings](https://github.com/Laravel-Backpack/Settings)
+- [Backpack\PageManager](https://github.com/Laravel-Backpack/PageManager)
+- [Backpack\MenuCRUD](https://github.com/Laravel-Backpack/MenuCRUD)
+- [Backpack\NewsCRUD](https://github.com/Laravel-Backpack/NewsCRUD)
+- [Backpack\FileManager](https://github.com/Laravel-Backpack/FileManager)
+- [Backpack\LogManager](https://github.com/Laravel-Backpack/LogManager)
+- [Backpack\BackupManager](https://github.com/Laravel-Backpack/BackupManager)
+- [Backpack\ActivityLog](https://github.com/laravel-backpack/activity-log)
+- [Backpack\Basset](https://github.com/Laravel-Backpack/basset)
+- [Backpack\LanguageSwitcher](https://github.com/Laravel-Backpack/language-switcher)
+- [Backpack\ReviseOperation](https://github.com/Laravel-Backpack/revise-operation)
+
+## Backpack's templates
+- [Backpack\ThemeCoreUIv2](https://github.com/Laravel-Backpack/theme-coreuiv2)
+- [Backpack\ThemeCoreUIv4](https://github.com/Laravel-Backpack/theme-coreuiv4)
+- [Backpack\ThemeTabler](https://github.com/Laravel-Backpack/theme-tabler)
 
 ## Screenshots
 
@@ -322,11 +384,11 @@ By default, the following packages have been added and configured:
 ## Documentations
 
 - [Laravel](https://laravel.com/docs)
-- [Backpack 5](https://backpackforlaravel.com/docs)
+- [Backpack 6](https://backpackforlaravel.com/docs)
 - [Social Providers](https://socialiteproviders.com/usage/)
 
 ## Contributors
 
 - [Andrej Kopp](https://github.com/SequelONE) ([SEQUEL.ONE](https://sequel.one))
-- [Cristian Tabacitu](https://github.com/tabacitu) ([Backpack 5](https://backpackforlaravel.com))
+- [Cristian Tabacitu](https://github.com/tabacitu) ([Backpack 6](https://backpackforlaravel.com))
 - [Taylor Otwell](https://github.com/taylorotwell) ([Laravel](https://laravel.com))
