@@ -1,0 +1,35 @@
+//
+// Section
+//
+
+
+.section {
+    margin-bottom: $section-margin-bottom;
+
+    .section__head {
+        @include flexbox;
+        align-items: flex-end;
+        margin-bottom: $section-head-margin-bottom;
+    }
+
+    .section__subtitle {
+        display: block;
+        margin-bottom: $section-subtitle-margin-bottom;
+        text-transform: uppercase;
+        font-weight: $font-weight-semi-bold;
+        font-size: $section-subtitle-font-size;
+        color: $section-subtitle-color;
+    }
+}
+
+
+// Landing page section
+.main-section {
+    @include padding-y($main-section-padding-y);
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        @include padding-y($main-section-padding-y-sm);
+    }
+}

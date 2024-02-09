@@ -1,0 +1,88 @@
+//
+// Form
+//
+
+
+// Checkbox and radio styles
+.form-check-input {
+    border: $form-check-input-border;
+    margin-top: 0.125rem;
+}
+
+// Select and input styles
+.form-select,
+.form-control {
+    min-height: $input-height;
+    background-color: $input-bg;
+    border-color: $input-border-color;
+    color: $input-color;
+    &:focus {
+        background-color: $input-bg;
+        border-color: $input-border-color;
+    }
+
+    &:disabled, 
+    &[readonly] {
+        background-color: $input-disabled-bg;
+    }
+}
+
+.form-select-sm,
+.form-control-sm {
+    min-height: $input-height-sm;
+}
+
+.form-select-lg,
+.form-control-lg {
+    min-height: $input-height-lg;
+}
+
+.form-control {
+    &::file-selector-button {
+        @include padding-y(0);
+        line-height: $input-height - ($input-btn-border-width * 2);
+        background-color: $form-file-button-bg;
+        color: $form-file-button-color;
+    }
+
+    &:hover:not(:disabled):not([readonly])::file-selector-button {
+        background-color: $form-file-button-hover-bg;
+    }
+
+    &::-webkit-file-upload-button {
+        @include padding-y(0);
+        line-height: $input-height - ($input-btn-border-width * 2);
+    }
+
+    &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+        background-color: $form-file-button-hover-bg;
+    }
+}
+
+.form-control-sm {
+    &::file-selector-button {
+        line-height: $input-height-sm - ($input-btn-border-width * 2);
+    }
+    &::-webkit-file-upload-button {
+        line-height: $input-height-sm - ($input-btn-border-width * 2);
+    }
+}
+
+.form-control-lg {
+    &::file-selector-button {
+        line-height: $input-height-lg - ($input-btn-border-width * 2);
+    }
+    &::-webkit-file-upload-button {
+        line-height: $input-height-lg - ($input-btn-border-width * 2);
+    }
+}
+
+.form-select {
+    background-image: escape-svg($form-select-indicator);
+}
+
+.input-group-text {
+    background-color: $input-group-addon-bg;
+    border-color: $input-border-color;
+    color: $input-group-addon-color;
+}

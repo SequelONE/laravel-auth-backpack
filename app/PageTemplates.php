@@ -25,7 +25,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'introtext',
             'label' => trans('admin.introtext'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -33,7 +33,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'content',
             'label' => trans('backpack::pagemanager.content'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -46,6 +46,7 @@ trait PageTemplates
         ]);
         $this->crud->addField([
             'name' => 'meta_title',
+            'type' => 'text',
             'label' => trans('backpack::pagemanager.meta_title'),
             'fake' => true,
             'store_in' => 'extras',
@@ -53,6 +54,7 @@ trait PageTemplates
         ]);
         $this->crud->addField([
             'name' => 'meta_description',
+            'type' => 'textarea',
             'label' => trans('backpack::pagemanager.meta_description'),
             'fake' => true,
             'store_in' => 'extras',
@@ -62,7 +64,7 @@ trait PageTemplates
             'name' => 'meta_keywords',
             'type' => 'textarea',
             'label' => trans('backpack::pagemanager.meta_keywords'),
-            'fake' => true,
+            'fake'     => true, // show the field, but don't store it in the database column above
             'store_in' => 'extras',
             'tab' => trans('admin.seo'),
         ]);
@@ -73,7 +75,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'introtext',
             'label' => trans('admin.introtext'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -81,7 +83,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'content',
             'label' => trans('backpack::pagemanager.content'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -121,7 +123,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'introtext',
             'label' => trans('admin.introtext'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -129,7 +131,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'content',
             'label' => trans('backpack::pagemanager.content'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -169,7 +171,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'introtext',
             'label' => trans('admin.introtext'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);
@@ -177,7 +179,7 @@ trait PageTemplates
         $this->crud->addField([
             'name' => 'content',
             'label' => trans('backpack::pagemanager.content'),
-            'type' => 'summernote',
+            'type' => 'easymde',
             'placeholder' => trans('backpack::pagemanager.content_placeholder'),
             'tab' => trans('admin.general'),
         ]);

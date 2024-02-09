@@ -31,9 +31,11 @@ class Page extends Model
     protected $fillable = ['template', 'name', 'title', 'introtext', 'content', 'slug', 'shortlink', 'extras', 'status'];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $translatable = ['title', 'introtext', 'content', 'extras'];
-    protected $fakeColumns = ['extras'];
-    //protected $casts = [];
+    protected array $translatable = ['title', 'introtext', 'content', 'extras'];
+    protected array $fakeColumns = ['extras'];
+    //protected $casts = [
+    //    'extras' => 'array',
+    //];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -69,11 +71,6 @@ class Page extends Model
     {
         return '<a class="btn btn-sm btn-link" href="'.$this->getPageLink().'" target="_blank">'.
             '<i class="la la-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
-    }
-
-    public function identifiableName()
-    {
-        return $this->name;
     }
 
     /*

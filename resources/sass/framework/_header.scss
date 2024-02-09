@@ -1,0 +1,92 @@
+//
+// Header
+//
+
+
+#header {
+    @include fixed(top 0 left 0 right 0);
+    margin-left: 0;
+    z-index: $zindex-header;
+    transition: $transition-medium;
+    padding: $header-padding;
+
+    .header-container {
+        padding: $header-container-padding-y $header-container-padding-x;
+        background-color: $header-container-bg;
+        color: color-contrast($header-container-bg);
+        border-radius: $header-container-border-radius;
+        position: relative;
+        box-shadow: $header-container-box-shadow;
+    }
+
+    .header-text {
+        color: inherit;
+        display: inline-flex;
+    }
+}
+
+// Landing pages header styles
+#main_header {
+    .btn {
+        min-width: $brand-width;
+    }
+
+    .nav-link {
+        color: $gray-900;
+        @include hover-focus-active {
+            color: $primary;
+        }
+    }
+
+    .navbar-ex {
+        @include absolute(top 0 right 0);
+        margin-top: 1.25rem;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+        border: none;
+        box-shadow: none !important;
+    }
+}
+
+// Header color options
+@each $name, $value in $component-color-options {
+    #header[data-header="#{$name}"] .header-container {
+        background-color: $value;
+        color: color-contrast($value);
+    }
+}
+
+
+// Desktop & Tablet
+// Bootstrap mixin
+@include media-breakpoint-up(lg) {
+    #header {
+        margin-left: $sidebar-width;
+        z-index: $zindex-sidebar + 2;
+    }
+
+    // Toggle sidebar
+    @include toggle-sidebar {
+        #header {
+            margin-left: $toggle-sidebar-width;
+        }
+    } 
+
+    #main_header {
+        .navbar {
+            padding-right: $brand-width;
+        }
+    }
+}
+
+// Mobile
+@include media-breakpoint-down(sm) {
+    #header {
+        @include padding-x(0);
+        .header-container {
+            @include padding-x($header-container-padding-x-sm);
+        }
+    }
+}

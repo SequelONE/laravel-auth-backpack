@@ -1,0 +1,27 @@
+
+// On sidebar toggle add styles
+//
+
+@mixin toggle-sidebar {
+    body[data-sidebar-toggle="true"] {
+        @content;
+    }
+}
+
+// On search results add styles
+//
+
+@mixin search-results {
+    body[data-search-results="true"] {
+        @content;
+    }
+}
+
+// Dark skin styles
+//
+
+@mixin dark-skin {
+    body[data-theme="dark"] {
+        @content;
+    }
+}

@@ -1,0 +1,12 @@
+//
+// Badge
+//
+
+
+.badge {
+    display: inline-flex;
+
+    @include icon {
+        font-size: $badge-icon-font-size;
+    }
+}

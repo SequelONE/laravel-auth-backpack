@@ -1,0 +1,61 @@
+
+// Progress 
+//
+
+@mixin progress-background($color) {
+    // Chrome, Safari, Opera
+    &[value]::-webkit-progress-bar {
+        background: $color;
+    }    
+    &[value]::-webkit-progress-value {
+        background: $color;
+    }
+    // Mozilla
+    &[value]::-moz-progress-bar {
+        background: $color;
+    }
+}
+
+
+// Input range thumb
+//
+
+@mixin thumb($size) {
+    @include size($size);
+    appearance: none;
+    border-radius: 50%;
+}
+
+@mixin thumb-background($color) {
+    // Chrome, Safari, Opera
+    &::-webkit-slider-thumb {
+        background: $color;
+    }
+    // Mozilla
+    &::-moz-range-thumb {
+        background: $color;
+    }
+    // IE
+    &::-ms-thumb {
+        background: $color;
+    }
+}
+
+
+// Input range slider
+//
+@mixin range-background($color) {
+    // Chrome, Safari, Opera
+    &::-webkit-slider-runnable-track {
+        background: $color;
+    }
+    // Mozilla
+    &::-moz-range-track {
+        background: $color;
+    }
+    // IE
+    &::-ms-fill-lower,
+    &::-ms-fill-upper {
+        background: $color;
+    }
+}

@@ -1,0 +1,75 @@
+//
+// Loader
+//
+
+
+#loader {
+    @include fixed(top 0 left 0);
+    @include size(100%);
+    @include flexbox-center;
+    z-index: $zindex-loader;
+    background-color: $loader-bg;
+}
+
+.loader {
+    color: $loader-color;
+    letter-spacing: $loader-letter-spacing;
+
+    .loader__eq {
+        @include size(calc($loader-eq-size - $loader-eq-border-width));
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        box-shadow: 0 0 0 $loader-eq-border-width currentColor;
+        padding: $loader-eq-padding;
+        span {
+            display: block;
+            @include size($loader-eq-border-width, $loader-eq-border-height);
+            background-color: currentColor;
+            animation: playing .6s ease infinite both;
+
+            &:not(:first-of-type) {
+                margin-left: $loader-eq-border-width;
+            }
+            &:nth-child(2) {
+                animation-duration: 0.5s;
+            }
+            &:nth-child(3) {
+                animation-duration: 0.58s;
+            }
+            &:nth-child(4) {
+                animation-duration: 0.52s;
+            }
+            &:nth-child(5) {
+                animation-duration: 0.56s;
+            }
+            &:nth-child(6) {
+                animation-duration: 0.45s;
+            }
+        }
+    }
+
+    .loader__text {
+        display: block;
+        font-weight: $font-weight-medium;
+    }
+}
+
+@keyframes playing {
+    0%, 100% {
+        height: 0.5rem;
+    }
+    50% {
+        height: $loader-eq-border-height;
+    }
+}
+
+
+// Line loader styles
+#line_loader {
+    @include fixed(top 0 left 0);
+    @include size(0, $line-loader-height);
+    display: none;
+	background-color: $line-loader-bg;
+    z-index: $zindex-line-loader;
+}

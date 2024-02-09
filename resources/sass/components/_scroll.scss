@@ -1,0 +1,95 @@
+//
+// Perfect scrollbar
+//
+
+
+.ps {
+    position: relative;
+
+    // Perfect scroll rail
+    .ps__rail-x, 
+    .ps__rail-y {
+        width: $scroll-size;
+        z-index: 1;
+        background-color: rgba($scroll-bg, 0.15);
+
+        @include hover-focus {
+            > .ps__thumb-y {
+                width: $scroll-size;
+            }
+        }
+
+        &.ps--clicking .ps__thumb-y {
+            width: $scroll-size;
+        }
+
+        @include hover-focus {
+            background-color: rgba($scroll-bg, 0.15);
+            opacity: 1;
+        }
+
+        &.ps--clicking {
+            background-color: rgba($scroll-bg, 0.15);
+            opacity: 1;
+        }
+    }
+
+    // Perfect scroll thumb
+    .ps__thumb-y {
+        right: 0;
+        width: $scroll-size;
+        background-color: $scroll-bg;
+    }
+
+    .ps__thumb-x {
+        background-color: $scroll-bg;
+    }
+
+    .ps__rail-y {
+        @include hover-focus {
+            > .ps__thumb-y {
+                background-color: $scroll-bg;
+            }
+        }
+
+        &.ps--clicking .ps__thumb-y {
+            background-color: $scroll-bg;
+        }
+    }    
+
+    .ps__rail-x {
+        @include hover-focus {
+            > .ps__thumb-x {
+                background-color: $scroll-bg;
+            }
+        }
+
+        &.ps--clicking .ps__thumb-x {
+            background-color: $scroll-bg;
+        }
+    }
+
+    &.ps--active-y {
+        margin-right: $scroll-spacing;
+    }
+
+    &.ps--active-x {
+        margin-bottom: $scroll-spacing;
+    }
+
+    &.ps--active-x > .ps__rail-x,
+    &.ps--active-y > .ps__rail-y {
+        background-color: $scroll-rail-bg;
+    }
+
+    &.ps--scrolling-x > .ps__rail-x,
+    &.ps--scrolling-y > .ps__rail-y {
+        opacity: 1;
+    }
+    
+    &:hover, &.ps--focus {
+        > .ps__rail-x, > .ps__rail-y {
+            opacity: 1;
+        }
+    }
+}

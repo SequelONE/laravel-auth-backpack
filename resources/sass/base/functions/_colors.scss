@@ -1,0 +1,14 @@
+
+// Retrieve theme color Sass maps
+//
+
+@function theme-color($key: primary) {
+    @return map-get($theme-colors, $key);
+}
+
+// Retrieve gray color Sass maps
+//
+
+@function gray($key: 100) {
+    @return map-get($grays, $key);
+}

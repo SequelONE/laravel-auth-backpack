@@ -1,0 +1,28 @@
+//
+// Card
+//
+
+
+.card {
+    background-color: $card-bg;
+    border: none;
+    box-shadow: $card-box-shadow;
+
+    .card-header,
+    .card-footer {
+        border-color: $gray-300;
+        background-color: transparent;
+        @include padding-y($card-spacer-y);
+    }
+
+    .card-header {
+        .nav-tabs {
+            margin-bottom: -1px;
+            border: none;
+        }
+    }
+
+    .card-body {
+        padding: $card-spacer-x;
+    }
+}

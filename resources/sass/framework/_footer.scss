@@ -1,0 +1,105 @@
+//
+// Footer
+//
+
+
+#footer {
+    padding-top: $footer-padding-top;
+    padding-bottom: $footer-padding-bottom;
+    background: $footer-bg;
+    background-size: cover;
+    position: relative;
+
+    @include before {
+        @include absolute(top 0 left 0);
+        @include size(100%);
+        background: $footer-overlay-bg;
+    }
+
+    > .container {
+        position: relative;
+    }
+
+    .email {
+        color: $gray-900;
+    }
+
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        @include margin-x(calc(-1 * $page-content-padding-x));
+    }
+}
+
+// App download button styles
+.app-btn-group {
+    @include flexbox-center;
+    .btn {
+        min-width: $app-btn-min-width;
+        &:not(:first-child) {
+            margin-left: $spacer * .5;
+        }
+    }
+
+    @media (max-width: 479px) {
+        .btn {
+            min-width: $app-btn-min-width-xs;
+            &:not(:first-child) {
+                margin-top: $spacer * .5;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+
+// Landing pages footer styles
+#main_footer {
+    padding-top: $main-footer-padding-y;
+    .last-footer {
+        margin-top: $main-footer-padding-y;
+        border-top: 1px solid $last-footer-border-color;
+        @include flexbox;
+        justify-content: space-between;
+    }
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        padding-top: $main-footer-padding-y-sm;
+        .last-footer {
+            margin-top: $main-footer-padding-y-sm;
+        }
+    }
+
+    @media (max-width: 479px) {
+        .last-footer {
+            justify-content: center;
+            .social {
+                @include flex;
+                margin-top: $spacer;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+// Social icons
+.social {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include flexbox;
+
+    a {
+        color: $social-link-color;
+        @include hover-focus {
+            color: $social-link-hover-color;
+        }
+    }
+
+    li:not(:first-child) {
+        margin-left: $social-item-margin-left;
+    }
+}

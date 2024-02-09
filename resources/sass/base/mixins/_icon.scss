@@ -1,0 +1,10 @@
+
+// Icon styles
+//
+
+@mixin icon {
+    [class^="ri-"],
+    [class*=" ri-"] {
+        @content;
+    }
+}

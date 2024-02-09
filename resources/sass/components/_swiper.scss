@@ -1,0 +1,82 @@
+//
+// Swiper
+//
+
+@mixin swiper-button {
+    .swiper-button-next,
+    .swiper-button-prev {
+        @content;
+    }
+}
+
+
+// Base swiper carousel
+.swiper-carousel {
+
+    // Override swiper CSS root variables
+    --swiper-theme-color: #{$primary};
+    --swiper-navigation-size: #{$swiper-navigation-size};
+    --swiper-pagination-bullet-width: #{$swiper-pagination-bullet-width};
+    --swiper-pagination-bullet-height: #{$swiper-pagination-bullet-height};
+    --swiper-pagination-bullet-inactive-color: #{$primary};
+
+    position: relative;
+
+    // Swiper next & prev buttons
+    @include swiper-button {
+        @include size($swiper-navigation-size);
+        top: 50%;
+        margin-top: calc(-.5 * $swiper-navigation-size);
+        @include hidden;
+        transition: $transition-short;
+
+        &.swiper-button-disabled {
+            display: none;
+        }
+
+        &:after {
+            --swiper-navigation-size: #{$swiper-navigation-icon-size};
+        }
+    }
+
+    .swiper-button-next {
+        right: calc(-1 * ($swiper-navigation-size * .5));
+    }
+
+    .swiper-button-prev {
+        left: calc(-1 * ($swiper-navigation-size * .5));
+    }
+
+    &.swiper-carousel-button {
+        @include swiper-button {
+            top: 40%;
+        }
+    }
+
+    @include hover {
+        @include swiper-button {
+            @include visible;
+        }
+    }
+
+    // Swiper pagination
+    .swiper-pagination {
+        position: relative;
+        left: initial;
+        bottom: initial;
+        margin-top: $swiper-pagination-margin-top;
+    }
+
+    .swiper-pagination-bullet {
+        border-radius: $swiper-pagination-bullet-border-radius;
+    }
+
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        @include swiper-button {
+            display: none;
+        }
+    }
+}

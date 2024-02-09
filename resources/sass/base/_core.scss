@@ -1,0 +1,115 @@
+body {
+    background: $body-bg;
+    color: $body-color;
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        --#{$variable-prefix}gutter-x: #{$grid-gutter-width-sm * .5};
+    }
+}
+
+p {
+    margin: 0;
+    &:not(:last-child) {
+        margin-bottom: $paragraph-margin-bottom;
+    }
+}
+
+a,
+button,
+input {
+    outline: none !important;
+}
+
+@include icon {
+    font-size: $icon-size-base;
+    line-height: 1;
+}
+
+[data-favorite-id] {
+    .heart-fill {
+        display: none;
+    }
+    &.active {
+        color: $red !important;
+        .heart-empty {
+            display: none;
+        } 
+        .heart-fill {
+            display: block;
+        } 
+    }
+}
+
+.bg-light {
+    background-color: $gray-100 !important;
+}
+
+.feature {
+    .feature__icon {
+        @include flexbox-center;
+        @include size($feature-icon-size);
+        margin-bottom: $spacer * 1.5;
+        position: relative;
+        @include before {
+            @include size(100%);
+            @include absolute(top 0 left 0);
+            border-radius: 50%;
+            background-color: currentColor;
+            opacity: 0.15;
+        }
+
+        > * {
+            position: relative;
+        }
+    }
+}
+
+
+.newsletter {
+    border-radius: $newsletter-border-radius;
+    background-color: $newsletter-bg;
+    padding: $newsletter-padding;
+    color: $newsletter-color;
+
+    .newsletter__title-text {
+        color: $black;
+    }
+
+    .btn {
+        min-width: $newsletter-btn-min-width;
+    }
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        border-radius: $newsletter-border-radius-sm;
+        padding: $newsletter-padding-sm;
+    }
+}
+
+.main-hero,
+.main-section,
+.newsletter {
+    
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        .fs-5 {
+            font-size: 1rem !important;
+        }
+    }
+}
+
+.blog-hero {
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        @include margin-x(-.5 * $grid-gutter-width-sm);
+    }
+}
+
+
+

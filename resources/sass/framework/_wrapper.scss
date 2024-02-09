@@ -1,0 +1,70 @@
+//
+// Wrapper
+//
+
+
+#wrapper {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#page_content {
+    @include padding-x($page-content-padding-x);
+    transition: $transition-medium;
+    margin-left: 0;
+}
+
+// Backdrop
+#backdrop {
+    @include fixed(top 0 left 0);
+    @include size(100%);
+    @include hidden;
+    background-color: $backdrop-bg;
+    backdrop-filter: $backdrop-filter;
+    transition: $transition-short;
+    z-index: $zindex-backdrop;
+}
+
+// Visible backdrop
+@include search-results {
+    #backdrop {
+        @include visible;
+    }
+}
+
+
+// Desktop & Tablet
+// Bootstrap mixin
+@include media-breakpoint-up(lg) {
+    #page_content {
+        margin-left: $sidebar-width;
+    }
+
+    // Toggle sidebar
+    @include toggle-sidebar {
+        #page_content {
+            margin-left: $toggle-sidebar-width;
+        }
+    }
+
+    // Backdrop index
+    #backdrop {
+        z-index: $zindex-sidebar + 1;
+    }
+}
+
+// Mobile
+@include media-breakpoint-down(lg) {
+    #page_content {
+        @include padding-x(0);
+    }
+
+    // Toggle sidebar
+    @include toggle-sidebar {
+        #backdrop {
+            @include visible;
+            z-index: $zindex-sidebar - 1;
+        }
+    }
+}

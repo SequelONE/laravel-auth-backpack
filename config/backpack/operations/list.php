@@ -57,4 +57,7 @@ return [
     // If you are using PostgreSQL you might want to change
     // to `ilike` for case-insensitive search
     'searchOperator' => 'like',
+
+    // Action in Columns via one button with dropdown menu
+    'lineButtonsAsDropdown' => true
 ];

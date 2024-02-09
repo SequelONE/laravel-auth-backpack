@@ -1,0 +1,44 @@
+//
+// Switch
+//
+
+
+.switch {
+
+    // Style input checkbox
+    input[type="checkbox"] {
+        display: none;
+
+        &:checked + label:after {
+            transform: translate3d($switch-width - $switch-height, 0, 0);
+            background-color: $switch-thumb-active-bg;
+        }
+
+        &:disabled + label {
+            opacity: .7;
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+
+    // Switch label
+    label {
+        @include size($switch-width, $switch-height);
+        background-color: $switch-bg;
+        display: block;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 0;
+        border-radius: $switch-height;
+
+        @include after {
+            @include absolute(top $switch-thumb-spacing * .5 left $switch-thumb-spacing * .5);
+            @include size($switch-height - $switch-thumb-spacing);
+            background-color: $switch-thumb-bg;
+            border-radius: $switch-height;
+            transform: translate3d(0, 0, 0);
+            transition: transform .3s cubic-bezier(0.42, 0.8, 0.58, 1.2), background-color .6s cubic-bezier(0.42, 0.8, 0.58, 1.2);
+            box-shadow: $switch-thumb-box-shadow;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+//
+// Snackbar
+//
+
+
+.snackbar-container {
+    min-width: initial;
+    background: $snackbar-bg !important;
+    font-family: inherit;
+    border-radius: $snackbar-border-radius;
+    margin: $snackbar-margin;
+    @include padding-y($snackbar-padding-y);
+
+    > * {
+        font-weight: 400 !important;
+        line-height: $snackbar-line-height !important;
+    }
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        margin: 0;
+        border-radius: 0;
+        @include padding-x($grid-gutter-width-sm * .5);
+    }
+}

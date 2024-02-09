@@ -1,0 +1,43 @@
+//
+// Playlist
+//
+
+
+.playlist {
+    .playlist__dropdown {
+        @include size($playlist-width, $playlist-height);
+        min-width: initial;
+        max-width: calc(100vw - $grid-gutter-width-sm);
+        max-height: calc(100vh - 10rem);
+        flex-direction: column;
+        &.show {
+            display: flex;
+        }
+    }
+
+    .playlist__head {
+        padding: $playlist-padding-y $playlist-padding-x;
+        .btn-link {
+            line-height: $playlist-head-btn-line-height;
+            font-size: $playlist-head-btn-font-size;
+        }
+    }
+
+    .playlist__body {
+        padding: $playlist-padding-y - $list-item-padding $playlist-padding-x - $list-item-padding;
+        flex: 1;
+    }
+
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        .playlist__dropdown {
+            inset: auto 0px 0px auto !important;
+            transform: translate3d(0,0,0) !important;
+            right: -1rem !important;
+            bottom: 100% !important;
+        }
+    }
+}
+

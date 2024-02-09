@@ -1,0 +1,18 @@
+//
+// Pagination
+//
+
+.page-link {
+    line-height: 1;
+    min-width: $pagination-min-width;
+    color: $pagination-color;
+    border-radius: $pagination-border-radius;
+    &:hover {
+        background-color: $pagination-hover-bg;
+        color: $pagination-hover-color;
+    }
+    &:focus {
+        background-color: $pagination-focus-bg;
+        color: $pagination-focus-color;
+    }
+}

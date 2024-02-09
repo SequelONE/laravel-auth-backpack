@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+  
+  	'auth' => 'Вход / Регистрация',
+  	'user' => 'Пользователь',
 
     'failed' => 'Эти учетные данные не соответствуют нашим записям.',
     'passwordIncorrect' => 'Указанный пароль неверен.',

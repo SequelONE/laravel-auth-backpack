@@ -1,0 +1,50 @@
+
+// Set flex size
+//
+
+@mixin flex($width: 100%) {
+    flex: 0 0 auto;
+    width: $width;
+}
+
+// Set flexbox styles
+//
+
+@mixin flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// Set flexbox vertical styles
+//
+
+@mixin flexbox-v-center {
+    @include flexbox;
+    align-items: center;
+}
+
+// Set flexbox horizontal styles
+//
+
+@mixin flexbox-h-center {
+    @include flexbox;
+    justify-content: center;
+}
+
+// Set flexbox center styles
+//
+
+@mixin flexbox-center {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+}
+
+// Grow flexbox child
+//
+
+@mixin flex-grow {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+}

@@ -1,0 +1,146 @@
+//
+// Cover
+//
+
+
+// Add border radius on head and image
+//
+@mixin cover-border-radius($border-radius: $cover-border-radius) {
+    .cover__head:before {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+
+    .cover__image {
+        img {
+            border-radius: $border-radius;
+        }
+        .cover__image__content {
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+        }
+    }
+}
+
+
+// Image cover
+.cover {
+    position: relative;
+    @include cover-border-radius();
+
+    // Cover head
+    .cover__head {
+        @include absolute(top 0 left 0);
+        width: 100%;
+        padding: $cover-head-padding;
+        @include flexbox-v-center;
+        color: $cover-head-color;
+        @include before {
+            @include absolute(top 0 left 0);
+            @include size(100%);
+            background: $cover-head-bg;
+            transition: $transition-short;
+            z-index: 1;
+        }
+
+        .cover__options .dropdown-link:not(.show), &:before {
+            @include hidden;
+        }
+    }
+
+    // Cover label
+    .cover__label {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 1;
+        position: relative;
+        z-index: 1;
+
+        li:not(:first-of-type) {
+            margin-left: $cover-label-item-margin-left;
+        }
+
+        .badge {
+            font-weight: normal;
+        }
+    }
+
+    .cover__options {
+        position: relative;
+        z-index: 2;
+    }
+
+    // Cover image
+    .cover__image {
+        position: relative;
+        display: block;
+        img {
+            max-width: 100%;
+            width: 100%;
+        }
+        .btn-play {
+            @include absolute(top 50% left 50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .cover__image__content {
+            @include absolute(bottom 0 left 0);
+            width: 100%;
+            padding: $cover-image-content-padding;
+            background: $cover-image-content-bg;
+            color: $cover-image-content-color;
+            .cover__title, 
+            .cover__subtitle {
+                color: inherit;
+            }
+        }
+    }
+
+    // Cover foot
+    .cover__foot {
+        margin-top: $cover-foot-margin-top;
+    }
+
+    // Cover content
+    .cover__title {
+        display: block;
+        color: $cover-title-color;
+        font-weight: $font-weight-semi-bold;
+    }
+
+    .cover__subtitle {
+        display: block;
+        color: $cover-subtitle-color;
+        font-size: $cover-subtitle-font-size; 
+        font-weight: $cover-subtitle-font-weight;
+        a {
+            color: inherit;
+            @include hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @include hover-focus {
+        .cover__head {
+            .cover__options .dropdown-link, &:before {
+                @include visible;
+            }
+        }
+
+        .cover__image {
+            .btn-play {
+                @include visible;
+            }
+        }
+    }
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        &.cover--round {
+            @include cover-border-radius($cover-border-radius-lg);
+        }
+    }
+}

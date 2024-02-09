@@ -1,0 +1,70 @@
+//
+// Avatar
+//
+
+
+.avatar {
+    @include flexbox-v-center;
+
+    // Avatar image
+    .avatar__image {
+        position: relative;
+        img {
+            @include size($avatar-size-base);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    // Avatar content
+    .avatar__content {
+        @include flex-grow;
+        padding-left: $avatar-size-base * .25;
+    }
+
+    .avatar__title {
+        display: block;
+        font-weight: $font-weight-medium;
+        color: $avatar-title-color;
+    }
+
+    .avatar__subtitle {
+        display: block;
+        color: $avatar-subtitle-color;
+        font-size: $avatar-subtitle-font-size;
+    }
+
+    // Avatar sizing
+    @each $name, $value in $avatar-sizes {
+        &.avatar--#{$name} {
+            .avatar__image img {
+                @include size($value);
+            }
+            .avatar__content {
+                padding-left: $value * .25;
+            }
+        }
+
+        // Avatar group
+        .avatar-group {
+            .avatar--#{$name}:not(:first-child) {
+                margin-left: calc(-1 * ($value * .5));
+            } 
+        }
+    }
+}
+
+
+// Avatar group
+.avatar-group {
+    @include flexbox-v-center;
+    flex-direction: row-reverse;
+    .avatar {
+        .avatar__image img {
+            border: $avatar-image-border-width solid $avatar-image-border-color;
+        }
+        &:not(:last-child) {
+            margin-left: calc(-1 * ($avatar-size-base * .5));
+        }
+    }
+}

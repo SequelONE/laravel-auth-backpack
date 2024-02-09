@@ -1,0 +1,286 @@
+//
+// Player
+//
+
+
+#player {
+    @include fixed(left 0 bottom 0 right 0);
+    z-index: $zindex-player;
+    padding: $player-padding;
+    transition: $transition-medium;
+    color: $player-color;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    .player-container {
+        @include flexbox-v-center;
+        background-color: $player-container-bg;
+        position: relative;
+        height: $player-container-height;
+        border-radius: $player-container-border-radius;
+        box-shadow: $player-container-box-shadow;
+    }
+
+    .btn:not(.btn-default):not(.btn-link) {
+        color: inherit;
+        @include hover-focus-active {
+            box-shadow: none;
+        }
+    }
+
+    .cover {
+        flex: 1;
+        min-width: 0;
+        .cover__image {
+            @include size($player-container-height);
+            img {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+        .cover__content {
+            @include flex-grow;
+        }
+    }
+
+    @include hover {
+        .player-progress {
+            .player-progress__bar,
+            .player-progress__slider {
+                height: 100%;
+            }
+
+            .player-progress__slider {
+                // Chrome, Safari, Opera
+                &::-webkit-slider-thumb {
+                    @include visible;
+                }
+                // Mozilla
+                &::-moz-range-thumb {
+                    @include visible;
+                }        
+                // IE
+                &::-ms-thumb {
+                    @include visible;
+                }
+            }
+        }
+    }
+}
+
+
+// Player progress bar styles
+.player-progress {
+    @include absolute(top 0 left $player-container-border-radius right $player-container-border-radius);
+    height: $player-progress-height * 2;
+    z-index: 1;
+    > * {
+        @include absolute(top 0 left 0);
+    }
+
+    .player-progress__bar,
+    .player-progress__slider {
+        @include size(100%, 50%);
+        appearance: none;
+        border: none;
+        cursor: pointer;        
+        transition: $transition-short;
+    }
+
+    .player-progress__slider {
+        background: none;
+        @include range-background(none);
+        @include thumb-background($player-progress-thumb-bg);
+
+        // Chrome, Safari, Opera
+        &::-webkit-slider-thumb {
+            @include thumb($player-progress-thumb-size);
+            @include hidden;
+            transition: $transition-medium;
+        }
+        // Mozilla
+        &::-moz-range-thumb {
+            @include thumb($player-progress-thumb-size);
+            @include hidden;
+            transition: $transition-medium;
+        }
+        // IE
+        &::-ms-thumb {
+            @include thumb($player-progress-thumb-size);
+            @include hidden;
+            transition: $transition-medium;
+        }
+    }
+
+    .player-progress__bar {
+        display: block;
+        @include progress-background($player-progress-bg);
+        
+        &.amplitude-buffered-progress {
+            opacity: 0.5;
+        }
+
+        // Chrome, Safari, Opera
+        &[value]::-webkit-progress-bar {
+            background: none !important;
+        }
+        // Mozilla
+        &::-moz-progress-bar {
+            background: none !important;
+        }
+    }
+}
+
+
+// Player controls
+.player-control {
+    @include flexbox-center;
+    flex: 2;
+    .btn-default {
+        @include hover {
+            background-color: $player-btn-default-bg;
+            color: color-contrast($player-btn-default-bg) !important;
+        }
+    }
+
+    .btn {
+        // Button play pause
+        &.amplitude-playing {
+            background-color: $player-btn-default-bg;
+            color: color-contrast($player-btn-default-bg) !important;
+            .icon-pause {
+                display: block;
+            }
+            .icon-play {
+                display: none;
+            }
+        }
+        &.amplitude-paused {
+            .icon-pause {
+                display: none;
+            }
+        }
+
+        &.amplitude-repeat-on,
+        &.amplitude-shuffle-on {
+            color: $player-btn-active-color !important;
+        }
+    }    
+}
+
+.player-info {
+    @include flexbox-v-center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+
+// Player volume styles
+.player-volume {
+    .dropdown-menu {
+        @include size($player-volume-dropdown-width, $player-volume-dropdown-height);
+        min-width: initial;
+    }
+
+    .amplitude-volume-slider {
+        @include size($player-volume-height, $player-volume-width);
+        @include absolute(top 50% left 50%);
+        transform: rotate(-90deg) translate(0, calc(-.5 * $player-volume-height));
+        transform-origin: $player-volume-height * .5;
+        appearance: none;
+        border: none;
+        background: linear-gradient(to right, $player-volume-bg 0%, $player-volume-bg 50%, rgba($player-volume-bg, 0) 50%, rgba($player-volume-bg, 0) 100%);
+        cursor: pointer;
+        border-radius: $player-volume-border-radius;
+        @include range-background(rgba($player-volume-bg, 0.2));
+        @include thumb-background($player-volume-thumb-bg);
+
+        // Chrome, Safari, Opera
+        &::-webkit-slider-runnable-track {
+            @include size($player-volume-height, $player-volume-width);
+        }
+        &::-webkit-slider-thumb {
+            @include thumb($player-volume-thumb-size);
+            margin-top: calc(-0.5 * ($player-volume-thumb-size - $player-volume-width));
+            box-shadow: $player-volume-thumb-box-shadow;
+        }
+        // Mozilla
+        &::-moz-range-track {
+            @include size($player-volume-height, $player-volume-width);
+        }
+        &::-moz-range-thumb {
+            @include thumb($player-volume-thumb-size);
+            margin-top: calc(-0.5 * ($player-volume-thumb-size - $player-volume-width));
+            box-shadow: $player-volume-thumb-box-shadow;
+        }
+        // IE
+        &::-ms-fill-lower,
+        &::-ms-fill-upper {
+            @include size($player-volume-height, $player-volume-width);
+        }
+        &::-ms-thumb {
+            @include thumb($player-volume-thumb-size);
+            margin-top: calc(-0.5 * ($player-volume-thumb-size - $player-volume-width));
+            box-shadow: $player-volume-thumb-box-shadow;
+        }
+    }
+}
+
+
+// Player color options
+@each $name, $value in $component-color-options {
+    #player[data-player="#{$name}"] {
+        .player-control {
+            .btn-default {
+                @include hover {
+                    background-color: $value;
+                    color: color-contrast($value) !important;
+                }
+            }
+
+            .btn {
+                // Button play pause
+                &.amplitude-playing {
+                    background-color: $value;
+                    color: color-contrast($value) !important;
+                }
+            }
+        }
+
+        .player-progress {
+            .player-progress__slider {
+                @include thumb-background($value);
+            }
+
+            .player-progress__bar {
+                @include progress-background($value);
+            }
+        }
+    }
+}
+
+
+// Desktop & Tablet
+// Bootstrap mixin
+@include media-breakpoint-up(lg) {
+    #player {
+        margin-left: $sidebar-width;
+    }
+
+    // Toggle sidebar
+    @include toggle-sidebar {
+        #player {
+            margin-left: $toggle-sidebar-width;
+        }
+    } 
+}
+
+// Mobile
+@include media-breakpoint-down(sm) {
+    #player {
+        @include padding-x(0);
+    }
+}

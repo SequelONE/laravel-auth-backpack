@@ -1,0 +1,86 @@
+//
+// Search
+//
+
+
+// Search form
+#search_form {
+    position: relative;
+    @include flex-grow;
+
+    label {
+        margin-bottom: 0;
+        @include absolute(top 50% left 0);
+        transform: translateY(-50%);
+        display: inline-flex;
+        cursor: pointer;
+    }
+
+    // Search input
+    #search_input {
+        background-color: transparent;
+        border-color: transparent;
+        color: inherit;
+        @include placeholder(inherit);
+        padding-left: $search-input-padding-right;
+        box-shadow: none !important;
+    }
+}
+
+// Search
+.search {
+    @include absolute(top 100% left);
+    @include hidden;
+    width: 100%;
+    background-color: $search-bg;
+    color: $search-color;
+    border-radius: $search-border-radius;
+    margin-top: $search-margin-top;
+    box-shadow: $search-box-shadow;
+    max-height: $search-max-height;
+    display: flex;
+    flex-direction: column;
+    transition: $transition-medium;
+
+    // Search head
+    .search__head {
+        padding: $search-padding-y - $search-head-btn-margin $search-padding-x;
+        border-bottom: $search-head-border-width solid $search-head-border-color;        
+        .search__head__filter {
+            @include flexbox;
+            @include margin-x(calc(-1 * $search-head-btn-margin));
+        }
+        .btn {
+            margin: $search-head-btn-margin;
+        }
+    }
+
+    // Search body
+    .search__body {
+        padding: $search-padding-y $search-padding-x;
+        flex: 1;
+    }
+
+    // Search content
+    .search__title {
+        color: $search-title-color;
+        font-weight: $font-weight-semi-bold;
+        text-transform: uppercase;
+    }
+
+
+    // Mobile
+    // Bootstrap mixin
+    @include media-breakpoint-down(sm) {
+        .search__head, .search__body {
+            @include padding-x($search-padding-x-sm);
+        }
+    }
+}
+
+// Visible search results
+@include search-results {
+    .search {
+        @include visible;
+    }
+}

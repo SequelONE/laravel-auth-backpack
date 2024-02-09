@@ -1,0 +1,39 @@
+
+// Spacing mixin
+// $prop holds spacing p(padding) & m(margin)
+// $direction holds spacing y(top and bottom) & x(left and right)
+//
+@mixin spacing($prop, $direction, $value) {
+    @if $prop == p {
+        $prop: padding;
+    } @else if $prop == m {
+        $prop: margin;
+    }
+
+    @if $direction == y {
+        #{$prop}-top: $value;
+        #{$prop}-bottom: $value;
+    } @else if $direction == x {
+        #{$prop}-right: $value;
+	    #{$prop}-left: $value;
+    }
+}
+
+
+// Spacing shorthands
+//
+@mixin padding-y($value) {
+    @include spacing(p, y, $value);
+}
+
+@mixin padding-x($value) {
+    @include spacing(p, x, $value);
+}
+
+@mixin margin-y($value) {
+    @include spacing(m, y, $value);
+}
+
+@mixin margin-x($value) {
+    @include spacing(m, x, $value);
+}

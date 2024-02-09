@@ -1,0 +1,39 @@
+
+// Pseudo element style
+//
+
+@mixin content() {
+    content: '';
+    display: inline-block;
+}
+
+// :before pseudo element
+//
+
+@mixin before {
+    &:before {
+        @include content;
+        @content;
+    }
+}
+
+// :after pseudo element
+//
+
+@mixin after {
+    &:after {
+        @include content;
+        @content;
+    }
+}
+
+// :before & :after pseudo element
+//
+
+@mixin before-after {
+    &:before,
+    &:after {
+        @include content;
+        @content;
+    }
+}

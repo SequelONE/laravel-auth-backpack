@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Models\User;
 use App\Models\SocialAccount;
@@ -43,6 +43,8 @@ class SocialLoginController extends Controller
                 ])->first();
             }
 
+            $token = Socialite::driver($provider)->userFromToken($social_user->token)->token;
+
             // If User not get then create new user
             if(!$user){
                 $user = User::create([
@@ -57,6 +59,7 @@ class SocialLoginController extends Controller
             $user->socialAccounts()->create([
                 'user_id' => Auth::id(),
                 'avatar' => $social_user->getAvatar(),
+                'access_token' => $token,
                 'provider_id' => $social_user->getId(),
                 'provider_name' => $provider
             ]);

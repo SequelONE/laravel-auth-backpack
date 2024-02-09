@@ -1,0 +1,162 @@
+//
+// Sidebar
+//
+
+
+#sidebar {
+    @include fixed(top 0 bottom 0 left calc(-1 * $sidebar-width));
+    width: $sidebar-width;
+    z-index: $zindex-sidebar;
+    background-color: $sidebar-bg;
+    display: flex;
+    flex-direction: column;
+    transition: $transition-medium;
+
+    // Sidebar head
+    .sidebar-head {
+        padding: $sidebar-head-padding;
+        
+        // Sidebar toggler link
+        .sidebar-toggler {
+            @include flexbox-center;
+            color: $sidebar-toggler-color;
+            .sidebar-menu-2 {
+                display: none;
+            }
+            &.active {
+                .sidebar-menu-1 {
+                    display: none;
+                }
+                .sidebar-menu-2 {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // Sidebar body
+    .sidebar-body {
+        flex: 1;
+
+        // Sidebar navbar
+        .navbar {
+            height: 100%;
+            // Sidebar nav link
+            .nav-link {
+                padding: $sidebar-nav-link-padding;
+                color: $sidebar-nav-link-color;
+                position: relative;
+                white-space: nowrap;
+                @include before {
+                    @include absolute(top 0 bottom 0 left 0);
+                    width: $sidebar-nav-link-border-width;
+                }
+                &.active {
+                    color: $sidebar-nav-link-active-color;
+                    background: $sidebar-nav-link-active-bg;
+                    &:before {
+                        background-color: currentColor;
+                    }
+                }
+            }
+
+            // Sidebar nav item
+            .nav-item {
+                font-weight: $font-weight-medium;
+                &.nav-item--head {
+                    padding: $sidebar-nav-item-head-padding;
+                    color: $sidebar-nav-item-head-color;
+                    .nav-item--head__dots {
+                        display: none;
+                        letter-spacing: 1px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    // Sidebar foot
+    .sidebar-foot {
+        padding: $sidebar-foot-padding;
+    }
+}
+
+// Toggle sidebar
+@include toggle-sidebar {
+    #sidebar {
+        left: 0;
+    }
+}
+
+// Brand
+.brand {
+    display: inline-block;
+    @include size($brand-width, $brand-height);
+    > * {
+        width: 100%;
+    }
+}
+
+
+// Sidebar color options
+@each $name, $value in $component-color-options {
+    #sidebar[data-sidebar="#{$name}"] .sidebar-body .navbar .nav-link {
+        &.active {
+            color: $value;
+            background: linear-gradient(90deg, rgba($value, 0.1) 0%, rgba($value, 0) 100%);
+        }
+    }
+}
+
+
+// Desktop & Tablet
+// Bootstrap mixin
+@include media-breakpoint-up(lg) {
+    #sidebar {
+        left: 0;
+    }
+
+    // Toggle sidebar
+    @include toggle-sidebar {
+        #sidebar {
+            width: $toggle-sidebar-width;
+    
+            .sidebar-head {
+                @include padding-x($sidebar-padding-x);
+                .sidebar-toggler {
+                    height: $brand-height;
+                }
+            }
+    
+            .sidebar-head .brand,
+            .sidebar-body .navbar .nav-link span,
+            .sidebar-foot .btn .btn__wrap span {
+                display: none;
+            }
+    
+            .sidebar-body .navbar .nav-item.nav-item--head {
+                .nav-item--head__text {
+                    display: none;
+                }
+                .nav-item--head__dots {
+                    display: block;
+                }
+            }
+    
+            .sidebar-foot {
+                @include padding-x($toggle-sidebar-foot-padding-x);
+                .btn {
+                    @include padding-x($btn-padding-y);
+                }
+            }
+        }
+    } 
+}
+
+// Tablet & Mobile
+@include media-breakpoint-down(lg) {
+    #sidebar .sidebar-head {
+        padding-top: $sidebar-head-padding-top-sm;
+    }
+}

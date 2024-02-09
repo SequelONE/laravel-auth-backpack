@@ -6,17 +6,25 @@ use App\PageTemplates;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\PageRequest;
+use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 class PageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { create as traitCreate; }
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { edit as traitEdit; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { CreateOperation::create as traitCreate; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { UpdateOperation::edit as traitEdit; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\ReviseOperation\ReviseOperation;
     use PageTemplates;
 
+    /**
+     * @throws Exception
+     */
     public function setup()
     {
         $this->crud->setModel(config('backpack.pagemanager.page_model_class', 'App\Models\Page'));
@@ -76,8 +84,8 @@ class PageCrudController extends CrudController
         // - default fields, that all templates are using, are set using $this->addDefaultPageFields();
         // - template-specific fields are set per-template, in the PageTemplates trait;
 
-        $this->addDefaultPageFields(\Request::input('template'));
-        $this->useTemplate(\Request::input('template'));
+        $this->addDefaultPageFields((new \Illuminate\Http\Request)->input('template'));
+        $this->useTemplate((new \Illuminate\Http\Request)->input('template'));
 
         $this->crud->setValidation(PageRequest::class);
     }
@@ -85,7 +93,7 @@ class PageCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         // if the template in the GET parameter is missing, figure it out from the db
-        $template = \Request::input('template') ?? $this->crud->getCurrentEntry()->template;
+        $template = (new \Illuminate\Http\Request)->input('template') ?? $this->crud->getCurrentEntry()->template;
 
         $this->addDefaultPageFields($template);
         $this->useTemplate($template);
@@ -100,9 +108,9 @@ class PageCrudController extends CrudController
     /**
      * Populate the create/update forms with basic fields, that all pages need.
      *
-     * @param  string  $template  The name of the template that should be used in the current form.
+     * @param bool|string $template  The name of the template that should be used in the current form.
      */
-    public function addDefaultPageFields($template = false)
+    public function addDefaultPageFields(bool|string $template = false)
     {
         $this->crud->addField([
             'name' => 'template',
@@ -157,9 +165,9 @@ class PageCrudController extends CrudController
     /**
      * Add the fields defined for a specific template.
      *
-     * @param  string  $template_name  The name of the template that should be used in the current form.
+     * @param bool|string $template_name  The name of the template that should be used in the current form.
      */
-    public function useTemplate($template_name = false)
+    public function useTemplate(bool|string $template_name = false)
     {
         $templates = $this->getTemplates();
 
@@ -177,11 +185,11 @@ class PageCrudController extends CrudController
     /**
      * Get all defined templates.
      */
-    public function getTemplates($template_name = false)
+    public function getTemplates($template_name = false): array
     {
         $templates_array = [];
 
-        $templates_trait = new \ReflectionClass('App\PageTemplates');
+        $templates_trait = new ReflectionClass('App\PageTemplates');
         $templates = $templates_trait->getMethods(\ReflectionMethod::IS_PRIVATE);
 
         if (! count($templates)) {
@@ -196,7 +204,7 @@ class PageCrudController extends CrudController
      *
      * Used to populate the template dropdown in the create/update forms.
      */
-    public function getTemplatesArray()
+    public function getTemplatesArray(): array
     {
         $templates = $this->getTemplates();
 

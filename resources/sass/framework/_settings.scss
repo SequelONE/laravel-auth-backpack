@@ -1,0 +1,113 @@
+//
+// Settings
+//
+
+
+#setting {
+    &.show .setting__wrapper {
+        right: 0;
+    }
+}
+
+#setting_toggler {
+    @include fixed(top 50% right 0);
+    @include flexbox-center;
+    transform: rotate(-90deg) translate(50%, 0);
+    transform-origin: 100% 100%;
+    letter-spacing: 1px;
+    color: #57595b;
+    font-weight: 600;
+    font-size: 13px;
+    width: 110px;
+    height: 36px;
+    background-color: $white;
+    border: 1px solid #E4E6EF;
+    border-bottom: none;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 0 1px 16px rgba($black, 0.1);
+    z-index: 10;
+}
+
+.setting__wrapper {
+    box-shadow: 0 1px 32px rgba($black, 0.1);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    @include fixed(top 50% right -400px);
+    transform: translateY(-50%);
+    width: 380px;
+    max-width: calc(100vw - 16px);
+    z-index: 1000;
+    transition: $transition-medium;
+}
+
+.setting__head {
+    padding: 20px 32px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    background-color: #151719;
+    border-top-left-radius: 16px;
+}
+
+.setting__body {
+    padding: 32px 32px 48px;
+    background-color: #F5F7FA;
+    .setting__body__item {
+        &:not(:first-child) {
+            margin-top: 24px;
+        }
+    }
+}
+
+.setting__title {
+    display: block;
+    color: #57595b;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.setting__options {
+    @include flexbox;
+    margin: -4px;
+}
+
+.setting__option {
+    @include size(32px);
+    border-radius: 32px;
+    margin: 4px;
+    position: relative;
+    &.setting__option--light {
+        background-color: #fff;
+    }
+
+    &.active {
+        @include before {
+            @include size(calc(100% + 6px));
+            @include absolute(top -3px left -3px);
+            border-radius: 32px;
+            border: 1px solid $blue;
+            box-shadow: 0 1px 8px rgba($blue, 0.5);
+        }
+    }
+    
+    @each $name, $value in $component-color-options {
+        &.setting__option--#{$name} {
+            background-color: $value;
+        }
+    }
+
+    &.setting__option--dark[data-theme-option] {
+        background-color: #151719;
+    }
+}
+
+@include dark-skin {
+    .setting__option {
+        &.setting__option--dark[data-header-option],
+        &.setting__option--dark[data-player-option],
+        &.setting__option--dark[data-sidebar-option] {
+            background-color: $white;
+        }
+    }
+}

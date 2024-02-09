@@ -1,0 +1,24 @@
+//
+// Typography
+//
+
+h6, .h6, 
+h5, .h5, 
+h4, .h4, 
+h3, .h3, 
+h2, .h2, 
+h1, .h1 {
+    color: $headings-color;
+}
+
+.fw-medium {
+    font-weight: $font-weight-medium;
+}
+
+.fw-semi-bold {
+    font-weight: $font-weight-semi-bold;
+}
+
+.text-dark {
+    color: $gray-900 !important;
+}

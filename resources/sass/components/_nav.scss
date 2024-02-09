@@ -1,0 +1,33 @@
+//
+// Nav tabs
+//
+
+
+.nav-tabs {
+    border-color: $nav-tabs-border-color;
+    .nav-item {
+        &:not(:first-child) {
+            margin-left: $nav-item-margin-left;
+        }
+    }
+
+    .nav-link {
+        border-radius: 0;
+        border: none;
+        line-height: $nav-link-line-height;
+        font-weight: $font-weight-medium;
+        color: $nav-link-color;
+    }
+}
+
+// Mat line tabs
+.mat-tabs {
+    position: relative;
+    .mat-tabs__line {
+        @include absolute(bottom 0 left 0);
+        display: block;
+        height: $mat-nav-line-height;
+        background-color: $mat-nav-line-bg;
+        transition: $transition-medium;
+    }
+}

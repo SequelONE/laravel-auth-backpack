@@ -1,0 +1,22 @@
+//
+// Modal
+//
+
+
+.modal-content {
+    background-color: $modal-content-bg;
+}
+
+.modal-header,
+.modal-body {
+    @include padding-x($modal-header-padding-x);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: $modal-header-border-color;
+}
+
+.modal-footer {
+    @include padding-x($modal-header-padding-x - 0.25rem);
+}

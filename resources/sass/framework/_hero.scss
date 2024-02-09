@@ -1,0 +1,69 @@
+//
+// Hero
+//
+
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    height: $hero-height;
+    position: relative;
+
+    @include after {
+        @include absolute(left 0 bottom 0);
+        @include size(100%);
+        background-image: $hero-bg;
+    }
+
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        @include margin-x(calc(-1 * $page-content-padding-x));
+    }
+}
+
+// Under hero section
+.under-hero {
+    margin-top: calc(-1 * ($hero-height * .15));
+    z-index: 1;
+    position: relative;
+    min-height: 20rem;
+}
+
+
+// Landing page hero styles
+.main-hero {
+    @include flexbox-v-center;
+    background-size: cover;
+    background-position: left top;
+    max-width: $main-hero-max-width;
+    padding: $main-hero-padding;
+    border-radius: $main-hero-border-radius;
+    color: $main-hero-color;
+
+    .main-hero__title {
+        color: $black;
+    }
+
+    // Desktop & Tablet
+    // Bootstrap mixin
+    @include media-breakpoint-up(sm) {
+        padding: $main-hero-padding-sm;
+        .btn {
+            min-width: $main-hero-btn-min-width;
+        }
+    }
+
+    // Desktop
+    @include media-breakpoint-up(lg) {
+        background-position: center;
+        padding: $main-hero-padding-lg;
+    }
+
+    // Large Desktop
+    @include media-breakpoint-up(xl) {
+        min-height: $main-hero-min-height;
+    }
+}
+

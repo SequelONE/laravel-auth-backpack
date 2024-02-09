@@ -1,0 +1,47 @@
+//
+// Auth
+//
+
+
+.auth {
+    min-height: $auth-min-height;
+    @include flexbox-center;
+
+    @include before {
+        @include fixed(top 0 left 0);
+        @include size(50%, 100vh);
+        background-color: $primary;
+        opacity: 0.05;
+    }
+
+    .auth__or {
+        width: 100%;
+        max-width: $auth-or-max-width;
+        line-height: 1;
+        text-align: center;
+
+        @include before {
+            @include size(100%, 1px);
+            background-color: $auth-or-border-color;
+        }
+
+        &:after {
+            content: $auth-or-content;
+            display: inline-block;
+            padding: $auth-or-padding;
+            text-transform: uppercase;
+            top: -10px;
+            position: relative;
+            background-color: $card-bg;
+        }
+    }
+}
+
+
+// Mobile
+// Bootstrap mixin
+@include media-breakpoint-down(sm) {
+    .auth:before {
+        @include size(100%, 50vh);
+    }
+}

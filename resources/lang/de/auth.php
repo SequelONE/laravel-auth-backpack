@@ -13,6 +13,9 @@ return [
     |
     */
 
+    'auth' => 'Anmelden / Registrieren',
+    'user' => 'Benutzer',
+
     'failed' => 'Diese Anmeldeinformationen stimmen nicht mit unseren Datensätzen überein.',
     'passwordIncorrect' => 'Das angegebene Passwort ist falsch.',
     'throttle' => 'Zu viele Anmeldeversuche. Bitte versuchen Sie es erneut in :Sekunden Sekunden.',

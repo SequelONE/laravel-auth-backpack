@@ -96,11 +96,11 @@ class MenuItemCrudController extends CrudController
                 'model' => "App\Models\MenuItem",
             ]);
             $this->crud->addField([
-                'name' => ['type', 'link', 'page_id'],
+                'name' => 'type,link,page_id',
                 'label' => 'Type',
                 'type' => 'page_or_link',
                 'page_model' => 'App\Models\Page',
-                'view_namespace' => file_exists(resource_path('views/vendor/backpack/crud/fields/page_or_link.blade.php')) ? null : 'menu-crud::fields',
+                'view_namespace' => file_exists(resource_path('views/vendor/backpack/crud/fields/page_or_link.blade.php')) ? null : 'menucrud::fields',
             ]);
             $this->crud->addField([
                 'label' => 'Status',

@@ -12,7 +12,7 @@ class SocialAccount extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'user_id', 'avatar', 'provider_name', 'provider_id'
+        'user_id', 'avatar', 'provider_name', 'provider_id', 'access_token'
     ];
 
     // User
