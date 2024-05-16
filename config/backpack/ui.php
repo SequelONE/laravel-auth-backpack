@@ -70,7 +70,7 @@ return [
     'developer_name' => 'SEQUEL.ONE',
 
     // Laravel Backpack Auth version
-    'version' => '4.0.6',
+    'version' => '5.0.0',
 
     // Developer website. Link in footer. Type false if you want to hide it.
     'developer_link' => 'https://sequel.one',
