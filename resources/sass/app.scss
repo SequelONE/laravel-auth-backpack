@@ -1,26 +1,8 @@
-// Theme mode
-$mode: default;
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Import scss initialize
-@import "init";
+// Variables
+@import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-// Import core styles
-@import "base/core";
-
-// Import components
-@import "components/includes";
-
-// Import framework
-@import "framework/includes";
-
-// Import utilities
-@import "utilities/typography";
-@import "utilities/skin-dark";
-
-@import "custom";

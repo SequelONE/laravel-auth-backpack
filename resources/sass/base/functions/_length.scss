@@ -1,7 +1,0 @@
-
-// Check argument length
-//
-
-@function is-valid-length($value) {
-    @return type-of($value) == "number" and not unitless($value) or index(auto initial inherit 0, $value) != false;
-}

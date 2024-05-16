@@ -3,8 +3,8 @@
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
+import $ from 'jquery';
+window.jQuery = window.$ = $;
 
 import * as Popper from '@popperjs/core';
 window.Popper = Popper;
