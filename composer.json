@@ -24,6 +24,7 @@
         "backpack/newscrud": "^5.0",
         "backpack/pagemanager": "^3.2",
         "backpack/permissionmanager": "^7.0",
+		"backpack/pro": "2.1.9",
         "backpack/revise-operation": "^2.0",
         "backpack/settings": "^3.1",
         "backpack/theme-coreuiv2": "^1.1",
